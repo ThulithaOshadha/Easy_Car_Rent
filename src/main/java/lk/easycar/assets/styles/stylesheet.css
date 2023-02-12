@@ -1,0 +1,21 @@
+/*
+Home page*/
+#homePageSlider{
+    position: relative;
+    top: -15px;
+}
+#homeSliderSection{
+    height: 75%;
+}
+#carsDropdown{
+    position: relative;
+    top: 5px;
+    left: 10px;
+}
+#context{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top: 50px;
+    left: 20%;
+}
