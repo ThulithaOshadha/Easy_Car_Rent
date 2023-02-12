@@ -19,3 +19,25 @@ Home page*/
     top: 50px;
     left: 20%;
 }
+
+/*Login Page*/
+#loginBody{
+    width: 100vw;
+    height: 100vh;
+}
+#loginMainContext{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 25%;
+    height: 50%;
+    border: 1px solid #537FE7;
+    border-radius: 15px;
+}
+#loginButtonInHome{
+    height: 50%;
+}
+
