@@ -80,5 +80,24 @@ Home page*/
     font-family: "Open Sans Semibold";
 }
 
+/*Driver Manage Page*/
+#driverManagerForm{
+    position: relative;
+    width: 22vw;
+    left: 224px;
+    top: 10px;
+    height: 35vh;
+}
+#sideContainerInDriver{
+    width: 30vw;
+    height: 77vh;
+    border: 1px solid red;
+}
+#driverManagerForm>h2{
+    position: relative;
+    font-size: 18px;
+    color: white;
+    font-family: "Open Sans Semibold";
+}
 
 
