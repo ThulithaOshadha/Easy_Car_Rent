@@ -41,3 +41,44 @@ Home page*/
     height: 50%;
 }
 
+/*Admin Page*/
+#adminDashBoard{
+    position: relative;
+    width: 75vw;
+    height: 50vh;
+    background: rgba(0,0,255,.1);
+    left: 12%;
+    top: 15px;
+}
+/*
+#adminTaskContext{
+    position: relative;
+}
+*/
+#registeredCustomer{
+    position: relative;
+    top: 40px;
+    left: 30px;
+    display: grid;
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-gap: 10px;
+}
+#registeredCustomer>div{
+    width: 300px;
+    height: 90px;
+    background: #635985;
+    border-radius: 15px;
+}
+#registeredCustomer>div>h2{
+    position: relative;
+    top: 10px;
+    left: 10px;
+    font-size: 18px;
+    color: aliceblue;
+    font-family: "Open Sans Semibold";
+}
+
+
+

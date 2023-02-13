@@ -9,17 +9,72 @@
 
 </head>
 <body>
-<section id="adminTaskContext">
+<!--Header-->
+<header>
+  <ul class="nav justify-content-end shadow p-1 mb-3 bg-e74c3c">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Cars</a>
+    </li>
+    <li>
+      <nav class="navbar bg-body-tertiary">
+        <form class="container-fluid justify-content-start">
+          <button id="loginButtonInHome" class="btn btn-sm btn-outline-secondary" type="button"><a href="login.html">Log In</a></button>
+        </form>
+      </nav>
+    </li>
+  </ul>
+
+
+</header>
+<!--Dashboard-->
+<section id="adminDashBoard">
+  <section id="registeredCustomer">
+    <div>
+      <h2>Registered Users : </h2>
+      <h2>105</h2>
+    </div>
+    <div>
+      <h2>Bookings for the day : </h2>
+      <h2>15</h2>
+    </div>
+    <div>
+      <h2>Available and reserved cars : </h2>
+      <h2>4</h2>
+    </div>
+    <div>
+      <h2>Bookings active for the day : </h2>
+      <h2>2</h2>
+    </div>
+    <div>
+      <h2>Available and occupied drivers : </h2>
+      <h2>12</h2>
+    </div>
+    <div>
+      <h2>Cars that need maintenance : </h2>
+      <h2>5</h2>
+    </div>
+  </section>
+
+</section>
+<section class="position-absolute top-50 start-0 translate-middle" style="transform: translate(34%,20%)!important;" id="adminTaskContext">
   <div class="card mb-3" style="max-width: 540px;">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="..." class="img-fluid rounded-start" alt="...">
+        <img src="../java/lk/easycar/assets/customer_management.jpg" class="img-fluid rounded-start" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">Manage Customers</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <li>Add Customers</li>
+          <li>Update Customers</li>
+          <li>Remove Customers</li>
+          <li>Approve</li>
         </div>
       </div>
     </div>
@@ -27,13 +82,15 @@
   <div class="card mb-3" style="max-width: 540px;">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="..." class="img-fluid rounded-start" alt="...">
+        <img src="../java/lk/easycar/assets/driver_management.jpg" class="img-fluid rounded-start" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">Manage Cars</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <li>Add Cars</li>
+          <li>Update Cars</li>
+          <li>Remove Cars</li>
+          <li>Maintenance</li>
         </div>
       </div>
     </div>
@@ -41,13 +98,15 @@
   <div class="card mb-3" style="max-width: 540px;">
     <div class="row g-0">
       <div class="col-md-4">
-        <img src="..." class="img-fluid rounded-start" alt="...">
+        <img src="../java/lk/easycar/assets/car_management.jpg" class="img-fluid rounded-start" alt="...">
       </div>
       <div class="col-md-8">
         <div class="card-body">
           <h5 class="card-title">Manage Driver</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          <li>Add Driver</li>
+          <li>Update Driver</li>
+          <li>Remove Driver</li>
+          <li>Maintenance</li>
         </div>
       </div>
     </div>
