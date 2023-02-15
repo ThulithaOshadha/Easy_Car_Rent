@@ -35,7 +35,7 @@
 <!--car page image-->
 <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail" style="position: relative; width: 30vw;height: 90vh;left: 200px" alt="car">
 <!--car manage form-->
-<form action="">
+<form action="" id="carsAddingForm">
   <h2>Car Management Form</h2>
   <div class="form-floating mb-3">
     <input class="form-control" id="txtVehicleNo" placeholder="Vehicle No :">
@@ -83,16 +83,45 @@
     <label for="exampleFormControlFile1">Upload Car Images</label>
     <input type="file" class="form-control-file" id="exampleFormControlFile1">
   </div>
+  <div class="col-auto">
+    <button type="button" id="btnAddPhoto" class="btn btn-primary mb-3">Add photo</button>
+  </div>
+
+  <div id="carImageImages" style="display: inline-block">
+    <!--<img src="" class="img-thumbnail"style="width: 100px" alt="...">
+    <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">
+    <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">
+    <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">-->
+  </div>
 
   <div class="form-floating mb-3">
     <input class="form-control" id="txtAvailability" placeholder="Availability">
     <label for="txtAvailability">Availability : </label>
   </div>
 
+
 </form>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+<script>
+
+  let carsAddingCount=0;
+
+  $('#btnAddPhoto').click(function (){
+      if (carsAddingCount<4) {
+        alert("Hiii");
+        console.log("sdfsdfsd");
+        let i = "src/main/java/lk/easycar/assets/driver_management.jpg";
+        $('#carImageImages').append("<img src='../java/lk/easycar/assets/car_management.jpg' class='img-thumbnail mb-3' alt='car'/>")
+        carsAddingCount++
+        console.log(carsAddingCount);
+      }
+  });
+
+
+</script>
 
 </body>
 </html>

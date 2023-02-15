@@ -100,4 +100,18 @@ Home page*/
     font-family: "Open Sans Semibold";
 }
 
+/*Driver Manage Page*/
+#carsAddingForm{
+    position: relative;
+    border: 1px solid red;
+    width: 30vw;
+    bottom: 680px;
+    left: 44%;
+    border-radius: 15px;
+}
+#carImageImages>img{
+    width: 100px;
+    height: 100px;
+}
+
 
