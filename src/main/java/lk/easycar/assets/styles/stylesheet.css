@@ -91,7 +91,8 @@ Home page*/
 #sideContainerInDriver{
     width: 30vw;
     height: 77vh;
-    border: 1px solid red;
+    border-radius: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 #driverManagerForm>h2{
     position: relative;
@@ -103,11 +104,11 @@ Home page*/
 /*Driver Manage Page*/
 #carsAddingForm{
     position: relative;
-    border: 1px solid red;
     width: 30vw;
-    bottom: 680px;
-    left: 44%;
+    bottom: 670px;
+    left: 15%;
     border-radius: 15px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 #carImageImages>img{
     width: 100px;
