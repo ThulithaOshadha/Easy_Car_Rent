@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car_Manage_Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../java/lk/easycar/assets/styles/stylesheet.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+</head>
+<body>
+<!--Header-->
+<header>
+  <ul class="nav justify-content-end shadow p-1 mb-3 bg-e74c3c">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="#">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">About</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Cars</a>
+    </li>
+    <li>
+      <nav class="navbar bg-body-tertiary">
+        <form class="container-fluid justify-content-start">
+          <button id="loginButtonInHome" class="btn btn-sm btn-outline-secondary" type="button"><a href="login.html">Log In</a></button>
+        </form>
+      </nav>
+    </li>
+  </ul>
+
+
+</header>
+<!--car page image-->
+<img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail" style="position: relative; width: 30vw;height: 90vh;left: 200px" alt="car">
+<!--car manage form-->
+<form action="" id="carsAddingForm" class="container text-center">
+  <h2 class="mb-3">Car Management Form</h2>
+  <div class="row g-2">
+  <div class="form-floating mb-3 col-6">
+    <input class="form-control" id="txtVehicleNo" placeholder="Vehicle No :">
+    <label for="txtVehicleNo">Vehicle No :</label>
+  </div>
+  <div class="form-floating mb-3 col-6">
+    <input class="form-control" id="txtModel" placeholder="Model">
+    <label for="txtModel">Model :</label>
+  </div>
+  <div class="form-floating mb-3 col-6">
+    <input class="form-control" id="txtVehicleType" placeholder="Vehicle Type">
+    <label for="txtVehicleType">Vehicle Type : </label>
+  </div>
+  <div class="form-floating mb-3 col-6">
+    <input class="form-control" id="txtTransmission" placeholder="Transmission Type">
+    <label for="txtTransmission">Transmission Type :</label>
+  </div>
+
+  <div class="form-floating mb-3 col-6">
+    <input class="form-control" id="txtColor" placeholder="Color :">
+    <label for="txtColor">Color :</label>
+  </div>
+  <div class="form-floating mb-3 col-6">
+    <input class="form-control" id="txtFuelType" placeholder="Fuel Type">
+    <label for="txtFuelType">Fuel Type :</label>
+  </div>
+  <div class="form-floating mb-3 col-6">
+    <input class="form-control" id="txtPassengers" placeholder="Passengers">
+    <label for="txtPassengers">Passengers : </label>
+  </div>
+  <div class="form-floating mb-3 col-6">
+    <input class="form-control" id="txtMonthlyPrice" placeholder="Monthly Price">
+    <label for="txtMonthlyPrice">Monthly Price :</label>
+  </div>
+
+  <div class="form-floating mb-3 col-6">
+    <input class="form-control" id="txtDailyPrice" placeholder="Daily Price :">
+    <label for="txtDailyPrice">Daily Price :</label>
+  </div>
+  <div class="form-floating mb-3 col-6">
+    <input class="form-control" id="txtFreeMileage" placeholder="Free Mileage">
+    <label for="txtFreeMileage">Free Mileage :</label>
+  </div>
+  <div class="form-group mb-3 col-6">
+    <label for="exampleFormControlFile1">Upload Car Images</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+  <div class="col-auto col-6">
+    <button type="button" id="btnAddPhoto" class="btn btn-primary mb-3">Add photo</button>
+  </div>
+
+  <div id="carImageImages" style="display: inline-block">
+    <!--<img src="" class="img-thumbnail"style="width: 100px" alt="...">
+    <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">
+    <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">
+    <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">-->
+  </div>
+
+  <div class="form-floating mb-3">
+    <input class="form-control" id="txtAvailability" placeholder="Availability">
+    <label for="txtAvailability">Availability : </label>
+  </div>
+  </div>
+
+
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+<script>
+
+  let carsAddingCount=0;
+
+  $('#btnAddPhoto').click(function (){
+      if (carsAddingCount<4) {
+        alert("Hiii");
+        console.log("sdfsdfsd");
+        let i = "src/main/java/lk/easycar/assets/driver_management.jpg";
+        $('#carImageImages').append("<img src='../java/lk/easycar/assets/car_management.jpg' class='img-thumbnail mb-3' alt='car'/>")
+        carsAddingCount++
+        console.log(carsAddingCount);
+      }
+  });
+
+
+</script>
+
+</body>
+</html>
