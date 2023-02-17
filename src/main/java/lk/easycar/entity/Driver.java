@@ -1,5 +1,6 @@
 package lk.easycar.entity;
 
+import com.mysql.cj.jdbc.Blob;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
