@@ -5,12 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @ToString
+@Entity
 public class Customer {
     @Id
     private String nic;
