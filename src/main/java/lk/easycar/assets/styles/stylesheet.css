@@ -115,4 +115,14 @@ Home page*/
     height: 100px;
 }
 
+#customerManagerForm{
+    border: 1px solid red;
+    width: 40vw;
+    height: 60vh;
+}
+#btnCustomerAdd{
+    position: relative;
+    bottom: 15px;
+}
+
 
