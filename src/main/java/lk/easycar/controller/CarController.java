@@ -1,9 +1,9 @@
 package lk.easycar.controller;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lk.easycar.dto.CarDTO;
+import lk.easycar.service.CarService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.RequestDispatcher;
@@ -12,15 +12,13 @@ import javax.servlet.RequestDispatcher;
 @RequestMapping("/car")
 @CrossOrigin
 public class CarController {
-    public CarController(){
-        System.out.println("car");
+
+    @Autowired
+    private CarService service;
+
+    public void saveCar(@ModelAttribute CarDTO dto){
+        service.saveCars(dto);
     }
 
-    @GetMapping
-    public ModelAndView carSave(){
-        ModelAndView view = new ModelAndView();
-        view.setViewName("index");
-        return view;
-    }
 
 }

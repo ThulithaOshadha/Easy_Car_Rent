@@ -11,14 +11,11 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackageClasses = {DriverController.class, AppWideExceptionHandler.class})
+@ComponentScan(basePackageClasses = {CarController.class, DriverController.class, AppWideExceptionHandler.class})
 public class WebAppConfig {
     public WebAppConfig(){
         System.out.println("web app");
     }
 
-    @Bean
-    public ModelMapper modelMapper(){
-        return new ModelMapper();
-    }
+
 }

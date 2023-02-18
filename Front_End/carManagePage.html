@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Car_Manage_Form</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../java/lk/easycar/assets/styles/stylesheet.css">
+    <link rel="stylesheet" href="../src/main/java/lk/easycar/assets/styles/stylesheet.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
 </head>
@@ -33,72 +33,75 @@
 
 </header>
 <!--car page image-->
-<img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail" style="position: relative; width: 30vw;height: 90vh;left: 200px" alt="car">
+<img src="../src/main/java/lk/easycar/assets/car1.jpg" class="img-thumbnail" style="position: relative; width: 30vw;height: 90vh;left: 200px" alt="car">
 <!--car manage form-->
 <form action="" id="carsAddingForm" class="container text-center">
   <h2 class="mb-3">Car Management Form</h2>
   <div class="row g-2">
-  <div class="form-floating mb-3 col-6">
-    <input class="form-control" id="txtVehicleNo" placeholder="Vehicle No :">
-    <label for="txtVehicleNo">Vehicle No :</label>
-  </div>
-  <div class="form-floating mb-3 col-6">
-    <input class="form-control" id="txtModel" placeholder="Model">
-    <label for="txtModel">Model :</label>
-  </div>
-  <div class="form-floating mb-3 col-6">
-    <input class="form-control" id="txtVehicleType" placeholder="Vehicle Type">
-    <label for="txtVehicleType">Vehicle Type : </label>
-  </div>
-  <div class="form-floating mb-3 col-6">
-    <input class="form-control" id="txtTransmission" placeholder="Transmission Type">
-    <label for="txtTransmission">Transmission Type :</label>
-  </div>
+    <div class="form-floating mb-3 col-6">
+      <input class="form-control" id="txtVehicleNo" placeholder="Vehicle No :" name="vehicleNo">
+      <label for="txtVehicleNo">Vehicle No :</label>
+    </div>
+    <div class="form-floating mb-3 col-6">
+      <input class="form-control" id="txtModel" placeholder="Model" name="model">
+      <label for="txtModel">Model :</label>
+    </div>
+    <div class="form-floating mb-3 col-6">
+      <input class="form-control" id="txtVehicleType" placeholder="Vehicle Type" name="VehicleType">
+      <label for="txtVehicleType">Vehicle Type : </label>
+    </div>
+    <div class="form-floating mb-3 col-6">
+      <input class="form-control" id="txtTransmission" placeholder="Transmission Type" name="TransmissionType">
+      <label for="txtTransmission">Transmission Type :</label>
+    </div>
 
-  <div class="form-floating mb-3 col-6">
-    <input class="form-control" id="txtColor" placeholder="Color :">
-    <label for="txtColor">Color :</label>
-  </div>
-  <div class="form-floating mb-3 col-6">
-    <input class="form-control" id="txtFuelType" placeholder="Fuel Type">
-    <label for="txtFuelType">Fuel Type :</label>
-  </div>
-  <div class="form-floating mb-3 col-6">
-    <input class="form-control" id="txtPassengers" placeholder="Passengers">
-    <label for="txtPassengers">Passengers : </label>
-  </div>
-  <div class="form-floating mb-3 col-6">
-    <input class="form-control" id="txtMonthlyPrice" placeholder="Monthly Price">
-    <label for="txtMonthlyPrice">Monthly Price :</label>
-  </div>
+    <div class="form-floating mb-3 col-6">
+      <input class="form-control" id="txtColor" placeholder="Color :" name="color">
+      <label for="txtColor">Color :</label>
+    </div>
+    <div class="form-floating mb-3 col-6">
+      <input class="form-control" id="txtFuelType" placeholder="Fuel Type" name="FuelType">
+      <label for="txtFuelType">Fuel Type :</label>
+    </div>
+    <div class="form-floating mb-3 col-6">
+      <input class="form-control" id="txtPassengers" placeholder="Passengers" name="passengers">
+      <label for="txtPassengers">Passengers : </label>
+    </div>
+    <div class="form-floating mb-3 col-6">
+      <input class="form-control" id="txtMonthlyPrice" placeholder="Monthly Price" name="monthlyPrice">
+      <label for="txtMonthlyPrice">Monthly Price :</label>
+    </div>
 
-  <div class="form-floating mb-3 col-6">
-    <input class="form-control" id="txtDailyPrice" placeholder="Daily Price :">
-    <label for="txtDailyPrice">Daily Price :</label>
-  </div>
-  <div class="form-floating mb-3 col-6">
-    <input class="form-control" id="txtFreeMileage" placeholder="Free Mileage">
-    <label for="txtFreeMileage">Free Mileage :</label>
-  </div>
-  <div class="form-group mb-3 col-6">
-    <label for="exampleFormControlFile1">Upload Car Images</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1">
-  </div>
-  <div class="col-auto col-6">
-    <button type="button" id="btnAddPhoto" class="btn btn-primary mb-3">Add photo</button>
-  </div>
+    <div class="form-floating mb-3 col-6">
+      <input class="form-control" id="txtDailyPrice" placeholder="Daily Price :" name="dailyPrice">
+      <label for="txtDailyPrice">Daily Price :</label>
+    </div>
+    <div class="form-floating mb-3 col-6">
+      <input class="form-control" id="txtFreeMileage" placeholder="Free Mileage" name="freeMileage">
+      <label for="txtFreeMileage">Free Mileage :</label>
+    </div>
+    <div class="form-group mb-3 col-6">
+      <label for="exampleFormControlFile1">Upload Car Images</label>
+      <input type="file" class="form-control-file" id="exampleFormControlFile1">
+    </div>
+    <div class="col-auto col-6">
+      <button type="button" id="btnAddPhoto" class="btn btn-primary mb-3">Add photo</button>
+    </div>
 
-  <div id="carImageImages" style="display: inline-block">
-    <!--<img src="" class="img-thumbnail"style="width: 100px" alt="...">
-    <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">
-    <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">
-    <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">-->
-  </div>
+    <div id="carImageImages" style="display: inline-block">
+      <!--<img src="" class="img-thumbnail"style="width: 100px" alt="...">
+      <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">
+      <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">
+      <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">-->
+    </div>
 
-  <div class="form-floating mb-3">
-    <input class="form-control" id="txtAvailability" placeholder="Availability">
-    <label for="txtAvailability">Availability : </label>
-  </div>
+    <div class="form-floating mb-3">
+      <label for="txtAvailability">Availability : </label>
+      <input type="" class="form-control" id="txtAvailability" placeholder="Availability" name="available">
+
+    </div>
+    <button id="btnCarSave" type="button" class="position-absolute top-110 start-40 btn btn-primary mb-2" style="width: 22vw;position: relative;bottom: -10px">Save</button>
+
   </div>
 
 
@@ -120,6 +123,23 @@
         carsAddingCount++
         console.log(carsAddingCount);
       }
+  });
+  
+  $('#btnCarSave').click(function () {
+    alert("saved car");
+    let formData = $('#carsAddingForm').serialize();
+    $.ajax({
+      url:baseUrl+"car",
+      method:"post",
+      data:formData,
+      dataType:"json",
+      success:function (res) {
+        alert(res.message)
+      },
+      error:function (error) {
+        alert(JSON.parse(error.responseText).message);
+      }
+    })
   });
 
 
