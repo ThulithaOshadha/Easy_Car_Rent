@@ -115,14 +115,23 @@ Home page*/
     height: 100px;
 }
 
+/*Customer Page*/
 #customerManagerForm{
-    border: 1px solid red;
     width: 40vw;
     height: 60vh;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 #btnCustomerAdd{
     position: relative;
     bottom: 15px;
 }
+#tableSection{
+    position: relative;
+    width: 80vw;
+    top: 80vh;
+    left: 10vw;
+}
+
+
 
 
