@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.*;
 public class DriverController {
     @Autowired
     private DriverService service;
-    @Autowired
-    private ModelMapper mapper;
+
 
     @PostMapping
     public ResponseUtil addDriver(@ModelAttribute DriverDTO dto){

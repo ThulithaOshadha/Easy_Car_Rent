@@ -20,7 +20,7 @@ public class DriverServiceImpl implements DriverService {
     private ModelMapper mapper;
     @Override
     public void saveDriver(DriverDTO dto) {
-
+        repo.save(mapper.map(dto,Driver.class));
     }
 
     @Override

@@ -5,10 +5,12 @@ import lk.easycar.entity.Customer;
 import lk.easycar.repo.CustomerRepo;
 import lk.easycar.service.CustomerService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 
 @Service
 @Transactional
@@ -24,9 +26,23 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void deleteCustomer(String id) {
+        if (!repo.existsById(id)){
+            throw new RuntimeException("Wrong nic..Please Check the nic");
+        }
+        repo.deleteById(id);
+    }
 
+    @Override
+    public void updateCustomer(CustomerDTO dto) {
+        if (!repo.existsById(dto.getNic())){
+            throw new RuntimeException("Wrong nic..Please Check the nic");
+        }
+        repo.save(mapper.map(dto,Customer.class));
     }
-    public CustomerServiceImpl(){
-        System.out.println("customer impl invoked");
+
+    @Override
+    public ArrayList<CustomerDTO> getAllCustomers() {
+        return mapper.map(repo.findAll(),new TypeToken<ArrayList<CustomerDTO>>(){}.getType());
     }
+
 }
