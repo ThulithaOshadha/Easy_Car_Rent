@@ -9,6 +9,29 @@
 
 </head>
 <body>
+<!--Header-->
+<header>
+    <ul class="nav justify-content-end shadow p-1 mb-3 bg-e74c3c">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Cars</a>
+        </li>
+        <li>
+            <nav class="navbar bg-body-tertiary">
+                <form class="container-fluid justify-content-start">
+                    <button id="loginButtonInHome" class="btn btn-sm btn-outline-secondary" type="button"><a href="login.html">Log In</a></button>
+                </form>
+            </nav>
+        </li>
+    </ul>
+
+
+</header>
 
 <section id="sideContainerInCustomer" class="position-absolute top-10 start-75 translate-middle" style="left: 70%;top: -22%;transform: translate(-50%,57%)!important;">
     <section id="customerManagerForm" class="position-absolute top-10 start-75 translate-middle" style="transform: translate(-50%,57%)!important;">
@@ -69,7 +92,12 @@
         </tr>
         </thead>
         <tbody id="customerTableBody">
-        ...
+        <!--<tr>
+            <td><%=customer.getNic()%></td>
+            <td><%=customer.getName()%></td>
+            <td><%=customer.getAddress()%></td>
+            <td><%=customer.getContact()%></td>
+        </tr>-->
         </tbody>
         <tfoot>
         ...
@@ -108,7 +136,7 @@
     });
 
     function getAllCustomers(){
-        $('#customerTableBody').empty();
+        $('#customerTableBody>tr').empty();
         $.ajax({
             url: baseUrl+"customer",
             success:function (res) {
@@ -127,20 +155,27 @@
     };
 
     function blindRowClickEvent(){
-        $('#customerTableBody>tr').click(function () {
-            let nic = $(this).children(':eq(0)').text();
-            let name = $(this).children(':eq(1)').text();
-            let address =$(this).children(':eq(2)').text();
-            let license = $(this).children(':eq(3)').text();
+        console.log("blind row");
+        $('#customerTableBody').click(function () {
+            alert("hii mokaa");
+            let nic = $(this).children(":eq(0)").text();
+            let name = $(this).children(":eq(1)").text();
+            let address =$(this).children(":eq(2)").text();
+            let license = $(this).children(":eq(3)").text();
 
-            $("#txtNic").val(nic);
+            /*$("#txtNic").val(nic);
             $("#txtName").val(name);
             $("#txtAddress").val(address);
-            $("#txtContact").val(license);
+            $("#txtContact").val(license);*/
+            $('#txtNic').val(nic);
+            $('#txtName').val(name);
+            $('#txtAddress').val(address);
+            $('#txtContact').val(license);
 
 
         });
     }
+
 
 
 </script>
