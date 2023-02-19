@@ -101,12 +101,13 @@ Home page*/
     font-family: "Open Sans Semibold";
 }
 
-/*Driver Manage Page*/
+/*Cars Manage Page*/
 #carsAddingForm{
     position: relative;
     width: 30vw;
-    bottom: 670px;
-    left: 15%;
+    height: 678px;
+    top: 20px;
+    left: 20%;
     border-radius: 15px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
@@ -122,14 +123,30 @@ Home page*/
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 #btnCustomerAdd{
+    width: 29vw;
     position: relative;
-    bottom: 15px;
+    bottom: 2px;
 }
 #tableSection{
     position: relative;
     width: 80vw;
     top: 80vh;
     left: 10vw;
+}
+
+#carAddingImg{
+    position: absolute;
+    top: 92px;
+    left: 12%;
+    width: 42vw;
+    height: 678px;
+}
+
+#carTable{
+    position: relative;
+    left: 7%;
+    top: 70px;
+    width: 84vw;
 }
 
 
