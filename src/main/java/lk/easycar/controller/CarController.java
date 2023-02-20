@@ -27,6 +27,11 @@ public class CarController {
         return new ResponseUtil("ok","successfully loaded",service.getAllCars());
 
     }
+    @PutMapping
+    public ResponseUtil updateCar(@RequestBody CarDTO dto){
+        service.updateCars(dto);
+        return new ResponseUtil("ok","successfully updated",null);
+    }
 
 
 }

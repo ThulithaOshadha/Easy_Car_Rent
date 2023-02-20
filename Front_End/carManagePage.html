@@ -153,11 +153,13 @@
             $('#saveButtonArea').append(
                 "<button id=\"btnCarSave\" type=\"button\" class=\"position-absolute top-110 start-40 btn btn-primary mb-2\" style=\"width: 29vw;position: relative;bottom: 5px\">Save</button>"
             )
-        } else {
+        } else if (tableClick==true) {
             $('#saveButtonArea').empty();
-            $('#carsAddingForm').append(
-                "<button id=\"btnCarUpdate\" type=\"button\" class=\"btn btn-primary mb-2\" style=\"width: 29vw;position: relative;bottom: 5px\">Update</button>"
+            $('#saveButtonArea').append(
+                "<button id=\"btnCarUpdate\" type=\"button\" class=\"position-absolute top-110 start-40 btn btn-danger mb-2\" style=\"width: 29vw;position: relative;bottom: 5px\">Update</button>"
+
             )
+            updateCar();
         }
     }
 
@@ -176,25 +178,32 @@
     });
 
     $('#btnCarSave').click(function () {
-        alert("saved car");
-        let formData = $('#carsAddingForm').serialize();
-        $.ajax({
-            url: baseUrl + "car",
-            method: "post",
-            data: formData,
-            dataType: "json",
-            success: function (res) {
-                res.message
-                loadCarsTable();
-                blindRowClickEventsCar();
-            },
-            error: function (error) {
-                alert(JSON.parse(error.responseText).message);
-            }
-        });
+        if (tableClick==false){
+            alert("saved car");
+            let formData = $('#carsAddingForm').serialize();
+            $.ajax({
+                url: baseUrl + "car",
+                method: "post",
+                data: formData,
+                dataType: "json",
+                success: function (res) {
+                    res.message
+                    loadCarsTable();
+                    blindRowClickEventsCar();
+                },
+                error: function (error) {
+                    alert(JSON.parse(error.responseText).message);
+                }
+            });
+        }else if (tableClick==true){
+            alert("hii update");
+        }
+
     });
 
+
     function loadCarsTable() {
+        $('#carTableBody').empty();
         console.log("blind row in car");
        /* $('#carTableBody').empty();*/
         $.ajax({
@@ -250,16 +259,59 @@
             $('#txtDailyPrice').val(dailyPrice);
             $('#txtFreeMileage').val(freeMileage);
 
-            console.log(model);
-
-
-            /*change save button to update*/
-
-
         });
-
-
     };
+
+    function updateCar(){
+        $('#btnCarUpdate').click(function(){
+            alert('updated now');
+            let vehicleNum = $("#txtVehicleNo").val();
+            let model = $("#txtModel").val();
+            let type = $("#txtVehicleType").val();
+            let transmission = $("#txtTransmission").val();
+            let color = $("#txtColor").val();
+            let fuelType = $("#txtFuelType").val();
+            let passenger = $("#txtPassengers").val();
+            let monthlyPrice = $("#txtMonthlyPrice").val();
+            let dailyPrice = $("#txtDailyPrice").val();
+            let freeMileage = $("#txtFreeMileage").val();
+            let available = $("#txtAvailability").val();
+
+            var car = {
+                vehicleNum:vehicleNum,
+                model:model,
+                vehicleType:type,
+                transmissionType:transmission,
+                color:color,
+                fuelType:fuelType,
+                passengers:passenger,
+                monthlyPrice:monthlyPrice,
+                dailyPrice:dailyPrice,
+                freeMileage:freeMileage,
+                available:available
+            }
+            console.log(car);
+
+            $.ajax({
+               url:baseUrl+"car",
+               method: "put",
+               contentType:"application/json",
+               data: JSON.stringify(car),
+                dataType: "json",
+                success:function (res) {
+                    alert(res.message);
+                    loadCarsTable();
+                    tableClick=false;
+                    checkTableClick();
+                },
+                error:function (error) {
+                    let cause=JSON.parse(error.responseText).message;
+                    alert(cause);
+                }
+            });
+        });
+    };
+
 
 
 </script>
