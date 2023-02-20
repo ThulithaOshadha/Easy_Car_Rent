@@ -32,15 +32,15 @@
     </div>
     <div class="mb-3">
       <label for="txtUserName" class="form-label">username</label>
-      <input type="text" class="form-control" id="txtUserName" aria-describedby="emailHelp">
+      <input type="text" class="form-control" id="txtUserName" aria-describedby="emailHelp" name="userName">
       <!--<div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
     </div>
     <div class="mb-3">
       <label for="txtPassword" class="form-label">Password</label>
-      <input type="password" class="form-control" id="txtPassword">
+      <input type="password" class="form-control" id="txtPassword" name="password">
     </div>
     <div  class="d-flex justify-content-center ">
-      <button id="btnLog" type="button" class="btn btn-primary"><a href="">Login</a></button>
+      <button id="btnLog" type="button" class="btn btn-primary">Login</button>
     </div>
     <div>
       <p class="text-center">If you haven't account?<a href="customerManagerPage.html">sign in</a>.</p>
@@ -54,6 +54,8 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
 <script>
+  let baseUrl = "http://localhost:8080/cw/"
+
   let selectedCus=false;
   let selectedAdmin=false;
 
@@ -66,11 +68,40 @@
 
   /*login process*/
   $('#btnLog').click(function () {
+    alert("log alert");
     let userName = $('#txtUserName').val();
     let password = $('#txtPassword').val();
+    console.log(userName);
 
+    let s = searchCustomerByUserName(userName);
+    console.log(s);
+    console.log(s[0].nic);
+    console.log(s[0].password);
+    if (userName==s[0].nic && password==s[0].password){
+      alert("you can log");
+      window.open("admin.html")
+    }else {
+      alert("wrong username or password");
+    }
 
   });
+
+  function searchCustomerByUserName(nic){
+    let response="";
+    $.ajax({
+      url:baseUrl+"customer",
+      dataType:"json",
+      async:false,
+      success:function (resp) {
+        response=resp.data.filter((c)=>{
+          return c.nic==nic;
+        });
+      }
+
+    });
+    return response;
+    //console.log(response);
+  }
 
 </script>
 </body>
