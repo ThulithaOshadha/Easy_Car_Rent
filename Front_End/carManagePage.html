@@ -37,7 +37,7 @@
   <h2 class="mb-3">Car Management Form</h2>
   <div class="row g-2">
     <div class="form-floating mb-3 col-6">
-      <input class="form-control" id="txtVehicleNo" placeholder="Vehicle No :" name="vehicleNo">
+      <input class="form-control" id="txtVehicleNo" placeholder="Vehicle No :" name="vehicleNum">
       <label for="txtVehicleNo">Vehicle No :</label>
     </div>
     <div class="form-floating mb-3 col-6">
@@ -144,7 +144,7 @@
   let baseUrl = "http://localhost:8080/cw/"
 
   let carsAddingCount=0;
-  loadCarsTable();
+   loadCarsTable();
 
   $('#btnAddPhoto').click(function (){
       if (carsAddingCount<4) {
@@ -166,15 +166,17 @@
       data:formData,
       dataType:"json",
       success:function (res) {
-        alert(res.message)
+        res.message
+        loadCarsTable();
       },
       error:function (error) {
         alert(JSON.parse(error.responseText).message);
       }
-    })
+    });
   });
 
   function loadCarsTable(){
+    console.log("blind row in car");
     $('#carTableBody>').empty();
     $.ajax({
       url: baseUrl+"car",

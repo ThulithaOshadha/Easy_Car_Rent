@@ -1,14 +1,17 @@
 package lk.easycar.service.impl;
 
 import lk.easycar.dto.CarDTO;
+import lk.easycar.dto.CustomerDTO;
 import lk.easycar.entity.Car;
 import lk.easycar.repo.CarRepo;
 import lk.easycar.service.CarService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 
 @Service
 @Transactional
@@ -31,5 +34,10 @@ public class CarServiceImpl implements CarService{
     @Override
     public void updateDriver(CarDTO dto) {
 
+    }
+
+    @Override
+    public ArrayList<CarDTO> getAllCars() {
+        return mapper.map(repo.findAll(),new TypeToken<ArrayList<CarDTO>>(){}.getType());
     }
 }
