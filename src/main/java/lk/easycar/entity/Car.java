@@ -17,10 +17,10 @@ public class Car {
     @Id
     private String vehicleNum;
     private String model;
-    private String VehicleType;
-    private String TransmissionType;
+    private String vehicleType;
+    private String transmissionType;
     private String color;
-    private String FuelType;
+    private String fuelType;
     private int passengers;
     private BigDecimal monthlyPrice;
     private BigDecimal dailyPrice;

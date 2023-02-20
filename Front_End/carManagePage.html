@@ -45,11 +45,11 @@
       <label for="txtModel">Model :</label>
     </div>
     <div class="form-floating mb-3 col-6">
-      <input class="form-control" id="txtVehicleType" placeholder="Vehicle Type" name="VehicleType">
+      <input class="form-control" id="txtVehicleType" placeholder="Vehicle Type" name="vehicleType">
       <label for="txtVehicleType">Vehicle Type : </label>
     </div>
     <div class="form-floating mb-3 col-6">
-      <input class="form-control" id="txtTransmission" placeholder="Transmission Type" name="TransmissionType">
+      <input class="form-control" id="txtTransmission" placeholder="Transmission Type" name="transmissionType">
       <label for="txtTransmission">Transmission Type :</label>
     </div>
 
@@ -58,7 +58,7 @@
       <label for="txtColor">Color :</label>
     </div>
     <div class="form-floating mb-3 col-6">
-      <input class="form-control" id="txtFuelType" placeholder="Fuel Type" name="FuelType">
+      <input class="form-control" id="txtFuelType" placeholder="Fuel Type" name="fuelType">
       <label for="txtFuelType">Fuel Type :</label>
     </div>
     <div class="form-floating mb-3 col-6">
@@ -98,7 +98,8 @@
       <input type="" class="form-control" id="txtAvailability" placeholder="Availability" name="available">
 
     </div>
-    <button id="btnCarSave" type="button" class="position-absolute top-110 start-40 btn btn-primary mb-2" style="width: 22vw;position: relative;bottom: -10px">Save</button>
+
+    <div id="saveButtonArea" style="right: 223px;position: relative;top: 48px;"></div>
 
   </div>
 
@@ -143,8 +144,28 @@
 <script>
   let baseUrl = "http://localhost:8080/cw/"
 
+  let tableClick=false;
+  checkTableClick();
+  loadCarsTable();
+  blindRowClickEventsCar();
+
+
+  function checkTableClick(){
+    if (tableClick==false){
+      $('#saveButtonArea').empty();
+      $('#saveButtonArea').append(
+              "<button id=\"btnCarSave\" type=\"button\" class=\"position-absolute top-110 start-40 btn btn-primary mb-2\" style=\"width: 29vw;position: relative;bottom: 5px\">Save</button>"
+      )
+    }else {
+      $('#saveButtonArea').empty();
+      $('#carsAddingForm').append(
+              "<button id=\"btnCarUpdate\" type=\"button\" class=\"btn btn-primary mb-2\" style=\"width: 29vw;position: relative;bottom: 5px\">Update</button>"
+      )
+    }
+  }
+
   let carsAddingCount=0;
-   loadCarsTable();
+
 
   $('#btnAddPhoto').click(function (){
       if (carsAddingCount<4) {
@@ -168,6 +189,7 @@
       success:function (res) {
         res.message
         loadCarsTable();
+        blindRowClickEventsCar();
       },
       error:function (error) {
         alert(JSON.parse(error.responseText).message);
@@ -183,10 +205,10 @@
       success:function (res) {
         for (let car of res.data) {
           let model = car.model;
-          let type = car.VehicleType;
+          let type = car.vehicleType;
           let color = car.color;
-          let transmission = car.TransmissionType;
-          let fuel = car.FuelType;
+          let transmission = car.transmissionType;
+          let fuel = car.fuelType;
           let passenger = car.passengers;
           let dailyPrice = car.dailyPrice;
           let monthlyPrice = car.monthlyPrice;
@@ -199,6 +221,43 @@
         }
       }
     });
+
+  };
+
+  function blindRowClickEventsCar(){
+    $('#carTableBody').click(function (){
+      alert("hi");
+      tableClick=true;
+      checkTableClick();
+      let vehicleNum = $(this).parent(":eq(0)").text();
+      let model = $(this).children(":eq(1)").text();
+      let type = $(this).children(":eq(2)").text();
+      let color = $(this).children(":eq(3)").text();
+      let transmission = $(this).children(":eq(4)").text();
+      let fuel = $(this).children(":eq(5)").text();
+      let passenger = $(this).children(":eq(6)").text();
+      let dailyPrice = $(this).children(":eq(7)").text();
+      let monthlyPrice = $(this).children(":eq(8)").text();
+      let freeMileage = $(this).children(":eq(0)").text();
+
+
+      $('#txtVehicleNo').val(vehicleNum);
+      $('#txtModel').val(model);
+      $('#txtVehicleType').val(type);
+      $('#txtTransmission').val(transmission);
+      $('#txtColor').val(color);
+      $('#txtFuelType').val(fuel);
+      $('#txtPassengers').val(passenger);
+      $('#txtMonthlyPrice').val(monthlyPrice);
+      $('#txtDailyPrice').val(dailyPrice);
+      $('#txtFreeMileage').val(freeMileage);
+
+
+      /*change save button to update*/
+
+
+    });
+
 
   };
 

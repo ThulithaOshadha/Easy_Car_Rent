@@ -5,10 +5,10 @@ import java.math.BigDecimal;
 public class CarDTO {
     private String vehicleNum;
     private String model;
-    private String VehicleType;
-    private String TransmissionType;
+    private String vehicleType;
+    private String transmissionType;
     private String color;
-    private String FuelType;
+    private String fuelType;
     private int passengers;
     private BigDecimal monthlyPrice;
     private BigDecimal dailyPrice;
@@ -18,10 +18,10 @@ public class CarDTO {
     public CarDTO(String vehicleNum, String model, String vehicleType, String transmissionType, String color, String fuelType, int passengers, BigDecimal monthlyPrice, BigDecimal dailyPrice, int freeMileage, boolean available) {
         this.vehicleNum = vehicleNum;
         this.model = model;
-        VehicleType = vehicleType;
-        TransmissionType = transmissionType;
+        this.vehicleType = vehicleType;
+        this.transmissionType = transmissionType;
         this.color = color;
-        FuelType = fuelType;
+        this.fuelType = fuelType;
         this.passengers = passengers;
         this.monthlyPrice = monthlyPrice;
         this.dailyPrice = dailyPrice;
@@ -49,19 +49,19 @@ public class CarDTO {
     }
 
     public String getVehicleType() {
-        return VehicleType;
+        return vehicleType;
     }
 
     public void setVehicleType(String vehicleType) {
-        VehicleType = vehicleType;
+        this.vehicleType = vehicleType;
     }
 
     public String getTransmissionType() {
-        return TransmissionType;
+        return transmissionType;
     }
 
     public void setTransmissionType(String transmissionType) {
-        TransmissionType = transmissionType;
+        this.transmissionType = transmissionType;
     }
 
     public String getColor() {
@@ -73,11 +73,11 @@ public class CarDTO {
     }
 
     public String getFuelType() {
-        return FuelType;
+        return fuelType;
     }
 
     public void setFuelType(String fuelType) {
-        FuelType = fuelType;
+        this.fuelType = fuelType;
     }
 
     public int getPassengers() {
@@ -125,10 +125,10 @@ public class CarDTO {
         return "CarDTO{" +
                 "vehicleNum='" + vehicleNum + '\'' +
                 ", model='" + model + '\'' +
-                ", VehicleType='" + VehicleType + '\'' +
-                ", TransmissionType='" + TransmissionType + '\'' +
+                ", VehicleType='" + vehicleType + '\'' +
+                ", TransmissionType='" + transmissionType + '\'' +
                 ", color='" + color + '\'' +
-                ", FuelType='" + FuelType + '\'' +
+                ", FuelType='" + fuelType + '\'' +
                 ", passengers=" + passengers +
                 ", monthlyPrice=" + monthlyPrice +
                 ", dailyPrice=" + dailyPrice +
