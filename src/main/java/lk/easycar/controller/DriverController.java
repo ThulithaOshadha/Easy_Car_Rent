@@ -27,6 +27,7 @@ public class DriverController {
     public ResponseUtil getAllDrivers(){
         return new ResponseUtil("ok","successfully loaded",service.getAllDriver());
     }
+    @PutMapping
     public ResponseUtil updateDriver(@RequestBody DriverDTO dto){
         service.updateDriver(dto);
         return new ResponseUtil("ok","successfully updated",null);

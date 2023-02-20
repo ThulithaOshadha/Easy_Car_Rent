@@ -9,4 +9,6 @@ public interface CustomerService {
     public void deleteCustomer(String id);
     public void updateCustomer(CustomerDTO dto);
     public ArrayList<CustomerDTO> getAllCustomers();
+
+    public CustomerDTO searchCustomerWithNic(String nic);
 }

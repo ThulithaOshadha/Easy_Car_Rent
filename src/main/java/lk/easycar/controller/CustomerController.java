@@ -35,4 +35,9 @@ public class CustomerController {
         return new ResponseUtil("ok","successfully updated",null);
     }
 
+    @GetMapping(path = "/{nic}")
+    public ResponseUtil searchCustomerWithNic(@PathVariable String nic){
+        return new ResponseUtil("ok","",service.searchCustomerWithNic(nic));
+    }
+
 }

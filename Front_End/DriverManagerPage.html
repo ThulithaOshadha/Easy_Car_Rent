@@ -62,8 +62,8 @@
         <input type="file" class="form-control-file" id="exampleFormControlFile1">
       </div>
 
-      <button id="btnDriverSave" type="button" class="position-absolute top-110 start-40 btn btn-primary mb-2" style="width: 22vw">Save</button>
-
+      <div id="driverSaveBtnArea">
+      </div>
     </form>
 
 
@@ -91,11 +91,28 @@
 
 <script>
   let baseUrl = "http://localhost:8080/cw/"
+  let tableClick = false;
   loadDriverTable();
   blindRowClickEventsDriver();
+  checkTableClick();
+
+  function checkTableClick() {
+    if (tableClick == false) {
+      $('#driverSaveBtnArea').empty();
+      $('#driverSaveBtnArea').append(
+              "<button id=\"btnDriverSave\" type=\"button\" class=\"position-absolute top-110 start-40 btn btn-primary mb-2\" style=\"width: 22vw\">Save</button>\n"
+
+      )
+    } else if (tableClick==true) {
+      $('#driverSaveBtnArea').empty();
+      $('#driverSaveBtnArea').append(
+              "        <button id=\"btnDriverUpdate\" type=\"button\" class=\"position-absolute top-110 start-40 btn btn-danger mb-2\" style=\"width: 22vw\">Update</button>\n"
+      )
+      updateDriver();
+    }
+  }
 
   $('#btnDriverSave').click(function (){
-    alert("saved driver");
 
     let formData = $('#driverForm').serialize();
     $.ajax({
@@ -107,7 +124,7 @@
         alert(res.message);
         loadDriverTable();
         blindRowClickEventsDriver();
-
+        clearTextFields();
       },
       error:function (error) {
         alert(JSON.parse(error.responseText).message);
@@ -137,14 +154,49 @@
 
   };
 
+  function updateDriver(){
+    $('#btnDriverUpdate').click(function (){
+      alert("updated now");
+      let license = $("#txtDrivingLicense").val();
+      let name = $("#txtName").val();
+      let address = $("#txtAddress").val();
+      let contact = $("#txtContact").val();
+
+      var driver = {
+        license:license,
+        name:name,
+        address:address,
+        contact:contact
+      }
+      $.ajax({
+        url:baseUrl+"driver",
+        method: "put",
+        contentType:"application/json",
+        data: JSON.stringify(driver),
+        dataType: "json",
+        success:function (res) {
+          alert(res.message);
+          loadDriverTable();
+          tableClick=false;
+          checkTableClick();
+          clearTextFields();
+        },
+        error:function (error) {
+          let cause=JSON.parse(error.responseText).message;
+          alert(cause);
+        }
+      });
+    });
+  };
+
 
   /*row click event*/
   function blindRowClickEventsDriver() {
     /*$('#carTableBody>tr').click(function () {*/
     $("#driverTableBody").on("click","tr",function(){
       alert("hi");
-      //tableClick = true;
-      //checkTableClick();
+      tableClick = true;
+      checkTableClick();
       let license = $(this).children(":eq(0)").text();
       let name = $(this).children(":eq(1)").text();
       let address = $(this).children(":eq(2)").text();
@@ -159,6 +211,14 @@
 
     });
   };
+
+  function clearTextFields(){
+    $('#txtDrivingLicense').val("");
+    $('#txtName').val("");
+    $('#txtAddress').val("");
+    $('#txtContact').val("");
+  }
+
 </script>
 </body>
 </html>

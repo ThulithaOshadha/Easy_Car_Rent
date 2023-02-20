@@ -45,4 +45,14 @@ public class CustomerServiceImpl implements CustomerService {
         return mapper.map(repo.findAll(),new TypeToken<ArrayList<CustomerDTO>>(){}.getType());
     }
 
+    @Override
+    public CustomerDTO searchCustomerWithNic(String nic) {
+        Customer customer = repo.findCustomerByNic(nic);
+        if (customer!=null){
+            return mapper.map(customer,CustomerDTO.class);
+        }
+        return null;
+    }
+
+
 }
