@@ -100,6 +100,12 @@ Home page*/
     color: white;
     font-family: "Open Sans Semibold";
 }
+#driverTable{
+    position: relative;
+    left: 16%;
+    top: 620px;
+    width: 80vw;
+}
 
 /*Cars Manage Page*/
 #carsAddingForm{
@@ -148,6 +154,7 @@ Home page*/
     top: 70px;
     width: 84vw;
 }
+
 
 
 

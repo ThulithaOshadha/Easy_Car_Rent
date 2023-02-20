@@ -23,4 +23,12 @@ public class DriverController {
         return  new ResponseUtil("ok","successfully updated",null);
 
     }
+    @GetMapping
+    public ResponseUtil getAllDrivers(){
+        return new ResponseUtil("ok","successfully loaded",service.getAllDriver());
+    }
+    public ResponseUtil updateDriver(@RequestBody DriverDTO dto){
+        service.updateDriver(dto);
+        return new ResponseUtil("ok","successfully updated",null);
+    }
 }
