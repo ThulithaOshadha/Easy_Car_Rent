@@ -190,6 +190,7 @@
                     res.message
                     loadCarsTable();
                     blindRowClickEventsCar();
+                    clearTextFields();
                 },
                 error: function (error) {
                     alert(JSON.parse(error.responseText).message);
@@ -303,6 +304,7 @@
                     loadCarsTable();
                     tableClick=false;
                     checkTableClick();
+                    clearTextFields();
                 },
                 error:function (error) {
                     let cause=JSON.parse(error.responseText).message;
@@ -310,6 +312,19 @@
                 }
             });
         });
+    };
+
+    function clearTextFields(){
+        $('#txtVehicleNo').val("");
+        $('#txtModel').val("");
+        $('#txtVehicleType').val("");
+        $('#txtTransmission').val("");
+        $('#txtColor').val("");
+        $('#txtFuelType').val("");
+        $('#txtPassengers').val("");
+        $('#txtMonthlyPrice').val("");
+        $('#txtDailyPrice').val("");
+        $('#txtFreeMileage').val("");
     };
 
 
