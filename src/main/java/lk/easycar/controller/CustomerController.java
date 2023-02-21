@@ -40,4 +40,11 @@ public class CustomerController {
         return new ResponseUtil("ok","",service.searchCustomerWithNic(nic));
     }
 
+    @GetMapping(params = {"nic"})
+    public ResponseUtil customerCount(String nic){
+        return new ResponseUtil("ok","",service.countCustomers());
+    }
+
+
+
 }

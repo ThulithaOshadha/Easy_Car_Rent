@@ -11,4 +11,5 @@ public interface CustomerService {
     public ArrayList<CustomerDTO> getAllCustomers();
 
     public CustomerDTO searchCustomerWithNic(String nic);
+    public Long countCustomers();
 }

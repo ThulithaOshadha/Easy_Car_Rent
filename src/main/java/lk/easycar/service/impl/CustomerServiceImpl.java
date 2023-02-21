@@ -54,5 +54,13 @@ public class CustomerServiceImpl implements CustomerService {
         return null;
     }
 
+    @Override
+    public Long countCustomers() {
+        long cusCount = repo.count();
+        return cusCount;
+    }
+
+
+
 
 }
