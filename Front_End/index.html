@@ -118,6 +118,10 @@
                         <h6>Free Mileage(Day)</h6>
                         <h5>200</h5>
                     </div>
+                    <div>
+                        <h6>Free Mileage(Month)</h6>
+                        <h5>200</h5>
+                    </div>
 
                 </div>
             </div>
@@ -199,11 +203,11 @@
 
     getAllCars();
     function getAllCars(){
+        let carID="";
         $('#context>div').empty();
         $.ajax({
             url:baseUrl+"car",
             success:function (res) {
-                alert("suc car");
                 console.log("suc car");
                 for (let car of res.data) {
                     let model = car.model;
@@ -217,12 +221,14 @@
                     let freeMileage = car.freeMileage;
                     let vehicleNo = car.vehicleNum;
 
+
+
                     let perCarContext = "<div class=\"card m-3\" style=\"width: 18rem;\">\n" +
                         "            <img src=\"../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg\" class=\"card-img-top\" alt=\"...\">\n" +
                         "            <div class=\"card-body\">\n" +
                         "                <h5 class=\"card-title\">"+model+"</h5>\n" +
-                        "                <h6>Price(Day)   : "+dailyPrice+"</h6>\n" +
-                        "                <h6>Price(Month) : Rs.35000</h6>\n" +
+                        "                <h6>Price(Day)   : Rs."+dailyPrice+"</h6>\n" +
+                        "                <h6>Price(Month) : Rs."+monthlyPrice+"</h6>\n" +
                         "                <h6>Type         : "+type+"</h6>\n" +
                         "                <h6>Passengers   : "+passenger+"</h6>\n" +
                         "                <a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#carModal\">Go somewhere</a>\n" +
@@ -231,13 +237,60 @@
                         "        </div>"
 
                     $('#context>div').append(perCarContext);
+                    carID=vehicleNo
+                    loadCarModal(carID);
                 }
 
             }
 
         })
-
     }
+    function loadCarModal(carID){
+        $('#context>div>div>div>a').click(function (){
+
+
+
+
+            let carModalContext = "<div class=\"row row-cols-1 row-cols-md-3 g-4\" style=\"top: 10px;width: 61%;position: relative;\">\n" +
+                "                    <div>\n" +
+                "                        <h6>Model</h6>\n" +
+                "                        <h5>Toyota-Vitz</h5>\n" +
+                "                    </div>\n" +
+                "                    <div>\n" +
+                "                        <h6>Transmission</h6>\n" +
+                "                        <h5>Auto</h5></div>\n" +
+                "                    <div>\n" +
+                "                        <h6>Fuel Type</h6>\n" +
+                "                        <h5>Petrol</h5>\n" +
+                "                    </div>\n" +
+                "                    <div>\n" +
+                "                        <h6>Color</h6>\n" +
+                "                        <h5>Red</h5>\n" +
+                "                    </div>\n" +
+                "                    <div>\n" +
+                "                        <h6>Passengers</h6>\n" +
+                "                        <h5>4</h5>\n" +
+                "                    </div>\n" +
+                "                    <div>\n" +
+                "                        <h6>Type</h6>\n" +
+                "                        <h5>General</h5>\n" +
+                "                    </div>\n" +
+                "                    <div>\n" +
+                "                        <h6>Free Mileage(Day)</h6>\n" +
+                "                        <h5>200</h5>\n" +
+                "                    </div>\n" +
+                "                    <div>\n" +
+                "                        <h6>Free Mileage(Month)</h6>\n" +
+                "                        <h5>200</h5>\n" +
+                "                    </div>\n" +
+                "\n" +
+                "                </div>"
+        });
+    }
+
+    /*gett car from vehicle num*/
+
+
 </script>
 </body>
 

@@ -10,4 +10,6 @@ public interface CarService {
     public void updateCars(CarDTO dto);
     public ArrayList<CarDTO> getAllCars();
 
+    public CarDTO searchCarWithVehicleNum(String vehicleNum);
+
 }

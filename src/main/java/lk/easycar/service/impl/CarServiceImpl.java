@@ -43,4 +43,13 @@ public class CarServiceImpl implements CarService{
     public ArrayList<CarDTO> getAllCars() {
         return mapper.map(repo.findAll(),new TypeToken<ArrayList<CarDTO>>(){}.getType());
     }
+
+    @Override
+    public CarDTO searchCarWithVehicleNum(String vehicleNum) {
+        Car car = repo.findCarByVehicleNum(vehicleNum);
+        if (car!=null){
+            return mapper.map(car,CarDTO.class);
+        }
+        return null;
+    }
 }

@@ -32,6 +32,10 @@ public class CarController {
         service.updateCars(dto);
         return new ResponseUtil("ok","successfully updated",null);
     }
+    @GetMapping(path = "/{vehicleNum}")
+    public ResponseUtil searchCarWithVehicleNum(@PathVariable String vehicleNum){
+        return new ResponseUtil("ok","",service.searchCarWithVehicleNum(vehicleNum));
+    }
 
 
 }
