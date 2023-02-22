@@ -1,5 +1,6 @@
 package lk.easycar.config;
 
+import lk.easycar.repo.BookingRepo;
 import lk.easycar.repo.CarRepo;
 import lk.easycar.repo.CustomerRepo;
 import lk.easycar.repo.DriverRepo;
@@ -23,7 +24,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackageClasses = {DriverRepo.class, CarRepo.class, CustomerRepo.class})
+@EnableJpaRepositories(basePackageClasses = {DriverRepo.class, CarRepo.class, CustomerRepo.class, BookingRepo.class})
 //@PropertySource("classpath:application.properties")
 public class JPAConfig {
 

@@ -1,16 +1,24 @@
 package lk.easycar.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 @Entity
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@ToString
 public class Booking {
     @Id
     private String bookingID;
-    private LocalDate date;
-    private LocalTime time;
+    private String date;
+    private String time;
     @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
     @JoinColumn(name = "nic",referencedColumnName = "nic",nullable = false)
     private Customer nic;

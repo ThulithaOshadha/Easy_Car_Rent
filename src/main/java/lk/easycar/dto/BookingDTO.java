@@ -15,8 +15,8 @@ import java.time.LocalTime;
 @ToString
 public class BookingDTO {
     private String bookingID;
-    private LocalDate date;
-    private LocalTime time;
+    private String date;
+    private String time;
     private String nic;
     private String vehicleNum;
 }

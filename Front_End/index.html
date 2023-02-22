@@ -344,10 +344,10 @@
     $('#btnConfirm').click(function (){
         alert(vehiNum);
         let bookingID = "B-001";
-        let date = $('#datePicker').val();
-        let time = $('#datePicker').val();
+        let date = "23/02/2023";
+        let time = "12.35";
         let vehicleNum = vehiNum;
-        let nic = "20033001236";
+        let nic = "2";
 
         var book = {
             bookingID:bookingID,
@@ -358,7 +358,19 @@
         }
 
         $.ajax({
-            url:baseUrl
+            url:baseUrl+"booking",
+            method:"post",
+            contentType:"application/json",
+            data:JSON.stringify(book),
+            dataType: "json",
+            success:function (res) {
+                alert("success booking"+res.message);
+
+            },
+            error:function (error) {
+                let cause = JSON.parse(error.responseText).message;
+                alert(cause);
+            }
         })
 
     });
