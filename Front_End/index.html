@@ -201,6 +201,8 @@
 <script>
     let baseUrl = "http://localhost:8080/cw/"
 
+    var vehiNum="";
+
     getAllCars();
     function getAllCars(){
         let carID="";
@@ -234,7 +236,7 @@
                         "                <h6>Price(Month) : Rs."+monthlyPrice+"</h6>\n" +
                         "                <h6>Type         : "+type+"</h6>\n" +
                         "                <h6>Passengers   : "+passenger+"</h6>\n" +
-                        "                <a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#carModal\">Go somewhere</a>\n" +
+                        "                <a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#carModal\">Book Now</a>\n" +
                         "\n" +
                         "            </div>\n" +
                         "        </div>"
@@ -254,11 +256,13 @@
         console.log(i)
 
 
+
         $('#context>div>div:nth-child(' + i + ')+>div>a').click(function (){
             /*var id = document.getElementsByTagName();
             console.log("mokaadddddddda");
             console.log(id);*/
             console.log(carID);
+            vehiNum=carID;
 
             let ca = getCarFromNumber(carID);
             console.log("mokaaa");
@@ -336,6 +340,29 @@
         });
         return response;
     }
+
+    $('#btnConfirm').click(function (){
+        alert(vehiNum);
+        let bookingID = "B-001";
+        let date = $('#datePicker').val();
+        let time = $('#datePicker').val();
+        let vehicleNum = vehiNum;
+        let nic = "20033001236";
+
+        var book = {
+            bookingID:bookingID,
+            date:date,
+            time:time,
+            nic:nic,
+            vehicleNum:vehicleNum
+        }
+
+        $.ajax({
+            url:baseUrl
+        })
+
+    });
+
 
 
 
