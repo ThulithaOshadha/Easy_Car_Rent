@@ -96,8 +96,8 @@
                         <h5>Toyota-Vitz</h5>
                     </div>
                     <div>
-                        <h6>Transmission</h6>
-                        <h5>Auto</h5></div>
+                        <h6>hyyyy</h6>
+                        <h5>hyy</h5></div>
                     <div>
                         <h6>Fuel Type</h6>
                         <h5>Petrol</h5>
@@ -204,12 +204,15 @@
     getAllCars();
     function getAllCars(){
         let carID="";
+        let idCount=0;
         $('#context>div').empty();
         $.ajax({
             url:baseUrl+"car",
             success:function (res) {
                 console.log("suc car");
-                for (let car of res.data) {
+                for (let [ i,car ] of res.data.entries()) {
+                    console.log("re data");
+                    console.log(car);
                     let model = car.model;
                     let type = car.vehicleType;
                     let color = car.color;
@@ -226,7 +229,7 @@
                     let perCarContext = "<div class=\"card m-3\" style=\"width: 18rem;\">\n" +
                         "            <img src=\"../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg\" class=\"card-img-top\" alt=\"...\">\n" +
                         "            <div class=\"card-body\">\n" +
-                        "                <h5 class=\"card-title\">"+model+"</h5>\n" +
+                        "                <h5 id='"+vehicleNo+"' class=\"card-title\">"+model+"</h5>\n" +
                         "                <h6>Price(Day)   : Rs."+dailyPrice+"</h6>\n" +
                         "                <h6>Price(Month) : Rs."+monthlyPrice+"</h6>\n" +
                         "                <h6>Type         : "+type+"</h6>\n" +
@@ -237,58 +240,103 @@
                         "        </div>"
 
                     $('#context>div').append(perCarContext);
-                    carID=vehicleNo
-                    loadCarModal(carID);
+
+                    carID=vehicleNo;
+                    loadCarModal(carID,i);
                 }
+
 
             }
 
         })
     }
-    function loadCarModal(carID){
-        $('#context>div>div>div>a').click(function (){
+    function loadCarModal(carID,i){
+        console.log(i)
+
+
+        $('#context>div>div:nth-child(' + i + ')+>div>a').click(function (){
+            /*var id = document.getElementsByTagName();
+            console.log("mokaadddddddda");
+            console.log(id);*/
+            console.log(carID);
+
+            let ca = getCarFromNumber(carID);
+            console.log("mokaaa");
+            console.log(ca[0].vehicleNum);
 
 
 
-
+            let carImg= "<img src=\"../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg\" class=\"card-img-top\" style=\"width: 60%\" alt=\"...\">\n"
             let carModalContext = "<div class=\"row row-cols-1 row-cols-md-3 g-4\" style=\"top: 10px;width: 61%;position: relative;\">\n" +
                 "                    <div>\n" +
                 "                        <h6>Model</h6>\n" +
-                "                        <h5>Toyota-Vitz</h5>\n" +
+                "                        <h5>"+ca[0].model+"</h5>\n" +
                 "                    </div>\n" +
                 "                    <div>\n" +
                 "                        <h6>Transmission</h6>\n" +
-                "                        <h5>Auto</h5></div>\n" +
+                "                        <h5>"+ca[0].transmissionType+"</h5></div>\n" +
                 "                    <div>\n" +
                 "                        <h6>Fuel Type</h6>\n" +
-                "                        <h5>Petrol</h5>\n" +
+                "                        <h5>"+ca[0].fuelType+"</h5>\n" +
                 "                    </div>\n" +
                 "                    <div>\n" +
                 "                        <h6>Color</h6>\n" +
-                "                        <h5>Red</h5>\n" +
+                "                        <h5>"+ca[0].color+"</h5>\n" +
                 "                    </div>\n" +
                 "                    <div>\n" +
                 "                        <h6>Passengers</h6>\n" +
-                "                        <h5>4</h5>\n" +
+                "                        <h5>"+ca[0].passengers+"</h5>\n" +
                 "                    </div>\n" +
                 "                    <div>\n" +
                 "                        <h6>Type</h6>\n" +
-                "                        <h5>General</h5>\n" +
+                "                        <h5>"+ca[0].vehicleType+"</h5>\n" +
                 "                    </div>\n" +
                 "                    <div>\n" +
                 "                        <h6>Free Mileage(Day)</h6>\n" +
-                "                        <h5>200</h5>\n" +
+                "                        <h5>"+ca[0].freeMileage+"</h5>\n" +
                 "                    </div>\n" +
                 "                    <div>\n" +
                 "                        <h6>Free Mileage(Month)</h6>\n" +
-                "                        <h5>200</h5>\n" +
+                "                        <h5>"+ca[0].freeMileage+"</h5>\n" +
                 "                    </div>\n" +
                 "\n" +
                 "                </div>"
+
+            let perDay = "<h6 class=\"m-2\">Per Day</h6>\n" +
+                "                    <h5 class=\"m-2\">"+ca[0].dailyPrice+"/=</h5>"
+
+
+            let perMonth = "<h6 class=\"m-2\">Per Month</h6>\n" +
+                "                    <h5 class=\"m-2\">"+ca[0].monthlyPrice+"/=</h5>"
+
+            $('#carModalBody').empty();
+            $('#perDayPrice').empty();
+            $('#perMonthPrice').empty();
+            $('#carModalBody').append(carImg);
+            $('#carModalBody').append(carModalContext);
+            $('#perDayPrice').append(perDay);
+            $('#perMonthPrice').append(perMonth);
+
         });
     }
 
     /*gett car from vehicle num*/
+    function getCarFromNumber(vehicleNum){
+        console.log("new : "+vehicleNum);
+        let response="";
+        $.ajax({
+            url: baseUrl+"car",
+            dataType:"json",
+            async:false,
+            success:function (res) {
+                response=res.data.filter((c)=>{
+                    return c.vehicleNum==vehicleNum;
+                });
+            }
+        });
+        return response;
+    }
+
 
 
 </script>
