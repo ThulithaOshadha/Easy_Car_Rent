@@ -69,6 +69,7 @@ Home page*/
 /*Modal*/
 #carModalBody>div{
     background: #F7F7F7;
+    border-radius: 15px;
 }
 
 #carModalBody>div>div{
@@ -83,6 +84,57 @@ Home page*/
     font-family: "Open Sans Semibold";
     font-size: 17px;
 }
+#bookingForm{
+    position: absolute;
+    width: 39%;
+    height: 270px;
+    top: 50%;
+    right: 20px;
+    border-radius: 15px;
+    background: #F7F7F7;
+}
+#carPriceContext{
+    position: absolute;
+    width: 39%;
+    height: 40%;
+    top: 65px;
+    left: 59%;
+    border-radius: 15px;
+    background: #F7F7F7;
+}
+#carPriceContext>div{
+    border-radius: 15px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+#perDayPrice{
+    position: relative;
+    top: 10px;
+    width: 48%;
+}
+#perMonthPrice{
+    position: relative;
+    top: -15%;
+    width: 45%;
+    left: 50%;
+}
+#fixPrice{
+    position: relative;
+    top: -20px;
+    width: 95%;
+}
+#paymentInfo{
+    position: relative;
+    top: 0px;
+    width: 95%;
+}
+#carPriceContext>div>h5{
+    font-family: "Open Sans Semibold";
+    font-size: 14px;
+}
+#btnConfirm{
+    width: 40%;
+}
+
 
 
 

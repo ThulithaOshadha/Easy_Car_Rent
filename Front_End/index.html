@@ -31,9 +31,9 @@
 
 <!--Cars Context-->
 <section id="context">
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div id="contextDiv" class="row row-cols-1 row-cols-md-3 g-4">
         <div class="card m-3" style="width: 18rem;">
-            <img src="../src/main/java/lk/easycar/assets/pageImg/indexPage.jpg" class="card-img-top" alt="...">
+            <img src="../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Toyota - Vitz</h5>
                 <h6>Price(Day)   : Rs.3500</h6>
@@ -84,11 +84,11 @@
     <div class="modal-dialog modal-dialog-scrollable modal-xl">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Booking Form</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div id="carModalBody" class="modal-body">
-                <img src="../src/main/java/lk/easycar/assets/pageImg/indexPage.jpg" class="card-img-top" style="width: 60%" alt="...">
+                <img src="../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg" class="card-img-top" style="width: 60%" alt="...">
 
                 <div class="row row-cols-1 row-cols-md-3 g-4" style="top: 10px;width: 61%;position: relative;">
                     <div>
@@ -104,7 +104,7 @@
                     </div>
                     <div>
                         <h6>Color</h6>
-                        <h5>Pearl White</h5>
+                        <h5>Red</h5>
                     </div>
                     <div>
                         <h6>Passengers</h6>
@@ -114,11 +114,70 @@
                         <h6>Type</h6>
                         <h5>General</h5>
                     </div>
+                    <div>
+                        <h6>Free Mileage(Day)</h6>
+                        <h5>200</h5>
+                    </div>
 
                 </div>
             </div>
+
+            <div id="carPriceContext">
+                <div class="m-2" id="perDayPrice">
+                    <h6 class="m-2">Per Day</h6>
+                    <h5 class="m-2">4500/=</h5>
+                </div>
+                <div id="perMonthPrice" class="m-2">
+                    <h6 class="m-2">Per Month</h6>
+                    <h5 class="m-2">55000/=</h5>
+                </div>
+                <div id="fixPrice" class="m-2">
+                    <h6 class="m-2">Fix Price this type</h6>
+                    <h5 class="m-2">20000/=</h5>
+                </div>
+                <div id="paymentInfo" class="m-2">
+                    <h6 class="m-2">Bank Details</h6>
+                    <h5 class="m-2">Account No : 200033001562</h5>
+                    <h5 class="m-2">Beneficiary Name : A.A.T.Oshadha</h5>
+                    <h5 class="m-2">Branch : Galle</h5>
+                </div>
+            </div>
+
+            <form id="bookingForm" >
+                <!--date picker-->
+                <div class="mb-2">
+                    <label for="datePicker" class="form-label m-3">Select Date</label>
+                    <input type="date" id="datePicker" name="date">
+                </div>
+                <!--select booking days-->
+                <div class="m-2">
+                    <label class="form-label">Select Days</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="btnRadioDay">
+                        <label class="form-check-label" for="btnRadioDay">
+                            Day
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="btnRadioMonth" checked>
+                        <label class="form-check-label" for="btnRadioMonth">
+                            Month
+                        </label>
+                    </div>
+                </div>
+                <!--select driver-->
+                <div class="form-check form-switch m-2">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                    <label class="form-check-label" for="flexSwitchCheckChecked">Hire Driver</label>
+                </div>
+                <!--upload your receipt-->
+                <div class="form-group mb-2 col-6">
+                    <label for="uploadBankRec">Upload Bank Slip</label>
+                    <input type="file" class="form-control-file" id="uploadBankRec">
+                </div>
+            </form>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button id="btnConfirm" type="button" class="btn btn-primary">Confirm Booking</button>
             </div>
         </div>
     </div>
@@ -136,7 +195,49 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
 <script>
+    let baseUrl = "http://localhost:8080/cw/"
 
+    getAllCars();
+    function getAllCars(){
+        $('#context>div').empty();
+        $.ajax({
+            url:baseUrl+"car",
+            success:function (res) {
+                alert("suc car");
+                console.log("suc car");
+                for (let car of res.data) {
+                    let model = car.model;
+                    let type = car.vehicleType;
+                    let color = car.color;
+                    let transmission = car.transmissionType;
+                    let fuel = car.fuelType;
+                    let passenger = car.passengers;
+                    let dailyPrice = car.dailyPrice;
+                    let monthlyPrice = car.monthlyPrice;
+                    let freeMileage = car.freeMileage;
+                    let vehicleNo = car.vehicleNum;
+
+                    let perCarContext = "<div class=\"card m-3\" style=\"width: 18rem;\">\n" +
+                        "            <img src=\"../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg\" class=\"card-img-top\" alt=\"...\">\n" +
+                        "            <div class=\"card-body\">\n" +
+                        "                <h5 class=\"card-title\">"+model+"</h5>\n" +
+                        "                <h6>Price(Day)   : "+dailyPrice+"</h6>\n" +
+                        "                <h6>Price(Month) : Rs.35000</h6>\n" +
+                        "                <h6>Type         : "+type+"</h6>\n" +
+                        "                <h6>Passengers   : "+passenger+"</h6>\n" +
+                        "                <a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#carModal\">Go somewhere</a>\n" +
+                        "\n" +
+                        "            </div>\n" +
+                        "        </div>"
+
+                    $('#context>div').append(perCarContext);
+                }
+
+            }
+
+        })
+
+    }
 </script>
 </body>
 
