@@ -20,6 +20,11 @@ Home page*/
     font-size: 20px;
     color: #faf7f7;
 }
+#signText>div{
+    position: relative;
+    top: 11px;
+    right: 27%;
+}
 
 #homePageSlider{
     position: relative;

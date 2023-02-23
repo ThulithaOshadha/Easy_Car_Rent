@@ -19,7 +19,7 @@
     <a class="" href="#">Cars</a>
 
 </ul>
-<button id="loginButtonInHome" type="button" class="btn btn-dark"><a href="login.html">Log In</a></button>
+<a href="#" id="loginButtonInHome" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
 
 <!--Slider-->
 <section id="homeSliderSection">
@@ -204,6 +204,32 @@
     </div>
 </div>
 
+<!--Login Modal-->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-m">
+        <div class="modal-content">
+            <div class="modal-header">
+<!--
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+-->
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="allCar" id="btnLogCus" autocomplete="on" checked>
+                    <label class="btn btn-outline-primary" for="btnLogCus">Customer</label>
+
+                    <input type="radio" class="btn-check" name="allCar" id="btnLogAdmin" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnLogAdmin">Admin</label>
+                </div>
+            </div>
+            <div id="loginModalBody" class="modal-body">
+
+            </div>
+
+            <div id="signText" class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
 <footer>
 
 </footer>
@@ -223,6 +249,7 @@
     let carID="";
 
     getAllCars();
+    setUserType();
     function getAllCars(){
 
         let idCount=0;
@@ -396,7 +423,6 @@
     });
 
     /*Car sorting process*/
-
     $('#btnAllCar').click(function (){
         carSort="all";
         getAllCars();
@@ -470,6 +496,127 @@
         });
         return response;
     }
+
+
+    /*login form process*/
+    function setUserType() {
+        let cusLoginFromBody = "<form>\n" +
+            "\n" +
+            "                    <div class=\"mb-3\">\n" +
+            "                        <label for=\"txtUserName\" class=\"form-label\">username</label>\n" +
+            "                        <input type=\"text\" class=\"form-control\" id=\"txtUserName\" aria-describedby=\"emailHelp\" name=\"userName\">\n" +
+            "                        <!--<div id=\"emailHelp\" class=\"form-text\">We'll never share your email with anyone else.</div>-->\n" +
+            "                    </div>\n" +
+            "                    <div class=\"mb-3\">\n" +
+            "                        <label for=\"txtPassword\" class=\"form-label\">Password</label>\n" +
+            "                        <input type=\"password\" class=\"form-control\" id=\"txtPassword\" name=\"password\">\n" +
+            "                    </div>\n" +
+            "                    <div  class=\"d-flex justify-content-center \">\n" +
+            "                        <button id=\"btnLog\" type=\"button\" class=\"btn btn-primary\">Login</button>\n" +
+            "                    </div>\n"  +
+            "\n" +
+            "\n" +
+            "                </form>"
+
+        let footerText =
+                "                    <div>\n" +
+            "                        <p class=\"text-center\">If you haven't account?<a href=\"customerManagerPage.html\">sign in</a>.</p>\n" +
+            "                    </div>\n"
+        $('#loginModalBody').empty();
+        $('#loginModalBody').append(cusLoginFromBody);
+        $('#signText').empty();
+        $('#signText').append(footerText);
+
+        $('#btnLogAdmin').click(function (){
+            let adminLoginBody = "<form>\n" +
+                "\n" +
+                "                    <div class=\"mb-3\">\n" +
+                "                        <label for=\"txtUserName\" class=\"form-label\">username</label>\n" +
+                "                        <input type=\"text\" class=\"form-control\" id=\"txtUserName\" aria-describedby=\"emailHelp\" name=\"userName\">\n" +
+                "                        <!--<div id=\"emailHelp\" class=\"form-text\">We'll never share your email with anyone else.</div>-->\n" +
+                "                    </div>\n" +
+                "                    <div class=\"mb-3\">\n" +
+                "                        <label for=\"txtPassword\" class=\"form-label\">Password</label>\n" +
+                "                        <input type=\"password\" class=\"form-control\" id=\"txtPassword\" name=\"password\">\n" +
+                "                    </div>\n" +
+                "                    <div  class=\"d-flex justify-content-center \">\n" +
+                "                        <button id=\"btnLog\" type=\"button\" class=\"btn btn-primary\">Login</button>\n" +
+                "                    </div>\n" +
+                "\n" +
+                "\n" +
+                "                </form>"
+            $('#loginModalBody').empty();
+            $('#signText').empty();
+            $('#loginModalBody').append(adminLoginBody);
+        });
+        $('#btnLogCus').click(function (){
+            let cusLoginFromBody = "<form>\n" +
+                "\n" +
+                "                    <div class=\"mb-3\">\n" +
+                "                        <label for=\"txtUserName\" class=\"form-label\">username</label>\n" +
+                "                        <input type=\"text\" class=\"form-control\" id=\"txtUserName\" aria-describedby=\"emailHelp\" name=\"userName\">\n" +
+                "                        <!--<div id=\"emailHelp\" class=\"form-text\">We'll never share your email with anyone else.</div>-->\n" +
+                "                    </div>\n" +
+                "                    <div class=\"mb-3\">\n" +
+                "                        <label for=\"txtPassword\" class=\"form-label\">Password</label>\n" +
+                "                        <input type=\"password\" class=\"form-control\" id=\"txtPassword\" name=\"password\">\n" +
+                "                    </div>\n" +
+                "                    <div  class=\"d-flex justify-content-center \">\n" +
+                "                        <button id=\"btnLog\" type=\"button\" class=\"btn btn-primary\">Login</button>\n" +
+                "                    </div>\n"  +
+                "\n" +
+                "\n" +
+                "                </form>"
+
+            let footerText =
+                "                    <div>\n" +
+                "                        <p class=\"text-center\">If you haven't account?<a href=\"customerManagerPage.html\">sign in</a>.</p>\n" +
+                "                    </div>\n"
+            $('#loginModalBody').empty();
+            $('#loginModalBody').append(cusLoginFromBody);
+            $('#signText').empty();
+            $('#signText').append(footerText);
+        });
+    }
+
+    $('#btnLog').click(function () {
+        alert("log alert");
+        let userName = $('#txtUserName').val();
+        let password = $('#txtPassword').val();
+        console.log(userName);
+
+        let s = searchCustomerByUserName(userName);
+        console.log(s);
+        console.log(s[0].nic);
+        console.log(s[0].password);
+        if (userName==s[0].nic && password==s[0].password){
+            alert("you can log");
+            window.open("admin.html")
+        }else {
+            alert("wrong username or password");
+        }
+
+    });
+
+    function searchCustomerByUserName(nic){
+        let response="";
+        $.ajax({
+            url:baseUrl+"customer",
+            dataType:"json",
+            async:false,
+            success:function (resp) {
+                response=resp.data.filter((c)=>{
+                    return c.nic==nic;
+                });
+            }
+
+        });
+        return response;
+        //console.log(response);
+    }
+
+
+    /*Customer Registration Process*/
 
 
 
