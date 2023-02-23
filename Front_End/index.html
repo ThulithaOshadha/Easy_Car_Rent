@@ -11,7 +11,9 @@
 </head>
 <body>
 <!--Header-->
-
+<!--<div>
+    <h4></h4>
+</div>-->
 <ul id="navbarList" class="d-flex justify-content-between p-1 mb-3 ">
 
     <a class=" active" aria-current="page" href="#">Home</a>
@@ -309,6 +311,7 @@
     var vehiNum="";
     var carSort = "all";
     let carID="";
+    let userType = "customer";
 
     getAllCars();
     setUserType();
@@ -591,8 +594,11 @@
         $('#loginModalBody').append(cusLoginFromBody);
         $('#signText').empty();
         $('#signText').append(footerText);
+        btnLoginProcess("customer");
 
         $('#btnLogAdmin').click(function (){
+            userType = "admin";
+            console.log(userType);
             let adminLoginBody = "<form>\n" +
                 "\n" +
                 "                    <div class=\"mb-3\">\n" +
@@ -613,8 +619,12 @@
             $('#loginModalBody').empty();
             $('#signText').empty();
             $('#loginModalBody').append(adminLoginBody);
+            btnLoginProcess(userType);
         });
         $('#btnLogCus').click(function (){
+            userType = "customer";
+            console.log(userType);
+
             let cusLoginFromBody = "<form>\n" +
                 "\n" +
                 "                    <div class=\"mb-3\">\n" +
@@ -644,10 +654,44 @@
             $('#loginModalBody').append(cusLoginFromBody);
             $('#signText').empty();
             $('#signText').append(footerText);
+            btnLoginProcess(userType);
         });
     }
 
-    $('#btnLog').click(function () {
+    function btnLoginProcess(userType) {
+        $('#btnLog').click(function () {
+            alert("log alert");
+            let userName = $('#txtUserName').val();
+            let password = $('#txtPassword').val();
+            console.log(userName);
+
+            if (userType=="customer"){
+                let s = searchCustomerByUserName(userName);
+                console.log(s);
+                console.log(s[0].nic);
+                console.log(s[0].password);
+                if (userName==s[0].nic && password==s[0].password){
+                    alert("you can log");
+                    $('#navbarList').empty();
+                    /*let navs = "<a class=\" active\" aria-current=\"page\" href=\"#\">Home</a>\n" +
+                        "    <a class=\"\" href=\"carManagePage.html\">About</a>\n" +
+                        "    <a class=\"\" href=\"#\">Cars</a>\n" +
+                        "    <h5>"+s[0].name+"</h5>"
+                    $('#navbarList').append(navs);*/
+
+                }else {
+                    alert("wrong username or password");
+                }
+            }else if (userType=="admin"){
+                alert("admin can log now");
+            }else {
+                alert("please select user type");
+            }
+
+
+        });
+    }
+   /* $('#btnLog').click(function () {
         alert("log alert");
         let userName = $('#txtUserName').val();
         let password = $('#txtPassword').val();
@@ -664,7 +708,7 @@
             alert("wrong username or password");
         }
 
-    });
+    });*/
 
     function searchCustomerByUserName(nic){
         let response="";

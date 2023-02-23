@@ -1,5 +1,11 @@
 /*
 Home page*/
+/*body>div:nth-child(1){
+    position: relative;
+    width: 20vw;
+    height: 25px;
+    border: 1px solid red;
+}*/
 
 #navbarList{
     position: absolute;
@@ -24,6 +30,10 @@ Home page*/
     position: relative;
     top: 11px;
     right: 27%;
+}
+#signText>div>button{
+    position: relative;
+    width: 14vw;
 }
 
 #homePageSlider{
