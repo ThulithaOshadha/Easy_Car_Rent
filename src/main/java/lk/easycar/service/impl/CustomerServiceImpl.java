@@ -47,6 +47,7 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO searchCustomerWithNic(String nic) {
+        System.out.println("finf cus: "+nic);
         Customer customer = repo.findCustomerByNic(nic);
         if (customer!=null){
             return mapper.map(customer,CustomerDTO.class);

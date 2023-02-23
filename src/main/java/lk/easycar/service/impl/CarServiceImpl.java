@@ -52,4 +52,9 @@ public class CarServiceImpl implements CarService{
         }
         return null;
     }
+
+    @Override
+    public ArrayList<CarDTO> searchCarWithVehicleType(String vehicleType) {
+        return mapper.map(repo.findCarsByVehicleTypeEquals(vehicleType),new TypeToken<ArrayList<CarDTO>>(){}.getType());
+    }
 }

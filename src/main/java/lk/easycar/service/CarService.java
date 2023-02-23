@@ -11,5 +11,6 @@ public interface CarService {
     public ArrayList<CarDTO> getAllCars();
 
     public CarDTO searchCarWithVehicleNum(String vehicleNum);
+    public ArrayList<CarDTO> searchCarWithVehicleType(String vehicleType);
 
 }

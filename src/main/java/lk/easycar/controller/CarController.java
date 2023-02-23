@@ -24,6 +24,7 @@ public class CarController {
     }
     @GetMapping
     public ResponseUtil getAllCars(){
+        System.out.println("get all cars");
         return new ResponseUtil("ok","successfully loaded",service.getAllCars());
 
     }
@@ -34,7 +35,14 @@ public class CarController {
     }
     @GetMapping(path = "/{vehicleNum}")
     public ResponseUtil searchCarWithVehicleNum(@PathVariable String vehicleNum){
+        System.out.println("controller : "+vehicleNum);
         return new ResponseUtil("ok","",service.searchCarWithVehicleNum(vehicleNum));
+    }
+    @GetMapping(path = "/{vehicleType}")
+    public ResponseUtil searchCarWithVehicleType(@PathVariable String vehicleType){
+        System.out.println("controller : "+vehicleType);
+        return new ResponseUtil("ok","",service.searchCarWithVehicleType(vehicleType));
+
     }
 
 

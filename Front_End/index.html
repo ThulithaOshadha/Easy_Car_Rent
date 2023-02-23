@@ -32,6 +32,22 @@
 <!--Cars Context-->
 <section id="context">
 
+    <!--sorting button-->
+    <section id="sortingButtonArea">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="allCar" id="btnAllCar" autocomplete="on" checked>
+            <label class="btn btn-outline-primary" for="btnAllCar">All</label>
+
+            <input type="radio" class="btn-check" name="allCar" id="btnGeneralCar" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnGeneralCar">General</label>
+
+            <input type="radio" class="btn-check" name="allCar" id="btnLuxuryCar" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnLuxuryCar">Luxury</label>
+
+            <input type="radio" class="btn-check" name="allCar" id="btnPremiumCar" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnPremiumCar">Premium</label>
+        </div>
+    </section>
     <div id="contextDiv" class="row row-cols-1 row-cols-md-3 g-4">
         <div class="card m-3" style="width: 18rem;">
             <img src="../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg" class="card-img-top" alt="...">
@@ -203,9 +219,12 @@
     let baseUrl = "http://localhost:8080/cw/"
 
     var vehiNum="";
+    var carSort = "all";
 
-    getAllCars();
-    function getAllCars(){
+    //getAllCars();
+    function getAllCars(t){
+        console.log("wht t");
+        console.log(t.vehicleType);
         let carID="";
         let idCount=0;
         $('#context>div').empty();
@@ -253,6 +272,7 @@
 
         })
     }
+
     function loadCarModal(carID,i){
         console.log(i)
 
@@ -375,6 +395,50 @@
         })
 
     });
+
+    /*Car sorting process*/
+
+    $('#btnAllCar').click(function (){
+        carSort="all";
+        sortCars(carSort);
+    });
+    $('#btnGeneralCar').click(function (){
+        carSort="General";
+        sortCars(carSort);
+    });
+    $('#btnLuxuryCar').click(function (){
+        carSort="Luxury";
+        sortCars(carSort);
+    });
+    $('#btnPremiumCar').click(function (){
+        carSort="Premium";
+        sortCars(carSort);
+    });
+
+    function sortCars(type){
+        let t = getCarFromType(type);
+        getAllCars(t);
+        console.log("t");
+        console.log(t);
+    }
+    function getCarFromType(vehicleType){
+
+        console.log("new : "+vehicleType);
+        let response="";
+        $.ajax({
+            url: baseUrl+"car?"+vehicleType,
+            dataType:"json",
+            async:false,
+            success:function (res) {
+                console.log("success : "+vehicleType);
+                response=res.data.filter((c)=>{
+                    return c.vehicleType==vehicleType;
+                });
+            }
+        });
+        return response;
+    }
+
 
 
 
