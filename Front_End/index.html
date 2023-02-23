@@ -230,6 +230,68 @@
     </div>
 </div>
 
+<!--Customer Registration Modal-->
+<div class="modal fade" id="cusRegModal" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel2">Customer Registration Form</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="cusRegModalBody" class="modal-body">
+                <form id="customerForm" class="container text-center">
+                    <h2>Customer Management Form</h2>
+                    <div class="row g-2">
+                        <div class="form-floating mb-3 col-6">
+                            <input type="text" class="form-control" id="txtNic" placeholder="NIC : " name="nic">
+                            <label for="txtNic">NIC : </label>
+                        </div>
+                        <div class="form-floating mb-3 col-6">
+                            <input type="text" class="form-control" id="txtName" placeholder="Name :" name="name">
+                            <label for="txtName">Name :</label>
+                        </div>
+                        <div class="form-floating mb-3 col-6">
+                            <input type="text" class="form-control" id="txtAddress" placeholder="address" name="address">
+                            <label for="txtAddress">Address</label>
+                        </div>
+                        <div class="form-floating mb-3 col-6">
+                            <input type="text" class="form-control" id="txtDrivingLicense" placeholder="1003265498" name="license">
+                            <label for="txtDrivingLicense">Driving License</label>
+                        </div>
+                        <div class="form-floating mb-3 col-6">
+                            <input type="text" class="form-control" id="txtContact" placeholder="07111222444" name="contact">
+                            <label for="txtContact">Contact No :</label>
+                        </div>
+                        <div class="form-floating mb-3 col-6">
+                            <input type="password" class="form-control" id="txtPassword" placeholder="07111222444" name="password">
+                            <label for="txtContact">Password :</label>
+                        </div>
+                        <div class="form-group mb-3 col-6">
+                            <label for="uploadNicField">Upload NIC License : </label>
+                            <input type="file" class="form-control-file" id="uploadNicField" name="nicImage">
+                        </div>
+                        <div class="form-group mb-3 col-6">
+                            <label for="uploadLicenseField">Upload Driving License</label>
+                            <input type="file" class="form-control-file" id="uploadLicenseField">
+                        </div>
+<!--
+                        <button id="btnCustomerAdd" type="button" class="position-absolute btn btn-primary form-group mb-3 col-6" style="width: 38vw">Register</button>
+-->
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <div class="modal-footer">
+                <button id="btnCustomerAdd" type="button" class="btn btn-primary">Register</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <footer>
 
 </footer>
@@ -520,7 +582,10 @@
 
         let footerText =
                 "                    <div>\n" +
-            "                        <p class=\"text-center\">If you haven't account?<a href=\"customerManagerPage.html\">sign in</a>.</p>\n" +
+            "                        <p class=\"text-center\">If you haven't account?<a data-bs-toggle=\"modal\" data-bs-target=\"#cusRegModal\">sign in</a>.</p>" +
+            "<button type=\"button\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#cusRegModal\">\n" +
+            "  Sign In\n" +
+            "</button>\n" +
             "                    </div>\n"
         $('#loginModalBody').empty();
         $('#loginModalBody').append(cusLoginFromBody);
@@ -570,7 +635,10 @@
 
             let footerText =
                 "                    <div>\n" +
-                "                        <p class=\"text-center\">If you haven't account?<a href=\"customerManagerPage.html\">sign in</a>.</p>\n" +
+                "                        <p class=\"text-center\">If you haven't account?<a data-bs-toggle=\"modal\" data-bs-target=\"#cusRegModal\">sign in</a>.</p>" +
+                "<button type=\"button\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#cusRegModal\">\n" +
+                "  Launch demo modal\n" +
+                "</button>\n" +
                 "                    </div>\n"
             $('#loginModalBody').empty();
             $('#loginModalBody').append(cusLoginFromBody);
@@ -617,6 +685,23 @@
 
 
     /*Customer Registration Process*/
+    $('#btnCustomerAdd').click(function () {
+        alert("save customer") ;
+        let formData = $('#customerForm').serialize();
+
+        $.ajax({
+            url:baseUrl+"customer",
+            method:"post",
+            data:formData,
+            dataType:"json",
+            success:function (res) {
+                res.message;
+            },
+            error:function (error) {
+                alert(JSON.parse(error.responseText).message);
+            }
+        });
+    });
 
 
 
