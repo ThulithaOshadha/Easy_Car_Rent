@@ -220,12 +220,11 @@
 
     var vehiNum="";
     var carSort = "all";
+    let carID="";
 
-    //getAllCars();
-    function getAllCars(t){
-        console.log("wht t");
-        console.log(t.vehicleType);
-        let carID="";
+    getAllCars();
+    function getAllCars(){
+
         let idCount=0;
         $('#context>div').empty();
         $.ajax({
@@ -400,7 +399,7 @@
 
     $('#btnAllCar').click(function (){
         carSort="all";
-        sortCars(carSort);
+        getAllCars();
     });
     $('#btnGeneralCar').click(function (){
         carSort="General";
@@ -417,9 +416,42 @@
 
     function sortCars(type){
         let t = getCarFromType(type);
-        getAllCars(t);
-        console.log("t");
-        console.log(t);
+        if (t!=null){
+            $('#context>div').empty();
+            for (let i = 0; i < t.length; i++) {
+                let model = t[i].model;
+                let type = t[i].vehicleType;
+                let color = t[i].color;
+                let transmission = t[i].transmissionType;
+                let fuel = t[i].fuelType;
+                let passenger = t[i].passengers;
+                let dailyPrice = t[i].dailyPrice;
+                let monthlyPrice = t[i].monthlyPrice;
+                let freeMileage = t[i].freeMileage;
+                let vehicleNo = t[i].vehicleNum;
+
+
+
+                let perCarContext = "<div class=\"card m-3\" style=\"width: 18rem;\">\n" +
+                    "            <img src=\"../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg\" class=\"card-img-top\" alt=\"...\">\n" +
+                    "            <div class=\"card-body\">\n" +
+                    "                <h5 id='"+vehicleNo+"' class=\"card-title\">"+model+"</h5>\n" +
+                    "                <h6>Price(Day)   : Rs."+dailyPrice+"</h6>\n" +
+                    "                <h6>Price(Month) : Rs."+monthlyPrice+"</h6>\n" +
+                    "                <h6>Type         : "+type+"</h6>\n" +
+                    "                <h6>Passengers   : "+passenger+"</h6>\n" +
+                    "                <a href=\"#\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#carModal\">Book Now</a>\n" +
+                    "\n" +
+                    "            </div>\n" +
+                    "        </div>"
+
+                $('#context>div').append(perCarContext);
+
+                carID=vehicleNo;
+                loadCarModal(carID,i);
+            }
+        }
+
     }
     function getCarFromType(vehicleType){
 
