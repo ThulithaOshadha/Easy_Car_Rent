@@ -16,10 +16,10 @@
 </div>-->
 <ul id="navbarList" class="d-flex justify-content-between p-1 mb-3 row ">
 
-    <div id="userProfile" class="col-4 btn btn-link" data-bs-toggle="modal" data-bs-target="#userModal">
+    <!--<div id="userProfile" class="col-4 btn btn-link" data-bs-toggle="modal" data-bs-target="#userModal">
         <img src="../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg" class="img-thumbnail" alt="...">
         <h5>Thulitha Oshadha</h5>
-    </div>
+    </div>-->
 
     <a class="col-1 active m-3" aria-current="page" href="#">Home</a>
     <a class="col-1 m-3" href="carManagePage.html">About</a>
@@ -217,9 +217,10 @@
     <div class="modal-dialog modal-dialog-scrollable modal-m">
         <div class="modal-content">
             <div class="modal-header">
-<!--
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
--->
+                <!--
+
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                -->
                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                     <input type="radio" class="btn-check" name="allCar" id="btnLogCus" autocomplete="on" checked>
                     <label class="btn btn-outline-primary" for="btnLogCus">Customer</label>
@@ -227,6 +228,8 @@
                     <input type="radio" class="btn-check" name="allCar" id="btnLogAdmin" autocomplete="off">
                     <label class="btn btn-outline-primary" for="btnLogAdmin">Admin</label>
                 </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
             </div>
             <div id="loginModalBody" class="modal-body">
 
@@ -305,17 +308,24 @@
 <div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-m">
         <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel1">Booking Form</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
             <div id="userModalBody" class="modal-body">
-                <img src="../src/main/java/lk/easycar/assets/pageImg/user.png" class="img-thumbnail" style="width: 50%" alt="profile">
+                <!--<img src="../src/main/java/lk/easycar/assets/pageImg/user.png" class="img-thumbnail m-5" style="width: 50%" alt="profile">
 
                 <div>
-                    <h4>Name : Thulitha Oshadha</h4>
-                    <h4>NIC : 200033001236</h4>
-                    <h4>Address : Galle</h4>
-                    <h4>License : 20022</h4>
-                    <h4>Contact : 0715699236</h4>
-                    <h4>Password : 1234</h4>
-                </div>
+                    <h4 class="m-4">Name : Thulitha Oshadha</h4>
+                    <h4 class="m-4">NIC : 200033001236</h4>
+                    <h4 class="m-4">Address : Galle</h4>
+                    <h4 class="m-4">License : 20022</h4>
+                    <h4 class="m-4">Contact : 0715699236</h4>
+                    <h4 class="m-4">Password : 1234</h4>
+                </div>-->
+            </div>
+            <div class="modal-footer">
+                <button id="btnUpdateCustomer" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#cusRegModal">Update Your Details</button>
             </div>
             
         </div>
@@ -342,6 +352,7 @@
     var carSort = "all";
     let carID="";
     let userType = "customer";
+    let checkSignInCus = "no";
 
     $('#userPage').hide();
     getAllCars();
@@ -383,7 +394,9 @@
                         "            </div>\n" +
                         "        </div>"
 
+
                     $('#context>div').append(perCarContext);
+                    //$('#contextDiv>div>div>div')
 
                     carID=vehicleNo;
                     loadCarModal(carID,i);
@@ -698,10 +711,12 @@
 
             if (userType=="customer"){
                 let s = searchCustomerByUserName(userName);
-                console.log(s);
+
+                console.log(checkSignInCus);
                 console.log(s[0].nic);
                 console.log(s[0].password);
                 if (userName==s[0].nic && password==s[0].password){
+                    checkSignInCus="yes";
                     alert("you can log");
                     let user = {
                         nic:s[0].nic,
@@ -713,7 +728,7 @@
                         nicImage:s[0].nicImage
 
                     }
-                    let navs= "<div id=\"userProfile\" class=\"col-4\">\n" +
+                    let navs= "<div id=\"userProfile\" class=\"col-4 btn btn-link\" data-bs-toggle=\"modal\" data-bs-target=\"#userModal\">\n" +
                         "        <img src=\"../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg\" class=\"img-thumbnail\" alt=\"...\">\n" +
                         "        <h5>"+s[0].name+"</h5>\n" +
                         "    </div>\n" +
@@ -725,6 +740,8 @@
                     $('#navbarList').empty();
                     $('#navbarList').append(navs);
 
+                    $('#txtUserName').val("");
+                    $('#txtPassword').val("");
                     loadUserProfile(user);
                     //$('#navbarList').empty();
                     /*let navs = "<a class=\" active\" aria-current=\"page\" href=\"#\">Home</a>\n" +
@@ -745,27 +762,40 @@
 
         });
     }
-   /* $('#btnLog').click(function () {
-        alert("log alert");
-        let userName = $('#txtUserName').val();
-        let password = $('#txtPassword').val();
-        console.log(userName);
 
-        let s = searchCustomerByUserName(userName);
-        console.log(s);
-        console.log(s[0].nic);
-        console.log(s[0].password);
-        if (userName==s[0].nic && password==s[0].password){
-            alert("you can log");
-            window.open("admin.html")
-        }else {
-            alert("wrong username or password");
-        }
-
-    });*/
     function loadUserProfile(user){
         $('#userProfile').click(function (){
-           console.log(user) ;
+           let userDetails = "<img src=\"../src/main/java/lk/easycar/assets/pageImg/user.png\" class=\"img-thumbnail m-5\" style=\"width: 50%\" alt=\"profile\">\n" +
+               "\n" +
+               "                <div>\n" +
+               "                    <h4 class=\"m-4\">Name : "+user.name+"</h4>\n" +
+               "                    <h4 class=\"m-4\">NIC : "+user.nic+"</h4>\n" +
+               "                    <h4 class=\"m-4\">Address : "+user.address+"</h4>\n" +
+               "                    <h4 class=\"m-4\">License : "+user.license+"</h4>\n" +
+               "                    <h4 class=\"m-4\">Contact : "+user.contact+"</h4>\n" +
+               "                    <h4 class=\"m-4\">Password : "+user.password+"</h4>\n" +
+               "                </div>"
+
+
+
+
+            $('#userModalBody').empty();
+            $('#userModalBody').append(userDetails);
+
+            $("#txtNic").val("");
+            $("#txtName").val("");
+            $("#txtAddress").val("");
+            $("#txtDrivingLicense").val("");
+            $("#txtContact").val("");
+            $("#txtPassword").val("");
+
+            $("#txtNic").val(user.nic);
+            $("#txtName").val(user.name);
+            $("#txtAddress").val(user.name);
+            $("#txtDrivingLicense").val(user.license);
+            $("#txtContact").val(user.contact);
+            $("#txtPassword").val(user.password);
+
         });
 
     }
@@ -781,30 +811,65 @@
                     return c.nic==nic;
                 });
             }
-
         });
         return response;
-        //console.log(response);
     }
 
 
     /*Customer Registration Process*/
     $('#btnCustomerAdd').click(function () {
-        alert("save customer") ;
-        let formData = $('#customerForm').serialize();
 
-        $.ajax({
-            url:baseUrl+"customer",
-            method:"post",
-            data:formData,
-            dataType:"json",
-            success:function (res) {
-                res.message;
-            },
-            error:function (error) {
-                alert(JSON.parse(error.responseText).message);
+        if (checkSignInCus=="no"){
+            alert("save customer") ;
+            let formData = $('#customerForm').serialize();
+
+            $.ajax({
+                url:baseUrl+"customer",
+                method:"post",
+                data:formData,
+                dataType:"json",
+                success:function (res) {
+                    res.message;
+                },
+                error:function (error) {
+                    alert(JSON.parse(error.responseText).message);
+                }
+            });
+        }else if (checkSignInCus=="yes"){
+            alert("exist");
+            //let formData = $('#customerForm').serialize();
+            let nic = $("#txtNic").val();
+            let name = $("#txtName").val();
+            let address = $("#txtAddress").val();
+            let license = $("#txtDrivingLicense").val();
+            let contact = $("#txtContact").val();
+            let password = $("#txtPassword").val();
+
+            var customer = {
+                nic:nic,
+                name:name,
+                address:address,
+                license:license,
+                contact:contact,
+                password:password
             }
-        });
+
+            $.ajax({
+                url:baseUrl+"car",
+                method: "put",
+                contentType:"application/json",
+                data: JSON.stringify(customer),
+                dataType: "json",
+                success:function (res) {
+                    alert("succes uoda");
+                    res.message;
+                },
+                error:function (error) {
+                    alert(JSON.parse(error.responseText).message);
+                }
+            });
+        }
+
     });
 
 

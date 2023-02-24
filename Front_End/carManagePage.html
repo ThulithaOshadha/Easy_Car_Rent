@@ -224,17 +224,18 @@
 
                     let row = "<tr><td>" + model + "</td><td>" + type + "</td><td>" + color + "</td><td>" + transmission + "</td><td>" + fuel + "</td><td>" + passenger + "</td><td>" + dailyPrice + "</td><td>" + monthlyPrice + "</td><td>" + freeMileage + "</td><td>" + vehicleNo + "</td></tr>"
                     $('#carTableBody').append(row);
-                    blindRowClickEventsCar();
+                    //blindRowClickEventsCar();
 
                 }
+                blindRowClickEventsCar();
             }
         });
 
     };
 
     function blindRowClickEventsCar() {
-        /*$('#carTableBody>tr').click(function () {*/
-        $("#carTableBody").on("click","tr",function(){
+        $('#carTableBody>tr').click(function () {
+        /*$("#carTableBody").on("click","tr",function(){*/
             alert("hi");
             tableClick = true;
             checkTableClick();
