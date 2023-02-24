@@ -9,6 +9,9 @@ Home page*/
 #navbarList>div>img{
     width: 30px;
 }
+#navbarList>div{
+    text-decoration: none;
+}
 #userProfile>h5{
     font-size: 20px;
 }
