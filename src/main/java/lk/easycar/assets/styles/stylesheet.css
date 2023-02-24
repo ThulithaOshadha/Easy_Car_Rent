@@ -6,12 +6,18 @@ Home page*/
     height: 25px;
     border: 1px solid red;
 }*/
+#navbarList>div>img{
+    width: 30px;
+}
+#userProfile>h5{
+    font-size: 20px;
+}
 
 #navbarList{
     position: absolute;
-    width: 20%;
-    left: 66%;
-    top: 25px;
+    width: 52%;
+    left: 40%;
+    top: 10px;
 }
 #navbarList>a{
     text-decoration: none;

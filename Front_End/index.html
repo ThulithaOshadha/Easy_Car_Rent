@@ -9,16 +9,22 @@
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
 </head>
-<body>
+<body id="mainBody">
 <!--Header-->
 <!--<div>
     <h4></h4>
 </div>-->
-<ul id="navbarList" class="d-flex justify-content-between p-1 mb-3 ">
+<ul id="navbarList" class="d-flex justify-content-between p-1 mb-3 row ">
 
-    <a class=" active" aria-current="page" href="#">Home</a>
-    <a class="" href="carManagePage.html">About</a>
-    <a class="" href="#">Cars</a>
+    <!--<div id="userProfile" class="col-4">
+        <img src="../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg" class="img-thumbnail" alt="...">
+        <h5>Thulitha Oshadha</h5>
+    </div>-->
+
+    <a class="col-1 active m-3" aria-current="page" href="#">Home</a>
+    <a class="col-1 m-3" href="carManagePage.html">About</a>
+    <a class="col-1 m-3" href="#">Cars</a>
+
 
 </ul>
 <a href="#" id="loginButtonInHome" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
@@ -294,6 +300,10 @@
     </div>
 </div>
 
+<!--/////////////////-->
+<!--user page -->
+
+
 <footer>
 
 </footer>
@@ -313,6 +323,7 @@
     let carID="";
     let userType = "customer";
 
+    $('#userPage').hide();
     getAllCars();
     setUserType();
     function getAllCars(){
@@ -672,7 +683,30 @@
                 console.log(s[0].password);
                 if (userName==s[0].nic && password==s[0].password){
                     alert("you can log");
+                    let user = {
+                        nic:s[0].nic,
+                        name:s[0].name,
+                        address:s[0].address,
+                        license:s[0].license,
+                        contact:s[0].contact,
+                        password:s[0].password,
+                        nicImage:s[0].nicImage
+
+                    }
+                    let navs= "<div id=\"userProfile\" class=\"col-4\">\n" +
+                        "        <img src=\"../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg\" class=\"img-thumbnail\" alt=\"...\">\n" +
+                        "        <h5>"+s[0].name+"</h5>\n" +
+                        "    </div>\n" +
+                        "\n" +
+                        "    <a class=\"col-1 active m-3\" aria-current=\"page\" href=\"#\">Home</a>\n" +
+                        "    <a class=\"col-1 m-3\" href=\"carManagePage.html\">About</a>\n" +
+                        "    <a class=\"col-1 m-3\" href=\"#\">Cars</a>\n" +
+                        "    <a class=\"col-3 m-3\" href=\"#\">My Bookings</a>"
                     $('#navbarList').empty();
+                    $('#navbarList').append(navs);
+
+                    loadUserProfile(user);
+                    //$('#navbarList').empty();
                     /*let navs = "<a class=\" active\" aria-current=\"page\" href=\"#\">Home</a>\n" +
                         "    <a class=\"\" href=\"carManagePage.html\">About</a>\n" +
                         "    <a class=\"\" href=\"#\">Cars</a>\n" +
@@ -709,6 +743,12 @@
         }
 
     });*/
+    function loadUserProfile(user){
+        $('#userProfile').click(function (){
+           console.log(user) ;
+        });
+
+    }
 
     function searchCustomerByUserName(nic){
         let response="";
