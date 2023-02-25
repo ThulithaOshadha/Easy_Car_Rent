@@ -175,29 +175,18 @@
             <form id="bookingForm" >
                 <!--date picker-->
                 <div class="mb-2">
-                    <label for="datePicker" class="form-label m-3">Select Date</label>
-                    <input type="date" id="datePicker" name="date">
+                    <label for="datePicker" class="form-label m-3">Select Booking Date</label>
+                    <input type="date" id="datePicker" name="currentDate">
                 </div>
                 <!--select booking days-->
                 <div class="m-2">
-                    <label class="form-label">Select Days</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="btnRadioDay">
-                        <label class="form-check-label" for="btnRadioDay">
-                            Day
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="btnRadioMonth" checked>
-                        <label class="form-check-label" for="btnRadioMonth">
-                            Month
-                        </label>
-                    </div>
+                    <label class="form-label">Select Due Date</label>
+                    <input type="date" id="dueDatePicker" name="dueDate">
                 </div>
                 <!--select driver-->
                 <div class="form-check form-switch m-2">
-                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-                    <label class="form-check-label" for="flexSwitchCheckChecked">Hire Driver</label>
+                    <input class="form-check-input" type="checkbox" role="switch" id="driverSelectSwitch">
+                    <label class="form-check-label" for="driverSelectSwitch">Hire Driver</label>
                 </div>
                 <!--upload your receipt-->
                 <div class="form-group mb-2 col-6">
