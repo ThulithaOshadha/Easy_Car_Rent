@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
@@ -17,12 +18,20 @@ import java.util.Date;
 public class Booking {
     @Id
     private String bookingID;
-    private String date;
-    private String time;
-    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
-    @JoinColumn(name = "nic",referencedColumnName = "nic",nullable = false)
-    private Customer nic;
-    @ManyToOne(cascade = {CascadeType.REFRESH,CascadeType.DETACH})
-    @JoinColumn(name = "vehicleNum",referencedColumnName = "vehicleNum",nullable = false)
-    private Car vehicleNum;
+    private LocalDate currentDate;
+    private LocalDate dueDate;
+    private BigDecimal advancePayment;
+    @Lob
+    private byte[] paymentConfirmation;
+    private boolean isAccepted;
+
+
+    @ManyToOne
+    private Car car;
+    @ManyToOne
+    private Driver driver;
+    @ManyToOne
+    private Admin admin;
+    @ManyToOne
+    private Customer customer;
 }

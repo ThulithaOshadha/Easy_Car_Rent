@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.Lob;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 @AllArgsConstructor
@@ -15,8 +17,17 @@ import java.time.LocalTime;
 @ToString
 public class BookingDTO {
     private String bookingID;
-    private String date;
-    private String time;
-    private String nic;
-    private String vehicleNum;
+    private LocalDate currentDate;
+    private LocalDate dueDate;
+    private BigDecimal advancePayment;
+    @Lob
+    private byte[] paymentConfirmation;
+    private boolean isAccepted;
+
+    private CarDTO car;
+    private DriverDTO driver;
+    private AdminDTO admin;
+    private CustomerDTO user;
+
+
 }

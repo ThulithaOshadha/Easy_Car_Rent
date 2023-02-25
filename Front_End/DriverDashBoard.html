@@ -148,25 +148,19 @@
     }
 
     function loadTable(user){
-        //let b = loadBookingDetails(user)
+        let b = loadBookingDetails("B-001")
 
-        $('#driverDashTable').empty();
+        if (b!=null){
+            $('#driverDashTableBody').empty();
+            for (let i = 0; i < b.length; i++) {
+                let date = b[i].date;
+                let id = b[i].bookingID;
+                let car = b[i].vehicleNum;
 
-        $.ajax({
-            url:baseUrl+"booking",
-            success:function (res) {
-                for (let book of res.data) {
-                    let date = book.date;
-                    let id = book.bookingID;
-                    let car = book.vehicleNum;
-
-                    let row = "<tr><td>" + date + "</td><td>" + car + "</td><td>" + id + "</td></tr>"
-                    $('#driverDashTable').append(row);
-                }
+                let row = "<tr><td>" + date + "</td><td>" + car + "</td><td>" + id + "</td></tr>"
+                $('#driverDashTableBody').append(row);
             }
-        })
-
-
+        }
 
     }
 
@@ -178,7 +172,8 @@
             async:false,
             success:function (resp) {
                 response=resp.data.filter((c)=>{
-                    return c.bookingID=="B-001";
+                    alert("book suc");
+                    return c.bookingID==userName;
                 });
             }
 
