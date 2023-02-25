@@ -26,8 +26,8 @@ public class BookingDTO {
 
     private CarDTO car;
     private DriverDTO driver;
-    private AdminDTO admin;
-    private CustomerDTO user;
+    /*private AdminDTO admin;*/
+    private CustomerDTO customer;
 
 
 }

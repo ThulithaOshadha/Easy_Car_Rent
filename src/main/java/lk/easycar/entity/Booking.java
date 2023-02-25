@@ -30,8 +30,8 @@ public class Booking {
     private Car car;
     @ManyToOne
     private Driver driver;
-    @ManyToOne
-    private Admin admin;
+    /*@ManyToOne
+    private Admin admin;*/
     @ManyToOne
     private Customer customer;
 }

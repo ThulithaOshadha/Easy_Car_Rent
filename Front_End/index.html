@@ -187,6 +187,8 @@
                 <div class="form-check form-switch m-2">
                     <input class="form-check-input" type="checkbox" role="switch" id="driverSelectSwitch">
                     <label class="form-check-label" for="driverSelectSwitch">Hire Driver</label>
+                    <!--<label class="form-check-label">Hire Driver</label>-->
+
                 </div>
                 <!--upload your receipt-->
                 <div class="form-group mb-2 col-6">
@@ -345,6 +347,7 @@
     let carID="";
     let userType = "customer";
     let checkSignInCus = "no";
+    let loginCustomer = "";
 
     $('#userPage').hide();
     getAllCars();
@@ -393,7 +396,6 @@
                     carID=vehicleNo;
                     loadCarModal(carID,i);
                 }
-
 
             }
 
@@ -469,7 +471,68 @@
             $('#perDayPrice').append(perDay);
             $('#perMonthPrice').append(perMonth);
 
+
+            $('#btnConfirm').click(function (){
+                alert(vehiNum);
+                let bookingID = "B-001";
+                let currentDate = $('#datePicker').val();
+                let dueDate = $('#dueDatePicker').val();
+                let advancePayment = 20000;
+                let isAccepted = "false";
+                let car = ca[0];
+                let d = findDriver("true");
+                let driver = d[0];
+                let cus = searchCustomerByUserName(loginCustomer);
+                let customer = cus[0];
+
+                var book = {
+                    bookingID:bookingID,
+                    currentDate:currentDate,
+                    dueDate:dueDate,
+                    advancePayment:advancePayment,
+                    isAccepted:isAccepted,
+                    car:car,
+                    driver:driver,
+                    customer:customer
+                }
+                console.log("book");
+                console.log(book);
+
+                $.ajax({
+                    url:baseUrl+"booking",
+                    method:"post",
+                    contentType:"application/json",
+                    data:JSON.stringify(book),
+                    dataType: "json",
+                    success:function (res) {
+                        alert("success booking"+res.message);
+
+                    },
+                    error:function (error) {
+                        let cause = JSON.parse(error.responseText).message;
+                        alert(cause);
+                    }
+                })
+
+            });
+
         });
+    }
+
+
+    function findDriver(avl) {
+        let response="";
+        $.ajax({
+            url: baseUrl+"driver",
+            dataType:"json",
+            async:false,
+            success:function (res) {
+                response=res.data.filter((c)=>{
+                    return c.availability==avl;
+                });
+            }
+        });
+        return response;
     }
 
     /*gett car from vehicle num*/
@@ -489,11 +552,14 @@
         return response;
     }
 
-    $('#btnConfirm').click(function (){
+    /*booking burron*/
+    /*$('#btnConfirm').click(function (){
         alert(vehiNum);
         let bookingID = "B-001";
-        let date = "23/02/2023";
-        let time = "12.35";
+        let currentDate = $('#datePicker').val();
+        let dueDate = $('#dueDatePicker').val();
+        let advancePayment = 20000;
+        let isAccepted = "false";
         let vehicleNum = vehiNum;
         let nic = "2";
 
@@ -521,7 +587,7 @@
             }
         })
 
-    });
+    });*/
 
     /*Car sorting process*/
     $('#btnAllCar').click(function (){
@@ -714,6 +780,7 @@
                 console.log(s[0].password);
                 if (userName==s[0].nic && password==s[0].password){
                     checkSignInCus="yes";
+                    loginCustomer=s[0].nic;
                     alert("you can log");
                     let user = {
                         nic:s[0].nic,
