@@ -227,6 +227,9 @@
 
                     <input type="radio" class="btn-check" name="allCar" id="btnLogAdmin" autocomplete="off">
                     <label class="btn btn-outline-primary" for="btnLogAdmin">Admin</label>
+
+                    <input type="radio" class="btn-check" name="allCar" id="btnLogDriver" autocomplete="off">
+                    <label class="btn btn-outline-primary" for="btnLogDriver">Driver</label>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
@@ -630,7 +633,7 @@
         let footerText =
                 "                    <div>\n" +
             "                        <p class=\"text-center\">If you haven't account?<a data-bs-toggle=\"modal\" data-bs-target=\"#cusRegModal\">sign in</a>.</p>" +
-            "<button type=\"button\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#cusRegModal\">\n" +
+            "<button type=\"button\" class=\"btn btn-link\" data-bs-toggle=\"modal\" data-bs-target=\"#cusRegModal\">\n" +
             "  Sign In\n" +
             "</button>\n" +
             "                    </div>\n"
@@ -699,6 +702,11 @@
             $('#signText').empty();
             $('#signText').append(footerText);
             btnLoginProcess(userType);
+        });
+
+        $('#btnLogDriver').click(function (){
+            alert("hi driver");
+            location.href = "DriverManagerPage.html";
         });
     }
 
@@ -855,7 +863,7 @@
             }
 
             $.ajax({
-                url:baseUrl+"car",
+                url:baseUrl+"customer",
                 method: "put",
                 contentType:"application/json",
                 data: JSON.stringify(customer),
@@ -863,6 +871,7 @@
                 success:function (res) {
                     alert("succes uoda");
                     res.message;
+                    loadUserProfile(customer);
                 },
                 error:function (error) {
                     alert(JSON.parse(error.responseText).message);
