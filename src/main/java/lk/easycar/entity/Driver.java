@@ -20,4 +20,6 @@ public class Driver {
     private String name;
     private String address;
     private String contact;
+    private String password;
+    private String availability;
 }
