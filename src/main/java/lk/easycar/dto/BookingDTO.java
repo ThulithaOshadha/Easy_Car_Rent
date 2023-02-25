@@ -17,17 +17,19 @@ import java.time.LocalTime;
 @ToString
 public class BookingDTO {
     private String bookingID;
-    private LocalDate currentDate;
-    private LocalDate dueDate;
+    private String currentDate;
+    private String dueDate;
     private BigDecimal advancePayment;
     @Lob
     private byte[] paymentConfirmation;
     private boolean isAccepted;
+    private BigDecimal total;
 
     private CarDTO car;
     private DriverDTO driver;
     /*private AdminDTO admin;*/
     private CustomerDTO customer;
+
 
 
 }

@@ -111,8 +111,8 @@
             let getDriver = loadDriverDetails(userName);
             if (userName==getDriver[0].license && password==getDriver[0].password){
                 driverUserName=getDriver[0].license;
-                let userName = $('#txtUserName').val("");
-                let  password = $('#txtPassword').val("");
+                $('#txtUserName').val("");
+                $('#txtPassword').val("");
                 $('#loginModalInDriver').modal('hide');
                 loadProfileDetails(getDriver[0]);
                 loadTable(getDriver[0].license);
@@ -148,14 +148,15 @@
     }
 
     function loadTable(user){
-        let b = loadBookingDetails("B-001")
-
-        if (b!=null){
+        let b = loadBookingDetails(user)
+        console.log(b);
+        if (b[0]!=null){
+            alert("not null")
             $('#driverDashTableBody').empty();
             for (let i = 0; i < b.length; i++) {
-                let date = b[i].date;
+                let date = b[i].dueDate;
                 let id = b[i].bookingID;
-                let car = b[i].vehicleNum;
+                let car = b[i].car.vehicleNum;
 
                 let row = "<tr><td>" + date + "</td><td>" + car + "</td><td>" + id + "</td></tr>"
                 $('#driverDashTableBody').append(row);
@@ -173,7 +174,7 @@
             success:function (resp) {
                 response=resp.data.filter((c)=>{
                     alert("book suc");
-                    return c.bookingID==userName;
+                    return c.driver.license==userName;
                 });
             }
 

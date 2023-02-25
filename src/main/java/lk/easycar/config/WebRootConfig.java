@@ -1,10 +1,13 @@
 package lk.easycar.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.json.JsonMapper;
 import lk.easycar.service.impl.BookingServiceImpl;
 import lk.easycar.service.impl.CarServiceImpl;
 import lk.easycar.service.impl.CustomerServiceImpl;
 import lk.easycar.service.impl.DriverServiceImpl;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.Module;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +23,8 @@ public class WebRootConfig {
 
     @Bean
     public ModelMapper modelMapper(){
-        return new ModelMapper();
+        return  new ModelMapper();
+
     }
+
 }

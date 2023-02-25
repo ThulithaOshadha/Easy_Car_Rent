@@ -485,12 +485,18 @@
                 let cus = searchCustomerByUserName(loginCustomer);
                 let customer = cus[0];
 
+                let dateDif = (new Date(dueDate) - new Date(currentDate))/(1000*3600*24);
+                let total = dateDif*(ca[0].dailyPrice);
+                console.log("dateDif");
+                console.log(total);
+
                 var book = {
                     bookingID:bookingID,
                     currentDate:currentDate,
                     dueDate:dueDate,
                     advancePayment:advancePayment,
                     isAccepted:isAccepted,
+                    total:total,
                     car:car,
                     driver:driver,
                     customer:customer

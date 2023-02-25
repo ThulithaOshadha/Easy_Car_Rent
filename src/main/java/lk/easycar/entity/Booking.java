@@ -18,12 +18,13 @@ import java.util.Date;
 public class Booking {
     @Id
     private String bookingID;
-    private LocalDate currentDate;
-    private LocalDate dueDate;
+    private String currentDate;
+    private String dueDate;
     private BigDecimal advancePayment;
     @Lob
     private byte[] paymentConfirmation;
     private boolean isAccepted;
+    private BigDecimal total;
 
 
     @ManyToOne
