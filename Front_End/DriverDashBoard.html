@@ -17,12 +17,12 @@
             <img src="../src/main/java/lk/easycar/assets/pageImg/user.png" class="img-fluid m-4" style="width: 50%" alt="profile">
 
             <div>
-                <h4 class="m-4">Name : Thulitha Oshadha</h4>
+                <!--<h4 class="m-4">Name : Thulitha Oshadha</h4>
                 <h4 class="m-4">NIC : 200033001236</h4>
                 <h4 class="m-4">Address : Galle</h4>
                 <h4 class="m-4">License : 20022</h4>
                 <h4 class="m-4">Contact : 0715699236</h4>
-                <h4 class="m-4">Password : 1234</h4>
+                <h4 class="m-4">Password : 1234</h4>-->
             </div>
         </div>
     </div>
@@ -95,6 +95,7 @@
 
     let baseUrl = "http://localhost:8080/cw/"
 
+    let driverUserName="";
     window.onload = function (){
         loadingLoginModal();
     }
@@ -109,7 +110,13 @@
 
             let getDriver = loadDriverDetails(userName);
             if (userName==getDriver[0].license && password==getDriver[0].password){
-                alert("correct driver");
+                driverUserName=getDriver[0].license;
+                let userName = $('#txtUserName').val("");
+                let  password = $('#txtPassword').val("");
+                $('#loginModalInDriver').modal('hide');
+                loadProfileDetails(getDriver[0]);
+                loadTable(getDriver[0].license);
+
             }
         })
 
@@ -129,6 +136,57 @@
         });
         return response;
     }
+
+    function loadProfileDetails(driver){
+        let userInfo = "<h4 class=\"m-4\">Name : "+driver.name+"</h4>\n" +
+            "                <h4 class=\"m-4\">Address : "+driver.address+"</h4>\n" +
+            "                <h4 class=\"m-4\">License : "+driver.license+"</h4>\n" +
+            "                <h4 class=\"m-4\">Contact : "+driver.contact+"</h4>\n" +
+            "                <h4 class=\"m-4\">Password : "+driver.password+"</h4>"
+
+        $('#driverDashBoardContext>div:nth-child(1)>div').append(userInfo);
+    }
+
+    function loadTable(user){
+        //let b = loadBookingDetails(user)
+
+        $('#driverDashTable').empty();
+
+        $.ajax({
+            url:baseUrl+"booking",
+            success:function (res) {
+                for (let book of res.data) {
+                    let date = book.date;
+                    let id = book.bookingID;
+                    let car = book.vehicleNum;
+
+                    let row = "<tr><td>" + date + "</td><td>" + car + "</td><td>" + id + "</td></tr>"
+                    $('#driverDashTable').append(row);
+                }
+            }
+        })
+
+
+
+    }
+
+    function loadBookingDetails(userName) {
+        let response="";
+        $.ajax({
+            url:baseUrl+"booking",
+            dataType:"json",
+            async:false,
+            success:function (resp) {
+                response=resp.data.filter((c)=>{
+                    return c.bookingID=="B-001";
+                });
+            }
+
+        });
+        return response;
+    }
+
+
 
 </script>
 

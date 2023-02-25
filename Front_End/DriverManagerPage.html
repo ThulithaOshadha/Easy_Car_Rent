@@ -57,6 +57,14 @@
         <input type="text" class="form-control" id="txtContact" placeholder="07111222444" name="contact">
         <label for="txtContact">Contact No :</label>
       </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="txtPassword" placeholder="07111222444" name="password">
+        <label for="txtPassword">Password :</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="txtAvailability" placeholder="07111222444" name="availability">
+        <label for="txtAvailability">Availability :</label>
+      </div>
       <div class="form-group mb-3">
         <label for="exampleFormControlFile1">Upload Driving License</label>
         <input type="file" class="form-control-file" id="exampleFormControlFile1">
@@ -78,6 +86,8 @@
     <th scope="col">Name</th>
     <th scope="col">Address</th>
     <th scope="col">Contact No</th>
+    <th scope="col">Password</th>
+    <th scope="col">Availability</th>
   </tr>
   </thead>
   <tbody id="driverTableBody">
@@ -144,8 +154,10 @@
           let name = d.name;
           let address = d.address;
           let contact = d.contact;
+          let password = d.password;
+          let availability = d.availability;
 
-          let row = "<tr><td>" + license + "</td><td>" + name + "</td><td>" + address + "</td><td>" + contact + "</td></tr>"
+          let row = "<tr><td>" + license + "</td><td>" + name + "</td><td>" + address + "</td><td>" + contact + "</td><td>" + password + "</td><td>" + availability + "</td></tr>"
           $('#driverTableBody').append(row);
 
         }
@@ -161,12 +173,16 @@
       let name = $("#txtName").val();
       let address = $("#txtAddress").val();
       let contact = $("#txtContact").val();
+      let password = $("#txtPassword").val();
+      let availability = $("#txtAvailability").val();
 
       var driver = {
         license:license,
         name:name,
         address:address,
-        contact:contact
+        contact:contact,
+        password:password,
+        availability:availability
       }
       $.ajax({
         url:baseUrl+"driver",
@@ -201,6 +217,8 @@
       let name = $(this).children(":eq(1)").text();
       let address = $(this).children(":eq(2)").text();
       let contact = $(this).children(":eq(3)").text();
+      let password = $(this).children(":eq(4)").text();
+      let availability = $(this).children(":eq(5)").text();
 
 
 
@@ -208,6 +226,8 @@
       $('#txtName').val(name);
       $('#txtAddress').val(address);
       $('#txtContact').val(contact);
+      $('#txtPassword').val(password);
+      $('#txtAvailability').val(availability);
 
     });
   };
@@ -217,6 +237,8 @@
     $('#txtName').val("");
     $('#txtAddress').val("");
     $('#txtContact').val("");
+    ('#txtPassword').val("");
+    $('#txtAvailability').val("");
   }
 
 </script>

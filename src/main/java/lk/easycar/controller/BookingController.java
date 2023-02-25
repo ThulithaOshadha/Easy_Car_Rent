@@ -18,4 +18,12 @@ public class BookingController {
         service.addBooking(dto);
         return new ResponseUtil("ok","",null);
     }
+    @GetMapping
+    public ResponseUtil getAllBookings(){
+        return new ResponseUtil("ok","",service.getAllBooking());
+    }
+    public ResponseUtil updateBooking(@RequestBody BookingDTO dto){
+        service.updateBooking(dto);
+        return new ResponseUtil("ok","updated booking",null);
+    }
 }

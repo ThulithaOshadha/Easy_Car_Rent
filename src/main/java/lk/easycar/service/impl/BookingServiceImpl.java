@@ -5,10 +5,12 @@ import lk.easycar.entity.Booking;
 import lk.easycar.repo.BookingRepo;
 import lk.easycar.service.BookingService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 
 @Service
 @Transactional
@@ -20,5 +22,23 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void addBooking(BookingDTO dto) {
         repo.save(mapper.map(dto, Booking.class));
+    }
+
+    @Override
+    public void updateBooking(BookingDTO dto) {
+        if (!repo.existsById(dto.getBookingID())){
+            throw new RuntimeException(("wrong booking id"));
+        }
+        repo.save(mapper.map(dto,Booking.class));
+    }
+
+    @Override
+    public void deleteBooking(String bookingID) {
+
+    }
+
+    @Override
+    public ArrayList<BookingDTO> getAllBooking() {
+        return mapper.map(repo.findAll(),new TypeToken<ArrayList<BookingDTO>>(){}.getType());
     }
 }
