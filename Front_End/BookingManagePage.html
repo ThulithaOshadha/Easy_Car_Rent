@@ -12,10 +12,196 @@
 <body>
 
 <section>
-  <div class="row col-6">
+  <div class="row col-4 m-4">
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+      <input type="radio" class="btn-check" name="booking" id="btnRequested" autocomplete="on" checked>
+      <label class="btn btn-outline-primary" for="btnRequested">Requested Booking</label>
 
+      <input type="radio" class="btn-check" name="booking" id="btnAccepted" autocomplete="off">
+      <label class="btn btn-outline-primary" for="btnAccepted">Accepted Booking</label>
+
+    </div>
+  </div>
+  <div class="row col-10 m-5">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Booking ID</th>
+        <th scope="col">Date</th>
+        <th scope="col">Car</th>
+        <th scope="col">Customer</th>
+        <th scope="col">Damage Waiver</th>
+        <th scope="col">Booking Amount</th>
+      </tr>
+      </thead>
+      <tbody id="bookingTable">
+
+      </tbody>
+    </table>
   </div>
 </section>
+
+<!--modal-->
+<div class="modal fade" id="bookingInfoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Booking Data</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="bookingInfoModalBody" class="modal-body">
+        <div class="col-10 m-2">
+          <div class="form-floating m-2">
+            <input type="text" class="form-control" id="txtBookingID" placeholder="name@example.com">
+            <label for="txtBookingID">Email address</label>
+          </div>
+          <div class="form-floating m-2">
+            <input type="text" class="form-control" id="txtCurrentDate" placeholder="Password">
+            <label for="txtCurrentDate">Password</label>
+          </div>
+          <div class="form-floating m-2">
+            <input type="text" class="form-control" id="txtDuetDate" placeholder="Password">
+            <label for="txtDuetDate">Password</label>
+          </div>
+
+        </div>
+        <div class="col-10 m-2">
+          <div class="form-floating m-2">
+            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating m-2">
+            <input type="text" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+          </div>
+          <div class="form-floating m-2">
+            <input type="text" class="form-control" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+          </div>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="btnConfirm" type="button" class="btn btn-primary">Accepted Booking</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+
+<script>
+
+  let baseUrl = "http://localhost:8080/cw/"
+
+  loadBookingTable("false");
+  //load();
+  let bookingType = "false";
+  $('#btnRequested').click(function (){
+    bookingType="false";
+    loadBookingTable(bookingType);
+  });
+  $('#btnAccepted').click(function (){
+    bookingType="true";
+    loadBookingTable(bookingType);
+  });
+  function loadBookingTable(type) {
+
+    let booking = searchBooking(type);
+    console.log("booking");
+    console.log(booking);
+    loadTable(booking)
+
+    /*for (let i = 0; i < ; i++) {
+
+    }*/
+  }
+
+  function searchBooking(type){
+    //console.log("is "+isAccepted);
+    let response = "";
+    /*$.ajax({
+      url:baseUrl+"booking?accepted="+isAccepted,
+      dataType:"json",
+      async:false,
+      success:function (res) {
+        alert("");
+        console.log("res.data");
+        console.log(res.data);
+        console.log(res);
+        //loadTable(res);
+
+        response=res.data.filter((c)=>{
+          console.log("c");
+          console.log(res.data);
+          /!*loadTable(res.data)*!/
+          return c.accepted==isAccepted;
+        })
+      }
+    });*/
+
+    $.ajax({
+      url:baseUrl+"booking",
+      dataType:"json",
+      async:false,
+      success:function (resp) {
+        alert();
+        response=resp.data.filter((c)=>{
+          return c.accepted==type;
+        });
+      }
+
+    });
+    return response;
+  }
+  function loadTable(c) {
+    console.log("car table");
+    console.log(c)
+
+    $('#bookingTable').empty();
+
+        for (let car of c) {
+          console.log("car");
+          console.log(car);
+          let bookingID = car.bookingID;
+          let carID = car.car.vehicleNum;
+          let customerID = car.customer.nic;
+          let date = car.dueDate;
+          let bookingAmount = car.total;
+          let dmgWavier = car.car.vehicleType;
+          if (dmgWavier=="Luxury"){
+            dmgWavier=20000;
+          }else if (dmgWavier=="Premium"){
+            dmgWavier=15000;
+          }else {
+            dmgWavier=10000;
+          }
+
+          let row = "<tr><td>" + bookingID + "</td><td>" + date + "</td><td>" + carID + "</td><td>" + customerID + "</td><td>" + dmgWavier + "</td><td>" + bookingAmount + "</td></tr>"
+          $('#bookingTable').append(row);
+          blindRowClickEventsCar();
+
+        }
+        //blindRowClickEventsCar();
+
+
+  }
+  function blindRowClickEventsCar() {
+    $('#bookingTable>tr').click(function (){
+      $('#bookingInfoModal').modal('show');
+    })
+  }
+
+
+
+
+</script>
 
 </body>
 </html>

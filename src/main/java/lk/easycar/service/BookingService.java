@@ -12,4 +12,6 @@ public interface BookingService {
     public void updateBooking(BookingDTO dto);
     public void deleteBooking(String bookingID);
     public ArrayList<BookingDTO> getAllBooking();
+
+    public BookingDTO searchBookingByAccepted(String type);
 }

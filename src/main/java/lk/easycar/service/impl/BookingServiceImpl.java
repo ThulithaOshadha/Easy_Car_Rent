@@ -41,4 +41,13 @@ public class BookingServiceImpl implements BookingService {
     public ArrayList<BookingDTO> getAllBooking() {
         return mapper.map(repo.findAll(),new TypeToken<ArrayList<BookingDTO>>(){}.getType());
     }
+
+    @Override
+    public BookingDTO searchBookingByAccepted(String type) {
+        Booking booking = repo.findBookingsByAcceptedEquals(type);
+        if (booking!=null){
+            return mapper.map(booking,BookingDTO.class);
+        }
+        return null;
+    }
 }

@@ -23,8 +23,15 @@ public class BookingController {
         return new ResponseUtil("ok","",service.getAllBooking());
     }
 
+    @PutMapping
     public ResponseUtil updateBooking(@RequestBody BookingDTO dto){
         service.updateBooking(dto);
         return new ResponseUtil("ok","updated booking",null);
+    }
+
+    @GetMapping(params = {"accepted"})
+    public ResponseUtil searchBookingFromIsAccepted(String accepted){
+        System.out.println("booking controler");
+        return new ResponseUtil("ok","",service.searchBookingByAccepted(accepted));
     }
 }

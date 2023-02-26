@@ -479,11 +479,11 @@
 
             $('#btnConfirm').click(function (){
                 alert(vehiNum);
-                let bookingID = "B-005";
+                let bookingID = "B-003";
                 let currentDate = $('#datePicker').val();
                 let dueDate = $('#dueDatePicker').val();
                 let advancePayment = 20000;
-                let isAccepted = "false";
+                let isAccepted = "true";
                 let car = ca[0];
                 let d = "";
                 let driver = "";
@@ -509,7 +509,7 @@
                     currentDate:currentDate,
                     dueDate:dueDate,
                     advancePayment:advancePayment,
-                    isAccepted:isAccepted,
+                    accepted:isAccepted,
                     total:total,
                     car:car,
                     driver:driver,

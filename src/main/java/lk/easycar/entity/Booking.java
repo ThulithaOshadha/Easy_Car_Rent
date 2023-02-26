@@ -23,7 +23,7 @@ public class Booking {
     private BigDecimal advancePayment;
     @Lob
     private byte[] paymentConfirmation;
-    private boolean isAccepted;
+    private String accepted;
     private BigDecimal total;
 
 

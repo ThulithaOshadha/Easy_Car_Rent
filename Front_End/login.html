@@ -93,9 +93,10 @@
       dataType:"json",
       async:false,
       success:function (resp) {
-        response=resp.data.filter((c)=>{
+        /*response=resp.data.filter((c)=>{
           return c.nic==nic;
-        });
+        });*/
+        response=resp.data;
       }
 
     });
