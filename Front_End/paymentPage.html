@@ -81,6 +81,22 @@
   </div>
   <div class="box-2">
     <div class="box-inner-2">
+
+      <div >
+        <label  class="box py-2 first">
+          <h6>Customer NIC </h6>
+          <h5>CAB-4489</h5>
+        </label>
+        <label class="box py-2 second">
+          <h6>Customer Name </h6>
+          <h5>CAB-4489</h5>
+        </label>
+        <label class="box py-2 third">
+          <h6>Damage waiver </h6>
+          <h5>Rs.8000</h5>
+        </label>
+      </div>
+
       <div>
         <p class="fw-bold">Payment Details</p>
         <p class="dis mb-3">Complete your purchase by providing your payment details</p>
@@ -88,13 +104,13 @@
       <form id="paymentForm" action="">
         <div class="mb-3">
           <p class="dis fw-bold mb-2">Damage</p>
-          <label>
-            <input type="checkbox" class="radio m-2" value="yes" name="damage" />Yes
-          </label>
-          <label>
-            <input type="checkbox" class="radio m-2" value="no" name="damage" />No
-          </label>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+            <label class="form-check-label" for="flexSwitchCheckDefault">Car Damage Condition</label>
+          </div>
         </div>
+        <input type="text" class="form-control" id="txtDamageAmount" aria-describedby="emailHelp" name="userName">
+
 
         <!--select payment type-->
         <div class="mb-3">
@@ -158,6 +174,11 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
+<script>
+
+  let baseUrl = "http://localhost:8080/cw/"
+
+</script>
 
 </body>
 </html>

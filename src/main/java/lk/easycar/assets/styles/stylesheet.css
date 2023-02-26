@@ -259,7 +259,7 @@ Home page*/
     top: 16px;
     left: 39%;
 }
-#adminTaskContext>div:hover{
+#adminTaskContext>div>div:hover{
     box-shadow: rgba(10, 203, 238, 0.4) 0px 0px 0px 2px, rgba(12, 120, 232, 0.65) 0px 4px 6px -1px, rgba(4, 74, 232, 0.89) 0px 1px 0px inset;
     cursor: pointer;
 }

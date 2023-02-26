@@ -472,16 +472,30 @@
             $('#perMonthPrice').append(perMonth);
 
 
+            let checkDriverInvolve="";
+            $('#driverSelectSwitch').click(function (){
+                checkDriverInvolve="yes";
+            })
+
             $('#btnConfirm').click(function (){
                 alert(vehiNum);
-                let bookingID = "B-001";
+                let bookingID = "B-005";
                 let currentDate = $('#datePicker').val();
                 let dueDate = $('#dueDatePicker').val();
                 let advancePayment = 20000;
                 let isAccepted = "false";
                 let car = ca[0];
-                let d = findDriver("true");
-                let driver = d[0];
+                let d = "";
+                let driver = "";
+                if (checkDriverInvolve=="yes"){
+                    d = findDriver("true");
+                    driver = d[0];
+                }else{
+                    driver=null;
+                }
+                console.log("driver after");
+                console.log(driver)
+
                 let cus = searchCustomerByUserName(loginCustomer);
                 let customer = cus[0];
 

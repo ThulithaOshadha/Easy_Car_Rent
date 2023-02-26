@@ -297,8 +297,6 @@ input[type="radio"] {
     .box-2 {
         max-width: 400px;
         padding: 20px 10px;
-        position: relative;
-        top: 360px;
     }
 
     ::placeholder {
