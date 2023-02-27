@@ -5,6 +5,7 @@
     <title>Booking_Manage_Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../src/main/java/lk/easycar/assets/styles/stylesheet.css">
+    <link rel="stylesheet" href="../src/main/java/lk/easycar/assets/styles/payment.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 
@@ -85,6 +86,178 @@
     </div>
   </div>
 </div>
+<!--Payment Modal-->
+<div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel1">Booking Data</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="paymentModalBody" class="modal-body">
+        <div class="container d-lg-flex">
+          <div class="box-1 bg-light user">
+            <div id="userProfile" class="d-flex align-items-center mb-3">
+              <img src="https://images.pexels.com/photos/4925916/pexels-photo-4925916.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                   class="pic rounded-circle" alt="">
+              <p class="ps-2 name">Thulitha Oshadha</p>
+            </div>
+            <div id="carProfile" class="box-inner-1 pb-3 mb-3 ">
+              <div class="d-flex justify-content-between mb-3 userdetails">
+                <p class="fw-bold">Toyota-Vitz</p>
+                <!--<p class="fw-lighter"><span class="fas fa-dollar-sign"></span>33.00+</p>-->
+              </div>
+              <div id="my" class="carousel slide carousel-fade img-details" data-bs-ride="carousel"
+                   data-bs-interval="2000">
+                <div class="carousel-indicators">
+                  <button type="button" data-bs-target="#my" data-bs-slide-to="0" class="active"
+                          aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#my" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#my" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="https://images.pexels.com/photos/100582/pexels-photo-100582.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                         class="d-block w-100">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="https://images.pexels.com/photos/258092/pexels-photo-258092.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                         class="d-block w-100 h-100">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="https://images.pexels.com/photos/7974/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+                         class="d-block w-100">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#my" data-bs-slide="prev">
+                  <div class="icon">
+                    <span class="fas fa-arrow-left"></span>
+                  </div>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#my" data-bs-slide="next">
+                  <div class="icon">
+                    <span class="fas fa-arrow-right"></span>
+                  </div>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+              <!--<p class="dis info my-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate quos ipsa
+                sed officiis odio
+              </p>-->
+              <div >
+                <label  class="box py-2 first">
+                  <h6>Vehicle Number </h6>
+                  <h5>CAB-4489</h5>
+                </label>
+                <label class="box py-2 second">
+                  <h6>Vehicle Type </h6>
+                  <h5>CAB-4489</h5>
+                </label>
+                <label class="box py-2 third">
+                  <h6>Distance(km) </h6>
+                  <h5>124</h5>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="box-2">
+            <div class="box-inner-2">
+
+              <div >
+                <label  class="box py-2 first">
+                  <h6>Customer NIC </h6>
+                  <h5>CAB-4489</h5>
+                </label>
+                <label class="box py-2 second">
+                  <h6>Customer Name </h6>
+                  <h5>CAB-4489</h5>
+                </label>
+                <label class="box py-2 third">
+                  <h6>Damage waiver </h6>
+                  <h5>Rs.8000</h5>
+                </label>
+              </div>
+
+              <div>
+                <p class="fw-bold">Payment Details</p>
+                <p class="dis mb-3">Complete your purchase by providing your payment details</p>
+              </div>
+              <form id="paymentForm" action="">
+                <div class="mb-3">
+                  <p class="dis fw-bold mb-2">Damage</p>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Car Damage Condition</label>
+                  </div>
+                </div>
+                <input type="text" class="form-control" id="txtDamageAmount" aria-describedby="emailHelp" name="userName">
+
+
+                <!--select payment type-->
+                <div class="mb-3">
+                  <p class="dis fw-bold mb-2">Select Payment Type</p>
+                  <label>
+                    <input type="checkbox" class="radio m-2" value="1" name="payment" />Card
+                  </label>
+                  <label>
+                    <input type="checkbox" class="radio m-2" value="1" name="payment" />Cash
+                  </label>
+                </div>
+
+                <div>
+
+                  <div class="address">
+                    <!--<p class="dis fw-bold mb-3">Billing address</p>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected hidden>United States</option>
+                      <option value="1">India</option>
+                      <option value="2">Australia</option>
+                      <option value="3">Canada</option>
+                    </select>-->
+                    <!--<div class="d-flex">
+                      <input class="form-control zip" type="text" placeholder="ZIP">
+                      <input class="form-control state" type="text" placeholder="State">
+                    </div>
+                    <div class=" my-3">
+                      <p class="dis fw-bold mb-2">VAT Number</p>
+                      <div class="inputWithcheck">
+                        <input class="form-control" type="text" value="GB012345B9">
+                        <span class="fas fa-check"></span>
+
+                      </div>
+                    </div>-->
+                    <!--<div class="d-flex flex-column dis">
+                      <div class="d-flex align-items-center justify-content-between mb-2">
+                        <p>Subtotal</p>
+                        <p><span class="fas fa-dollar-sign"></span>33.00</p>
+                      </div>
+                      <div class="d-flex align-items-center justify-content-between mb-2">
+                        <p>VAT<span>(20%)</span></p>
+                        <p><span class="fas fa-dollar-sign"></span>2.80</p>
+                      </div>
+                      <div class="d-flex align-items-center justify-content-between mb-2">
+                        <p class="fw-bold">Total</p>
+                        <p class="fw-bold"><span class="fas fa-dollar-sign"></span>35.80</p>
+                      </div>-->
+                    <div class="btn btn-primary mt-2">Pay<span class="fas fa-dollar-sign px-1"></span>Rs.8500
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer row">
+        <button id="btnConfirmPayment" type="button" class="btn btn-primary col-5">Accepted Booking</button>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 
 
@@ -114,7 +287,7 @@
     let booking = searchBooking(type);
     console.log("booking");
     console.log(booking);
-    loadTable(booking)
+    loadTable(booking,type)
 
     /*for (let i = 0; i < ; i++) {
 
@@ -157,9 +330,9 @@
     });
     return response;
   }
-  function loadTable(c) {
+  function loadTable(c,type) {
     console.log("car table");
-    console.log(c)
+    console.log(type)
 
     $('#bookingTable').empty();
 
@@ -182,46 +355,51 @@
 
           let row = "<tr><td>" + bookingID + "</td><td>" + date + "</td><td>" + carID + "</td><td>" + customerID + "</td><td>" + dmgWavier + "</td><td>" + bookingAmount + "</td></tr>"
           $('#bookingTable').append(row);
-          blindRowClickEventsCar();
+          blindRowClickEventsCar(type);
 
         }
 
 
 
   }
-  function blindRowClickEventsCar() {
+  function blindRowClickEventsCar(type) {
     $('#bookingTable>tr').click(function (){
-      $('#bookingInfoModal').modal('show');
-      //loadtextFields(b);
-      let bookingID=$(this).children(":eq(0)").text();
-      let date=$(this).children(":eq(1)").text();
-      let car=$(this).children(":eq(2)").text();
-      let customer=$(this).children(":eq(3)").text();
-      let damageWaiver=$(this).children(":eq(4)").text();
-      let bookingAmount=$(this).children(":eq(5)").text();
+      if (type=="false"){
+        $('#bookingInfoModal').modal('show');
+        //loadtextFields(b);
+        let bookingID=$(this).children(":eq(0)").text();
+        let date=$(this).children(":eq(1)").text();
+        let car=$(this).children(":eq(2)").text();
+        let customer=$(this).children(":eq(3)").text();
+        let damageWaiver=$(this).children(":eq(4)").text();
+        let bookingAmount=$(this).children(":eq(5)").text();
 
-      $('#txtBookingID').val(bookingID);
-      $('#txtDuetDate').val(date);
-      $('#txtCarID').val(car);
-      $('#txtCustomer').val(customer);
-      $('#txtTotal').val(bookingAmount);
-      $('#txtDamageAmount').val(damageWaiver);
+        $('#txtBookingID').val(bookingID);
+        $('#txtDuetDate').val(date);
+        $('#txtCarID').val(car);
+        $('#txtCustomer').val(customer);
+        $('#txtTotal').val(bookingAmount);
+        $('#txtDamageAmount').val(damageWaiver);
 
-      $('#btnConfirm').click(function (){
-        alert();
-        $.ajax({
-          url:baseUrl+"booking?bookingID="+bookingID,
-          method:"put",
-          dataType: "json",
-          async: false,
-          success:function (res) {
-            alert("update accepted");
+        $('#btnConfirm').click(function (){
+          alert();
+          $.ajax({
+            url:baseUrl+"booking?bookingID="+bookingID,
+            method:"put",
+            dataType: "json",
+            async: false,
+            success:function (res) {
+              alert("update accepted");
 
-          }
+            }
+
+          })
 
         })
+      }else if (type=="true"){
+        $('#paymentModal').modal('show');
+      }
 
-      })
 
     })
   }
