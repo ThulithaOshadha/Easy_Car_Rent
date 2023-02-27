@@ -207,17 +207,25 @@
       $('#txtTotal').val(bookingAmount);
       $('#txtDamageAmount').val(damageWaiver);
 
+      $('#btnConfirm').click(function (){
+        alert();
+        $.ajax({
+          url:baseUrl+"booking?bookingID="+bookingID,
+          method:"put",
+          dataType: "json",
+          async: false,
+          success:function (res) {
+            alert("update accepted");
+
+          }
+
+        })
+
+      })
+
     })
   }
-  $('#btnConfirm').click(function (){
-    alert();
-    $.ajax({
-      url:baseUrl+"booking",
-      method:"put",
 
-    })
-
-  })
 
 
 

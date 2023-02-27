@@ -53,6 +53,7 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void updateAcceptedBooking(String id) {
+        System.out.println(id);
         repo.updateAcceptedBooking(id);
     }
 }

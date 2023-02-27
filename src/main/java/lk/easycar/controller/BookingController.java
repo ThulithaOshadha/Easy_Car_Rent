@@ -34,4 +34,11 @@ public class BookingController {
         System.out.println("booking controler");
         return new ResponseUtil("ok","",service.searchBookingByAccepted(accepted));
     }
+    @PutMapping(params = {"bookingID"})
+    public ResponseUtil updateBookingAccepted(String bookingID){
+        System.out.println(bookingID);
+        service.updateAcceptedBooking(bookingID);
+        return new ResponseUtil("ok","update accepted",null);
+        //return new ResponseUtil("ok","",service.updateAcceptedBooking(bookingID));
+    }
 }
