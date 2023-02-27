@@ -14,4 +14,5 @@ public interface BookingService {
     public ArrayList<BookingDTO> getAllBooking();
 
     public BookingDTO searchBookingByAccepted(String type);
+    public void updateAcceptedBooking(String id);
 }

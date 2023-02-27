@@ -53,36 +53,34 @@
         <div class="col-10 m-2">
           <div class="form-floating m-2">
             <input type="text" class="form-control" id="txtBookingID" placeholder="name@example.com">
-            <label for="txtBookingID">Email address</label>
-          </div>
-          <div class="form-floating m-2">
-            <input type="text" class="form-control" id="txtCurrentDate" placeholder="Password">
-            <label for="txtCurrentDate">Password</label>
+            <label for="txtBookingID">Booking ID :</label>
           </div>
           <div class="form-floating m-2">
             <input type="text" class="form-control" id="txtDuetDate" placeholder="Password">
-            <label for="txtDuetDate">Password</label>
+            <label for="txtDuetDate">Hand Over Date :</label>
           </div>
 
         </div>
         <div class="col-10 m-2">
           <div class="form-floating m-2">
-            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
+            <input type="text" class="form-control" id="txtCarID" placeholder="Password">
+            <label for="txtCarID">Vehicle ID :</label>
           </div>
           <div class="form-floating m-2">
-            <input type="text" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <input type="text" class="form-control" id="txtTotal" placeholder="Password">
+            <label for="txtTotal">Driver ID :</label>
           </div>
           <div class="form-floating m-2">
-            <input type="text" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <input type="text" class="form-control" id="txtCustomer" placeholder="Password">
+            <label for="txtCustomer">Customer NIC :</label>
           </div>
 
         </div>
       </div>
-      <div class="modal-footer">
-        <button id="btnConfirm" type="button" class="btn btn-primary">Accepted Booking</button>
+      <div class="modal-footer row">
+        <button id="btnConfirm" type="button" class="btn btn-primary col-5">Accepted Booking</button>
+        <button id="btnReject" type="button" class="btn btn-danger col-5">Reject Booking</button>
+
       </div>
     </div>
   </div>
@@ -151,7 +149,6 @@
       dataType:"json",
       async:false,
       success:function (resp) {
-        alert();
         response=resp.data.filter((c)=>{
           return c.accepted==type;
         });
@@ -188,15 +185,40 @@
           blindRowClickEventsCar();
 
         }
-        //blindRowClickEventsCar();
+
 
 
   }
   function blindRowClickEventsCar() {
     $('#bookingTable>tr').click(function (){
       $('#bookingInfoModal').modal('show');
+      //loadtextFields(b);
+      let bookingID=$(this).children(":eq(0)").text();
+      let date=$(this).children(":eq(1)").text();
+      let car=$(this).children(":eq(2)").text();
+      let customer=$(this).children(":eq(3)").text();
+      let damageWaiver=$(this).children(":eq(4)").text();
+      let bookingAmount=$(this).children(":eq(5)").text();
+
+      $('#txtBookingID').val(bookingID);
+      $('#txtDuetDate').val(date);
+      $('#txtCarID').val(car);
+      $('#txtCustomer').val(customer);
+      $('#txtTotal').val(bookingAmount);
+      $('#txtDamageAmount').val(damageWaiver);
+
     })
   }
+  $('#btnConfirm').click(function (){
+    alert();
+    $.ajax({
+      url:baseUrl+"booking",
+      method:"put",
+
+    })
+
+  })
+
 
 
 

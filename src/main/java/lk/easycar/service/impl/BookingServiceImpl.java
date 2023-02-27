@@ -50,4 +50,9 @@ public class BookingServiceImpl implements BookingService {
         }
         return null;
     }
+
+    @Override
+    public void updateAcceptedBooking(String id) {
+        repo.updateAcceptedBooking(id);
+    }
 }
