@@ -13,7 +13,7 @@
 
 <div id="driverDashBoardContext" class="row">
     <!--Driver Profile-->
-    <div class="col-3 m-3">
+    <div class="col-3 m-10">
             <img src="../src/main/java/lk/easycar/assets/pageImg/user.png" class="img-fluid m-4" style="width: 50%" alt="profile">
 
             <div>
@@ -26,7 +26,7 @@
             </div>
         </div>
     </div>
-    <div class="col-8">
+    <div class="col-8 mb-10">
         <table id="driverDashTable" class="table">
             <thead>
             <tr>
@@ -94,7 +94,7 @@
 <script>
 
     let baseUrl = "http://localhost:8080/cw/"
-``
+
     let driverUserName="";
     window.onload = function (){
         loadingLoginModal();
@@ -116,7 +116,7 @@
                 $('#txtPassword').val("");
                 $('#loginModalInDriver').modal('hide');
                 loadProfileDetails(getDriver[0]);
-                loadTable(getDriver[0].license);
+                loadTable(userName);
 
             }
         })
@@ -149,10 +149,10 @@
     }
 
     function loadTable(user){
-        let b = loadBookingDetails(user)
+        let b = loadBookingDetailsByDriver(user)
+        console.log("bbbbb");
         console.log(b);
         if (b[0]!=null){
-            alert("not null")
             $('#driverDashTableBody').empty();
             for (let i = 0; i < b.length; i++) {
                 let date = b[i].dueDate;
@@ -166,17 +166,17 @@
 
     }
 
-    function loadBookingDetails(userName) {
+    function loadBookingDetailsByDriver(userName) {
+        console.log(userName);
         let response="";
         $.ajax({
-            url:baseUrl+"booking",
+            url:baseUrl+"booking?driver_license="+userName,
             dataType:"json",
             async:false,
             success:function (resp) {
-                response=resp.data.filter((c)=>{
-                    alert("book suc");
-                    return c.driver.license==userName;
-                });
+                alert("klklk");
+                response=resp.data;
+
             }
 
         });

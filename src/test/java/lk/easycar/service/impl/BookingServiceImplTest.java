@@ -42,4 +42,10 @@ class BookingServiceImplTest {
         Booking aTrue = repo.findBookingsByAcceptedEquals("false");
         System.out.println(aTrue);
     }
+
+    @Test
+    void findBookingsByDriver_License() {
+        Booking bookingByDriver_license = repo.findBookingByDriver_License("456");
+        System.out.println(bookingByDriver_license);
+    }
 }

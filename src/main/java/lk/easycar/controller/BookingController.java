@@ -41,4 +41,9 @@ public class BookingController {
         return new ResponseUtil("ok","update accepted",null);
         //return new ResponseUtil("ok","",service.updateAcceptedBooking(bookingID));
     }
-}
+
+    @GetMapping(params = {"driver_license"})
+    public ResponseUtil findByBookingsByDriverID(String driver_license){
+        return new ResponseUtil("ok","",service.findBookingsByDriver_License(driver_license));
+    }
+};

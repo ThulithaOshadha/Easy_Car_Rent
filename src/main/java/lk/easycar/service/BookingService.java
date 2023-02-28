@@ -1,6 +1,7 @@
 package lk.easycar.service;
 
 import lk.easycar.dto.BookingDTO;
+import lk.easycar.entity.Booking;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -15,4 +16,5 @@ public interface BookingService {
 
     public BookingDTO searchBookingByAccepted(String type);
     public void updateAcceptedBooking(String id);
+    public BookingDTO findBookingsByDriver_License(String driverLicense);
 }

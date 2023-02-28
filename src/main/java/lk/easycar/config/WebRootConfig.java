@@ -2,10 +2,7 @@ package lk.easycar.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
-import lk.easycar.service.impl.BookingServiceImpl;
-import lk.easycar.service.impl.CarServiceImpl;
-import lk.easycar.service.impl.CustomerServiceImpl;
-import lk.easycar.service.impl.DriverServiceImpl;
+import lk.easycar.service.impl.*;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.Module;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +12,7 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @Import(JPAConfig.class)
-@ComponentScan(basePackageClasses = {CarServiceImpl.class, BookingServiceImpl.class, DriverServiceImpl.class, CustomerServiceImpl.class})
+@ComponentScan(basePackageClasses = {CarServiceImpl.class, BookingServiceImpl.class, DriverServiceImpl.class, CustomerServiceImpl.class, PaymentServiceImpl.class})
 public class WebRootConfig {
     public WebRootConfig(){
         System.out.println("web root");

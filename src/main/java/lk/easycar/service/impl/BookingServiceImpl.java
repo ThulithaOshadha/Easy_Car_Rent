@@ -56,4 +56,14 @@ public class BookingServiceImpl implements BookingService {
         System.out.println(id);
         repo.updateAcceptedBooking(id);
     }
+
+    @Override
+    public BookingDTO findBookingsByDriver_License(String driverLicense) {
+        Booking booking = repo.findBookingByDriver_License(driverLicense);
+        if (!repo.existsById(driverLicense)){
+            throw  new RuntimeException("sdfsdfd");
+        }
+        return mapper.map(booking,BookingDTO.class);
+
+    }
 }

@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/car")
+@RequestMapping("/payment")
 @CrossOrigin
 public class PaymentController {
     @Autowired
     private PaymentService service;
     @PostMapping
-    public ResponseUtil savePayment(@ModelAttribute PaymentDTO dto){
+    public ResponseUtil savePayment(@RequestBody PaymentDTO dto){
         service.savePayment(dto);
         return new ResponseUtil("ok","payment saved",null);
     }

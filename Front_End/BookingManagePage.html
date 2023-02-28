@@ -470,10 +470,10 @@
                 "                <div class=\"mb-3\">\n" +
                 "                  <p class=\"dis fw-bold mb-2\">Select Payment Type</p>\n" +
                 "                  <label>\n" +
-                "                    <input type=\"checkbox\" class=\"radio m-2\" value=\"1\" name=\"payment\" />Card\n" +
+                "                    <input type=\"checkbox\" id=\"cardCheckBox\" class=\"radio m-2\" value=\"1\" name=\"payment\" />Card\n" +
                 "                  </label>\n" +
                 "                  <label>\n" +
-                "                    <input type=\"checkbox\" class=\"radio m-2\" value=\"1\" name=\"payment\" />Cash\n" +
+                "                    <input type=\"checkbox\" id=\"cashCheckBox\ class=\"radio m-2\" value=\"1\" name=\"payment\" />Cash\n" +
                 "                  </label>\n" +
                 "                </div>\n" +
                 "\n" +
@@ -492,17 +492,63 @@
 
         $('#paymentModalBody').append(context);
 
+        //$('#txtDamageAmount').hidden();
+        let damgeAmount=0;
+        let paymentType = "";
 
-        var paymentOB = {
-          bookingID:car.bookingID,
-          booking:car,
-          rent:car.total,
-          account:"266466",
-          paymentMethod:"card",
-          deduction:2000
-        }
-        console.log("paymentOB");
-        console.log(paymentOB);
+        $('#cardCheckBox').change(function (){
+          paymentType="card";
+          alert(paymentType);
+
+        })
+        $('#cashCheckBox').change(function (){
+          paymentType="cash";
+          alert(paymentType)
+        })
+
+
+
+
+
+
+        $('#flexSwitchCheckDefault').change(function (){
+          alert("switch");
+         // $('#txtDamageAmount').show();
+          damgeAmount = $('#txtDamageAmount').val();
+          alert(damgeAmount);
+
+        })
+
+        $('#btnConfirmPayment').click(function (){
+          var paymentOB = {
+            bookingID:car.bookingID,
+            booking:car,
+            rent:car.total,
+            account:"266466",
+            paymentMethod:"card",
+            deduction:3000
+          }
+          console.log("paymentOB");
+          console.log(paymentOB);
+
+          $.ajax({
+            url:baseUrl+"payment",
+            method:"post",
+            contentType:"application/json",
+            data:JSON.stringify(paymentOB),
+            dataType:"json",
+            success:function (res) {
+              alert(res.message);
+            },
+            error:function (error) {
+              let cause = JSON.parse(error.responseText).message;
+              alert(cause);
+            }
+
+          })
+        })
+
+
       }
 
 
