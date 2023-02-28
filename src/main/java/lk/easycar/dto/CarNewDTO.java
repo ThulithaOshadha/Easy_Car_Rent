@@ -20,4 +20,5 @@ public class CarNewDTO {
     private BigDecimal dailyPrice;
     private int freeMileage;
     private boolean available;
+    private String img;
 }

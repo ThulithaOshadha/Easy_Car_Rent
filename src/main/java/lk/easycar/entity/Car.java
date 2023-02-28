@@ -26,4 +26,5 @@ public class Car {
     private BigDecimal dailyPrice;
     private int freeMileage;
     private boolean available;
+    private String img;
 }
