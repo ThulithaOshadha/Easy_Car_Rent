@@ -3,11 +3,13 @@ package lk.easycar.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@ToString
 public class CarNewDTO {
     private String vehicleNum;
     private String model;
@@ -20,5 +22,5 @@ public class CarNewDTO {
     private BigDecimal dailyPrice;
     private int freeMileage;
     private boolean available;
-    private String img;
+    /*private String img;*/
 }

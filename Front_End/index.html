@@ -340,7 +340,7 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
 <script>
-    let baseUrl = "http://localhost:8080/cw/"
+    let baseUrl = "http://localhost:8080/Spring_CW_Easy_Car_Rental_war/"
 
     var vehiNum="";
     var carSort = "all";
@@ -570,43 +570,6 @@
         return response;
     }
 
-    /*booking burron*/
-    /*$('#btnConfirm').click(function (){
-        alert(vehiNum);
-        let bookingID = "B-001";
-        let currentDate = $('#datePicker').val();
-        let dueDate = $('#dueDatePicker').val();
-        let advancePayment = 20000;
-        let isAccepted = "false";
-        let vehicleNum = vehiNum;
-        let nic = "2";
-
-        var book = {
-            bookingID:bookingID,
-            date:date,
-            time:time,
-            nic:nic,
-            vehicleNum:vehicleNum
-        }
-
-        $.ajax({
-            url:baseUrl+"booking",
-            method:"post",
-            contentType:"application/json",
-            data:JSON.stringify(book),
-            dataType: "json",
-            success:function (res) {
-                alert("success booking"+res.message);
-
-            },
-            error:function (error) {
-                let cause = JSON.parse(error.responseText).message;
-                alert(cause);
-            }
-        })
-
-    });*/
-
     /*Car sorting process*/
     $('#btnAllCar').click(function (){
         carSort="all";
@@ -779,6 +742,7 @@
 
         $('#btnLogDriver').click(function (){
             alert("hi driver");
+            cleartextFieldsInLoginModal();
             location.href = "DriverDashBoard.html";
         });
     }
@@ -799,6 +763,7 @@
                 if (userName==s[0].nic && password==s[0].password){
                     checkSignInCus="yes";
                     loginCustomer=s[0].nic;
+                    $('#loginModal').modal('hide');
                     alert("you can log");
                     let user = {
                         nic:s[0].nic,
@@ -822,8 +787,7 @@
                     $('#navbarList').empty();
                     $('#navbarList').append(navs);
 
-                    $('#txtUserName').val("");
-                    $('#txtPassword').val("");
+                    cleartextFieldsInLoginModal();
                     loadUserProfile(user);
                     //$('#navbarList').empty();
                     /*let navs = "<a class=\" active\" aria-current=\"page\" href=\"#\">Home</a>\n" +
@@ -836,7 +800,15 @@
                     alert("wrong username or password");
                 }
             }else if (userType=="admin"){
-                alert("admin can log now");
+                if (userName=="admin" && password=="1234"){
+                    cleartextFieldsInLoginModal();
+                    $('#loginModal').modal('hide');
+                    location.href="admin.html";
+
+
+                }else{
+                    alert("please check the username or password");
+                }
             }else {
                 alert("please select user type");
             }
@@ -954,6 +926,11 @@
         }
 
     });
+
+    function cleartextFieldsInLoginModal(){
+        $('#txtUserName').val("");
+        $('#txtPassword').val("");
+    }
 
 
 

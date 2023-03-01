@@ -5,6 +5,8 @@ import lk.easycar.service.CarService;
 import lk.easycar.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.support.MultipartFilter;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.RequestDispatcher;
@@ -18,7 +20,9 @@ public class CarController {
     private CarService service;
 
     @PostMapping
-    public ResponseUtil saveCar(@ModelAttribute CarDTO dto){
+    public ResponseUtil saveCar(@ModelAttribute CarDTO dto/*, @ModelAttribute MultipartFile img*/){
+
+
         service.saveCars(dto);
         return new ResponseUtil("ok","successfully added",null);
     }

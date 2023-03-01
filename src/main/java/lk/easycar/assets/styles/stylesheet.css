@@ -292,7 +292,7 @@ Home page*/
 }
 
 /*Cars Manage Page*/
-#carsAddingForm{
+/*#carsAddingForm{
     position: relative;
     width: 30vw;
     height: 678px;
@@ -300,13 +300,13 @@ Home page*/
     left: 20%;
     border-radius: 15px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-#carImageImages>img{
+}*/
+/*#carImageImages>img{
     width: 100px;
     height: 100px;
 }
 
-/*Customer Page*/
+!*Customer Page*!
 #customerManagerForm{
     width: 40vw;
     height: 60vh;
@@ -330,14 +330,14 @@ Home page*/
     left: 12%;
     width: 42vw;
     height: 678px;
-}
+}*/
 
-#carTable{
+/*#carTable{
     position: relative;
     left: 7%;
     top: 70px;
     width: 84vw;
-}
+}*/
 
 
 /*Driver Dashboard Context*/

@@ -11,7 +11,7 @@
 </head>
 <body>
 <!--Header-->
-<header>
+<!--<header>
     <ul class="nav justify-content-end shadow p-1 mb-3 bg-e74c3c">
         <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -33,9 +33,102 @@
     </ul>
 
 
-</header>
+</header>-->
 <!--car page image-->
-<form action="" id="carsAddingForm" class="container text-center">
+<section class="row">
+    <div class="col-4">
+        <img id="carAddingImg" src="../src/main/java/lk/easycar/assets/pageImg/carAddingImg.jpg" class="img-fluid">
+    </div>
+    <div class="col-7">
+        <form action="" id="carsAddingForm" >
+            <h2 class="mb-3">Car Management Form</h2>
+            <div class="row g-2">
+                <div class="form-floating mb-3 col-4">
+                    <input class="form-control" id="txtVehicleNo" placeholder="Vehicle No :" name="vehicleNum">
+                    <label for="txtVehicleNo">Vehicle No :</label>
+                </div>
+                <div class="form-floating mb-3 col-4">
+                    <input class="form-control" id="txtModel" placeholder="Model" name="model">
+                    <label for="txtModel">Model :</label>
+                </div>
+                <div class="form-floating mb-3 col-4">
+                    <select id="txtVehicleType" class="form-select form-select-lg mb-3" name="vehicleType">
+                        <option selected>Vehicle Type</option>
+                        <option value="General">General</option>
+                        <option value="Premium">Premium</option>
+                        <option value="Luxury">Luxury</option>
+                    </select>
+                </div>
+                <div class="form-floating mb-3 col-4">
+                    <select id="txtTransmission" class="form-select form-select-lg mb-3" name="transmissionType">
+                        <option selected>Transmission Type</option>
+                        <option value="Auto">Auto</option>
+                        <option value="Manual">Manual</option>
+                    </select>
+                </div>
+
+                <div class="form-floating mb-3 col-4">
+                    <input class="form-control" id="txtColor" placeholder="Color :" name="color">
+                    <label for="txtColor">Color :</label>
+                </div>
+                <div class="form-floating mb-3 col-4">
+                    <select id="txtFuelType" class="form-select form-select-lg mb-3">
+                        <option selected>Fuel Type</option>
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Hybrid">Hybrid</option>
+                    </select>
+                </div>
+
+                <div class="form-floating mb-3 col-4">
+                    <input class="form-control" id="txtPassengers" placeholder="Passengers" name="passengers">
+                    <label for="txtPassengers">Passengers : </label>
+                </div>
+                <div class="form-floating mb-3 col-4">
+                    <input class="form-control" id="txtMonthlyPrice" placeholder="Monthly Price" name="monthlyPrice">
+                    <label for="txtMonthlyPrice">Monthly Price :</label>
+                </div>
+
+                <div class="form-floating mb-3 col-4">
+                    <input class="form-control" id="txtDailyPrice" placeholder="Daily Price :" name="dailyPrice">
+                    <label for="txtDailyPrice">Daily Price :</label>
+                </div>
+                <div class="form-floating mb-3 col-4">
+                    <input class="form-control" id="txtFreeMileage" placeholder="Free Mileage" name="freeMileage">
+                    <label for="txtFreeMileage">Free Mileage :</label>
+                </div>
+                <div class="form-group mb-3 col-4">
+                    <label for="exampleFormControlFile1">Upload Car Images</label>
+                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="img">
+                </div>
+                <div class="col-auto col-4">
+                    <button type="button" id="btnAddPhoto" class="btn btn-primary mb-3">Add photo</button>
+                </div>
+
+                <div id="carImageImages" style="display: inline-block">
+                    <!--<img src="" class="img-thumbnail"style="width: 100px" alt="...">
+                    <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">
+                    <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">
+                    <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">-->
+                </div>
+
+                <div class="form-floating mb-3">
+                    <label for="txtAvailability">Availability : </label>
+                    <input type="" class="form-control" id="txtAvailability" placeholder="Availability" name="available">
+
+                </div>
+
+                <div id="saveButtonArea" class="col mb-lg-5">
+                    <button id="btnCarSave" type="button" class="position-absolute top-110 start-40 btn btn-primary mb-2 col-10" >Save</button>
+                </div>
+
+            </div>
+
+
+        </form>
+    </div>
+</section>
+<!--<form action="" id="carsAddingForm" class="container text-center">
     <h2 class="mb-3">Car Management Form</h2>
     <div class="row g-2">
         <div class="form-floating mb-3 col-6">
@@ -82,17 +175,17 @@
         </div>
         <div class="form-group mb-3 col-6">
             <label for="exampleFormControlFile1">Upload Car Images</label>
-            <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            <input type="file" class="form-control-file" id="exampleFormControlFile1" name="img">
         </div>
         <div class="col-auto col-6">
             <button type="button" id="btnAddPhoto" class="btn btn-primary mb-3">Add photo</button>
         </div>
 
         <div id="carImageImages" style="display: inline-block">
-            <!--<img src="" class="img-thumbnail"style="width: 100px" alt="...">
+            &lt;!&ndash;<img src="" class="img-thumbnail"style="width: 100px" alt="...">
             <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">
             <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">
-            <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">-->
+            <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">&ndash;&gt;
         </div>
 
         <div class="form-floating mb-3">
@@ -106,13 +199,12 @@
     </div>
 
 
-</form>
-<img id="carAddingImg" src="../src/main/java/lk/easycar/assets/pageImg/carAddingImg.jpg" class="img-fluid"
-     alt="carPage"><!--car manage form-->
+</form>-->
+    <!--car manage form-->
 
 <!--Cars Table-->
 
-<table id="carTable" class="table">
+<table id="carTable" class=" raw table col-10 m-lg-5">
     <thead>
     <tr>
         <th scope="col">Model</th>
@@ -139,7 +231,7 @@
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
 <script>
-    let baseUrl = "http://localhost:8080/cw/"
+    let baseUrl = "http://localhost:8080/Spring_CW_Easy_Car_Rental_war/"
 
     let tableClick = false;
     checkTableClick();
@@ -151,12 +243,12 @@
         if (tableClick == false) {
             $('#saveButtonArea').empty();
             $('#saveButtonArea').append(
-                "<button id=\"btnCarSave\" type=\"button\" class=\"position-absolute top-110 start-40 btn btn-primary mb-2\" style=\"width: 29vw;position: relative;bottom: 5px\">Save</button>"
+                "<button id=\"btnCarSave\" type=\"button\" class=\"position-absolute top-110 start-40 btn btn-primary mb-2 col-7\">Save</button>"
             )
         } else if (tableClick==true) {
             $('#saveButtonArea').empty();
             $('#saveButtonArea').append(
-                "<button id=\"btnCarUpdate\" type=\"button\" class=\"position-absolute top-110 start-40 btn btn-danger mb-2\" style=\"width: 29vw;position: relative;bottom: 5px\">Update</button>"
+                "<button id=\"btnCarUpdate\" type=\"button\" class=\"position-absolute top-110 start-40 btn btn-danger mb-2 col-7\" style=\"width: 29vw;position: relative;bottom: 5px\">Update</button>"
 
             )
             updateCar();
@@ -180,14 +272,18 @@
     $('#btnCarSave').click(function () {
         if (tableClick==false){
             alert("saved car");
-            let formData = $('#carsAddingForm').serialize();
+            let carData = new FormData($("#carsAddingForm")[0]);
+            // let carData =$('#carsAddingForm').serialize();
             $.ajax({
                 url: baseUrl + "car",
                 method: "post",
-                data: formData,
+                async:false,
+                data: carData,
                 dataType: "json",
+                contentType: false,
+                processData:false,
                 success: function (res) {
-                    res.message
+                    alert(res.message)
                     loadCarsTable();
                     blindRowClickEventsCar();
                     clearTextFields();
