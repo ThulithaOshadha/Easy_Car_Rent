@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @Data
 public class PaymentDTO {
     private String bookingID;
-    private Booking booking;
+    private BookingDTO booking;
     private BigDecimal rent;
     private String account;
     private String paymentMethod;

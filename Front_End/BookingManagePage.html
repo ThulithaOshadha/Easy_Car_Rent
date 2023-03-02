@@ -216,7 +216,7 @@
 
       </div>
       <div class="modal-footer row">
-        <button id="btnConfirmPayment" type="button" class="btn btn-primary col-5">Accepted Booking</button>
+        <button id="btnConfirmPayment" type="button" class="btn btn-primary col-5">Confirm Payment</button>
 
       </div>
     </div>
@@ -286,6 +286,7 @@
       dataType:"json",
       async:false,
       success:function (resp) {
+        alert(type)
         response=resp.data.filter((c)=>{
           return c.accepted==type;
         });
@@ -300,6 +301,7 @@
 
     $('#bookingTable').empty();
 
+    console.log("fgf");
         for (let car of c) {
           console.log("car");
           console.log(car);
@@ -308,7 +310,7 @@
           let customerID = car.customer.nic;
           let date = car.dueDate;
           let bookingAmount = car.total;
-          let dmgWavier = car.car.vehicleType;
+          let dmgWavier ="";
           if (dmgWavier=="Luxury"){
             dmgWavier=20000;
           }else if (dmgWavier=="Premium"){
@@ -316,6 +318,7 @@
           }else {
             dmgWavier=10000;
           }
+          dmgWavier = car.car.vehicleType;
 
           let row = "<tr><td>" + bookingID + "</td><td>" + date + "</td><td>" + carID + "</td><td>" + customerID + "</td><td>" + dmgWavier + "</td><td>" + bookingAmount + "</td></tr>"
           $('#bookingTable').append(row);
@@ -368,12 +371,22 @@
 
 
         let nic = car.customer.nic;
-        let cusName = car.car.name;
+        let cusName = car.customer.name;
+
+        let dmgW="";
+        if (car.car.type=="Luxury"){
+          dmgW=20000;
+        }else if (car.car.type=="General"){
+          dmgW=15000;
+        }else {
+          dmgW=10000;
+        }
+        let tot = car.total-dmgW;
 
         let context = "<div class=\"container d-lg-flex\">\n" +
                 "          <div class=\"box-1 bg-light user\">\n" +
                 "            <div id=\"userProfile\" class=\"d-flex align-items-center mb-3\">\n" +
-                "              <img src=\"https://images.pexels.com/photos/4925916/pexels-photo-4925916.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500\"\n" +
+                "              <img src=\"../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg\"\n" +
                 "                   class=\"pic rounded-circle\" alt=\"\">\n" +
                 "              <p class=\"ps-2 name\">"+cusName+"</p>\n" +
                 "            </div>\n" +
@@ -391,15 +404,15 @@
                 "                </div>\n" +
                 "                <div class=\"carousel-inner\">\n" +
                 "                  <div class=\"carousel-item active\">\n" +
-                "                    <img src=\"https://images.pexels.com/photos/100582/pexels-photo-100582.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500\"\n" +
+                "                    <img src=\"../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg\"\n" +
                 "                         class=\"d-block w-100\">\n" +
                 "                  </div>\n" +
                 "                  <div class=\"carousel-item\">\n" +
-                "                    <img src=\"https://images.pexels.com/photos/258092/pexels-photo-258092.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500\"\n" +
+                "                    <img src=\"../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg\"\n" +
                 "                         class=\"d-block w-100 h-100\">\n" +
                 "                  </div>\n" +
                 "                  <div class=\"carousel-item\">\n" +
-                "                    <img src=\"https://images.pexels.com/photos/7974/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&w=500\"\n" +
+                "                    <img src=\"../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg\"\n" +
                 "                         class=\"d-block w-100\">\n" +
                 "                  </div>\n" +
                 "                </div>\n" +
@@ -447,7 +460,7 @@
                 "                </label>\n" +
                 "                <label class=\"box py-2 third\">\n" +
                 "                  <h6>Damage waiver </h6>\n" +
-                "                  <h5>Rs.8000</h5>\n" +
+                "                  <h5>"+dmgW+"</h5>\n" +
                 "                </label>\n" +
                 "              </div>\n" +
                 "\n" +
@@ -480,7 +493,7 @@
                 "                <div>\n" +
                 "\n" +
                 "                  <div class=\"address\">\n" +
-                "                    <div class=\"btn btn-primary mt-2\">Pay<span class=\"fas fa-dollar-sign px-1\"></span>Rs.8500\n" +
+                "                    <div class=\"btn btn-primary mt-2\">Pay<span class=\"fas fa-dollar-sign px-1\"></span>Rs "+tot+"\n" +
                 "                    </div>\n" +
                 "                  </div>\n" +
                 "                </div>\n" +
@@ -496,7 +509,7 @@
         let damgeAmount=0;
         let paymentType = "";
 
-        $('#cardCheckBox').change(function (){
+        /*$('#cardCheckBox').change(function (){
           paymentType="card";
           alert(paymentType);
 
@@ -504,7 +517,7 @@
         $('#cashCheckBox').change(function (){
           paymentType="cash";
           alert(paymentType)
-        })
+        })*/
 
 
 
@@ -518,6 +531,15 @@
           alert(damgeAmount);
 
         })
+        $('#cardCheckBox').change(function (){
+          paymentType="card";
+          alert(paymentType);
+
+        })
+        $('#cashCheckBox').change(function (){
+          paymentType="cash";
+          alert(paymentType)
+        })
 
         $('#btnConfirmPayment').click(function (){
           var paymentOB = {
@@ -525,8 +547,8 @@
             booking:car,
             rent:car.total,
             account:"266466",
-            paymentMethod:"card",
-            deduction:3000
+            paymentMethod:paymentType,
+            deduction:"2000"
           }
           console.log("paymentOB");
           console.log(paymentOB);
