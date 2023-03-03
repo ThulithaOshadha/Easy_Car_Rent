@@ -28,6 +28,7 @@
 
 </ul>
 <a href="#" id="loginButtonInHome" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
+<a href="#" id="logOutButtonInHome" class="btn btn-dark">Log Out</a>
 
 <!--Slider-->
 <section id="homeSliderSection">
@@ -103,6 +104,11 @@
         </div>
     </div>
 </section>
+<!--about section-->
+<!--<section>
+    <img src="" class="img-fluid" alt="mainPage">
+
+</section>-->
 
 <!--modal-->
 <div class="modal fade" id="carModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -342,12 +348,16 @@
 <script>
     let baseUrl = "http://localhost:8080/Spring_CW_Easy_Car_Rental_war/"
 
+    $('#logOutButtonInHome').hide();
+
     var vehiNum="";
     var carSort = "all";
     let carID="";
     let userType = "customer";
     let checkSignInCus = "no";
     let loginCustomer = "";
+
+    let currentCustomer=null;
 
     $('#userPage').hide();
     getAllCars();
@@ -476,61 +486,66 @@
             })
 
             $('#btnConfirm').click(function (){
-                alert(vehiNum);
-                let bookingID = "B-001";
-                let currentDate = $('#datePicker').val();
-                let dueDate = $('#dueDatePicker').val();
-                let advancePayment = 20000;
-                let isAccepted = "false";
-                let car = ca[0];
-                let d = "";
-                let driver = "";
-                if (checkDriverInvolve=="yes"){
-                    d = findDriver("true");
-                    driver = d[0];
-                }else{
-                    driver=null;
-                }
-                console.log("driver after");
-                console.log(driver)
-
-                let cus = searchCustomerByUserName(loginCustomer);
-                let customer = cus[0];
-
-                let dateDif = (new Date(dueDate) - new Date(currentDate))/(1000*3600*24);
-                let total = dateDif*(ca[0].dailyPrice);
-                console.log("dateDif");
-                console.log(total);
-
-                var book = {
-                    bookingID:bookingID,
-                    currentDate:currentDate,
-                    dueDate:dueDate,
-                    advancePayment:advancePayment,
-                    accepted:isAccepted,
-                    total:total,
-                    car:car,
-                    driver:driver,
-                    customer:customer
-                }
-                console.log("book");
-                console.log(book);
-
-                $.ajax({
-                    url:baseUrl+"booking",
-                    method:"post",
-                    contentType:"application/json",
-                    data:JSON.stringify(book),
-                    dataType: "json",
-                    success:function (res) {
-                        alert("success booking"+res.message);
-
-                    },
-                    error:function (error) {
-                        let cause = JSON.parse(error.responseText).message;
-                        alert(cause);
+                if (currentCustomer!=null){
+                    alert(vehiNum);
+                    let bookingID = "B-001";
+                    let currentDate = $('#datePicker').val();
+                    let dueDate = $('#dueDatePicker').val();
+                    let advancePayment = 20000;
+                    let isAccepted = "false";
+                    let car = ca[0];
+                    let d = "";
+                    let driver = "";
+                    if (checkDriverInvolve=="yes"){
+                        d = findDriver("true");
+                        driver = d[0];
+                    }else{
+                        driver=null;
                     }
-                })
+                    console.log("driver after");
+                    console.log(driver)
+
+                    let cus = searchCustomerByUserName(loginCustomer);
+                    let customer = cus[0];
+
+                    let dateDif = (new Date(dueDate) - new Date(currentDate))/(1000*3600*24);
+                    let total = dateDif*(ca[0].dailyPrice);
+                    console.log("dateDif");
+                    console.log(total);
+
+                    var book = {
+                        bookingID:bookingID,
+                        currentDate:currentDate,
+                        dueDate:dueDate,
+                        advancePayment:advancePayment,
+                        accepted:isAccepted,
+                        total:total,
+                        car:car,
+                        driver:driver,
+                        customer:customer
+                    }
+                    console.log("book");
+                    console.log(book);
+
+                    $.ajax({
+                        url:baseUrl+"booking",
+                        method:"post",
+                        contentType:"application/json",
+                        data:JSON.stringify(book),
+                        dataType: "json",
+                        success:function (res) {
+                            alert("success booking"+res.message);
+
+                        },
+                        error:function (error) {
+                            let cause = JSON.parse(error.responseText).message;
+                            alert(cause);
+                        }
+                    })
+                }else {
+                    alert("please login with your profile");
+                }
+
 
             });
 
@@ -762,6 +777,9 @@
                 console.log(s[0].password);
                 if (userName==s[0].nic && password==s[0].password){
                     checkSignInCus="yes";
+                    $('#loginButtonInHome').hide();
+                    $('#logOutButtonInHome').show();
+                    currentCustomer=s[0];
                     loginCustomer=s[0].nic;
                     $('#loginModal').modal('hide');
                     alert("you can log");
@@ -931,6 +949,11 @@
         $('#txtUserName').val("");
         $('#txtPassword').val("");
     }
+
+    $('#logOutButtonInHome').click(function (){
+        location.reload();
+        currentCustomer=null;
+    })
 
 
 
