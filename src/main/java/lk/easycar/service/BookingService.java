@@ -17,4 +17,6 @@ public interface BookingService {
     public BookingDTO searchBookingByAccepted(String type);
     public void updateAcceptedBooking(String id);
     public BookingDTO findBookingsByDriver_License(String driverLicense);
+
+    public long getBookingCount();
 }

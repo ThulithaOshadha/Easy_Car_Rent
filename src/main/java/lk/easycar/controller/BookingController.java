@@ -28,6 +28,11 @@ public class BookingController {
         service.updateBooking(dto);
         return new ResponseUtil("ok","updated booking",null);
     }
+    @DeleteMapping
+    public ResponseUtil deleteBooking(@RequestParam String id){
+        service.deleteBooking(id);
+        return new ResponseUtil("ok","successfully deleted booking",null);
+    }
 
     @GetMapping(params = {"accepted"})
     public ResponseUtil searchBookingFromIsAccepted(String accepted){
@@ -45,5 +50,9 @@ public class BookingController {
     @GetMapping(params = {"driver_license"})
     public ResponseUtil findByBookingsByDriverID(String driver_license){
         return new ResponseUtil("ok","",service.findBookingsByDriver_License(driver_license));
+    }
+    @GetMapping(params = {"count"})
+    public ResponseUtil finBookingCount(){
+        return new ResponseUtil("ok","",service.getBookingCount());
     }
 };

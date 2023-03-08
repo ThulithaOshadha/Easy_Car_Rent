@@ -34,7 +34,10 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void deleteBooking(String bookingID) {
-
+        if (!repo.existsById(bookingID)){
+            throw new RuntimeException("something went wrong !!");
+        }
+        repo.deleteById(bookingID);
     }
 
     @Override
@@ -65,5 +68,10 @@ public class BookingServiceImpl implements BookingService {
         }
         return mapper.map(booking,BookingDTO.class);
 
+    }
+
+    @Override
+    public long getBookingCount() {
+        return repo.countAllBy();
     }
 }

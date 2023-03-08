@@ -503,7 +503,9 @@
             $('#btnConfirm').click(function (){
                 if (currentCustomer!=null){
                     alert(vehiNum);
-                    let bookingID = "B-001";
+
+                    let count = getAllBookingCount();
+                    let bookingID = "B-00"+count;
                     let currentDate = $('#datePicker').val();
                     let dueDate = $('#dueDatePicker').val();
                     let advancePayment = 20000;
@@ -567,6 +569,21 @@
         });
     }
 
+    /*get all booking*/
+    function getAllBookingCount(){
+        let response="";
+        $.ajax({
+            url: baseUrl+"booking?"+"count",
+            dataType:"json",
+            async:false,
+            success:function (res) {
+                response=res.data
+                console.log("response")
+                console.log(response.data);
+            }
+        });
+        return response;
+    }
 
     function findDriver(avl) {
         let response="";

@@ -14,4 +14,6 @@ public interface BookingRepo extends JpaRepository<Booking,String> {
     @Modifying
     @Query(value = "update Booking set accepted='true' where bookingID=:id",nativeQuery = true)
     void updateAcceptedBooking(@Param("id") String id);
+
+    long countAllBy();
 }
