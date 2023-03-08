@@ -16,17 +16,22 @@
 </div>-->
 <ul id="navbarList" class="d-flex justify-content-between p-1 mb-3 row ">
 
-    <!--<div id="userProfile" class="col-4 btn btn-link" data-bs-toggle="modal" data-bs-target="#userModal">
-        <img src="../src/main/java/lk/easycar/assets/carImg/toyota-vitz.jpg" class="img-thumbnail" alt="...">
-        <h5>Thulitha Oshadha</h5>
-    </div>-->
-
     <a class="col-1 active m-3" aria-current="page" href="#">Home</a>
-    <a class="col-1 m-3" href="">About</a>
+    <a class="col-1 m-3" href="#aboutContext">About</a>
     <a class="col-1 m-3" href="#context">Cars</a>
 
+</ul>
+<!--after login navbar-->
+<!--
+<ul id="navbarListLogin" class="d-flex justify-content-between p-1 mb-3 row ">
+
+    <a class="col-1 active m-3" aria-current="page" href="#">Home</a>
+    <a class="col-1 m-3" href="#aboutContext">About</a>
+    <a class="col-1 m-3" href="#context">Cars</a>
 
 </ul>
+-->
+
 <a href="#" id="loginButtonInHome" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
 <a href="#" id="logOutButtonInHome" class="btn btn-dark">Log Out</a>
 
@@ -39,6 +44,14 @@
 <button id="btnBookingNow" type="button" class="btn btn-warning">Book Now</button>
 
 <!--Cars Context-->
+<section style="margin-left: 9%;" id="aboutContext">
+    <section class="col-11">
+        <div>
+            <h4 class="col-2" style="font-family: 'Open Sans Extrabold';font-size: 30px;margin-top: 45px;margin-left: 42%;">About</h4>
+        </div>
+        <img style="border-radius: 12px;box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;margin-top: 20px" src="assests/aboutPageFull.jpg" class="img-fluid" alt="mainPage">
+    </section>
+</section>
 <section id="context">
 
     <!--sorting button-->
@@ -349,6 +362,7 @@
     let baseUrl = "http://localhost:8080/Spring_CW_Easy_Car_Rental_war/"
 
     $('#logOutButtonInHome').hide();
+    /*$('#navbarListLogin').hide();*/
 
     var vehiNum="";
     var carSort = "all";
@@ -360,6 +374,7 @@
     let currentCustomer=null;
 
     $('#userPage').hide();
+
     getAllCars();
     setUserType();
     function getAllCars(){

@@ -19,11 +19,17 @@ Home page*/
 
 #navbarList{
     position: absolute;
-    width: 52%;
-    left: 40%;
-    top: 10px;
+    width: 21%;
+    left: 62%;
+    top: 12px;
 }
-#navbarList>a{
+#navbarListLogin{
+    position: absolute;
+    width: 41%;
+    left: 42%;
+    top: 12px;
+}
+#navbarList>a,#navbarListLogin>a{
     text-decoration: none;
     font-family: "Open Sans Semibold";
     font-size: 20px;
@@ -222,33 +228,37 @@ Home page*/
     position: relative;
 }
 */
-#registeredCustomer{
+/*#registeredCustomer{
     position: relative;
     top: 40px;
     left: 30px;
     display: grid;
     grid-template-rows: repeat(1, 1fr);
     grid-template-columns: repeat(2, 1fr);
-    grid-column-gap: 10px;
-    grid-gap: 10px;
-}
+    grid-column-gap: 20px;
+    grid-gap: 30px;
+}*/
+
 #registeredCustomer>div{
+    border: 1px solid red;
+}
+/*#registeredCustomer>div{
     width: 300px;
     height: 90px;
-    background: #635985;
+    border: 1px solid red;
     border-radius: 15px;
-}
-#registeredCustomer>div>h2{
+}*/
+/*#registeredCustomer>div>>div>div>div>div>div>h2{
     position: relative;
     top: 10px;
     left: 10px;
-    font-size: 18px;
+    font-size: 14px;
     color: aliceblue;
     font-family: "Open Sans Semibold";
-}
+}*/
 
 
-#registeredCustomer>div>h2:nth-child(3){
+/*#registeredCustomer>div>h2:nth-child(3){
     position: relative;
     top: 16px;
     left: 39%;
@@ -262,7 +272,12 @@ Home page*/
 #adminTaskContext>div>div:hover{
     box-shadow: rgba(10, 203, 238, 0.4) 0px 0px 0px 2px, rgba(12, 120, 232, 0.65) 0px 4px 6px -1px, rgba(4, 74, 232, 0.89) 0px 1px 0px inset;
     cursor: pointer;
-}
+}*/
+
+#carouselOne>div:hover{
+    cursor: pointer;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;}
+
 
 /*Driver Manage Page*/
 #driverManagerForm{
