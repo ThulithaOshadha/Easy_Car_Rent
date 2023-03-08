@@ -505,7 +505,7 @@
                     alert(vehiNum);
 
                     let count = getAllBookingCount();
-                    let bookingID = "B-00"+count;
+                    let bookingID = "B-00"+(count+1);
                     let currentDate = $('#datePicker').val();
                     let dueDate = $('#dueDatePicker').val();
                     let advancePayment = 20000;
@@ -728,6 +728,7 @@
 
         $('#btnLogAdmin').click(function (){
             userType = "admin";
+            alert(userType)
             console.log(userType);
             let adminLoginBody = "<form>\n" +
                 "\n" +

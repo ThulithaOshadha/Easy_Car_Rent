@@ -551,11 +551,12 @@
           alert(paymentType)
         })
 
+
         $('#btnConfirmPayment').click(function (){
           var paymentOB = {
             bookingID:car.bookingID,
             booking:car,
-            rent:car.total,
+            rent:tot,
             account:"266466",
             paymentMethod:paymentType,
             deduction:"2000"
