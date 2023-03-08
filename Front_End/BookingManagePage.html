@@ -308,7 +308,7 @@
           let customerID = car.customer.nic;
           let date = car.dueDate;
           let bookingAmount = car.total;
-          let dmgWavier ="";
+          let dmgWavier =car.car.vehicleType;
           if (dmgWavier=="Luxury"){
             dmgWavier=20000;
           }else if (dmgWavier=="Premium"){
@@ -316,7 +316,7 @@
           }else {
             dmgWavier=10000;
           }
-          dmgWavier = car.car.vehicleType;
+          //dmgWavier = car.car.vehicleType;
 
           let row = "<tr><td>" + bookingID + "</td><td>" + date + "</td><td>" + carID + "</td><td>" + customerID + "</td><td>" + dmgWavier + "</td><td>" + bookingAmount + "</td></tr>"
           $('#bookingTable').append(row);
@@ -363,10 +363,12 @@
         $('#btnReject').click(function (){
           alert("del");
           $.ajax({
-            url:baseUrl+"booking?bookingID="+bookingID,
+            url:baseUrl+"booking?bookingID="+bookingID+"",
             method:"delete",
+            dataType:"json",
             success:function (res) {
               alert("deleted");
+              loadBookingTable("false");
             }
           })
         })

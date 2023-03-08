@@ -37,6 +37,12 @@ public class CarController {
         service.updateCars(dto);
         return new ResponseUtil("ok","successfully updated",null);
     }
+    @DeleteMapping(params = {"vehicleNum"})
+    public ResponseUtil deleteCar(@RequestParam String vehicleNum){
+        service.deleteCar(vehicleNum);
+        return new ResponseUtil("ok","successfully deleted",null);
+    }
+
     @GetMapping(path = "/{vehicleNum}")
     public ResponseUtil searchCarWithVehicleNum(@PathVariable String vehicleNum){
         System.out.println("controller : "+vehicleNum);

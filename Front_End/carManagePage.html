@@ -40,9 +40,9 @@
         <img id="carAddingImg" src="../src/main/java/lk/easycar/assets/pageImg/carAddingImg.jpg" class="img-fluid">
     </div>
     <div class="col-7">
-        <form action="" id="carsAddingForm" >
+        <form class="row g-3"  id="carsAddingForm" >
             <h2 class="mb-3">Car Management Form</h2>
-            <div class="row g-2">
+            <!--<div class="row">
                 <div class="form-floating mb-3 col-4">
                     <input class="form-control" id="txtVehicleNo" placeholder="Vehicle No :" name="vehicleNum">
                     <label for="txtVehicleNo">Vehicle No :</label>
@@ -52,7 +52,7 @@
                     <label for="txtModel">Model :</label>
                 </div>
                 <div class="form-floating mb-3 col-4">
-                    <select id="txtVehicleType" class="form-select form-select-lg mb-3" name="vehicleType">
+                    <select id="txtVehicleType" class="form-select form-select-m mb-3" name="vehicleType">
                         <option selected>Vehicle Type</option>
                         <option value="General">General</option>
                         <option value="Premium">Premium</option>
@@ -60,7 +60,7 @@
                     </select>
                 </div>
                 <div class="form-floating mb-3 col-4">
-                    <select id="txtTransmission" class="form-select form-select-lg mb-3" name="transmissionType">
+                    <select id="txtTransmission" class="form-select form-select-m mb-3" name="transmissionType">
                         <option selected>Transmission Type</option>
                         <option value="Auto">Auto</option>
                         <option value="Manual">Manual</option>
@@ -80,7 +80,7 @@
                     </select>
                 </div>
 
-                <div class="form-floating mb-3 col-4">
+                <div class="form-floating mb-3 col-4 sm">
                     <input class="form-control" id="txtPassengers" placeholder="Passengers" name="passengers">
                     <label for="txtPassengers">Passengers : </label>
                 </div>
@@ -106,10 +106,10 @@
                 </div>
 
                 <div id="carImageImages" style="display: inline-block">
-                    <!--<img src="" class="img-thumbnail"style="width: 100px" alt="...">
+                    &lt;!&ndash;<img src="" class="img-thumbnail"style="width: 100px" alt="...">
                     <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">
                     <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">
-                    <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">-->
+                    <img src="../java/lk/easycar/assets/car1.jpg" class="img-thumbnail"style="width: 100px" alt="...">&ndash;&gt;
                 </div>
 
                 <div class="form-floating mb-3">
@@ -122,7 +122,79 @@
                     <button id="btnCarSave" type="button" class="position-absolute top-110 start-40 btn btn-primary mb-2 col-10" >Save</button>
                 </div>
 
-            </div>
+            </div>-->
+
+                <div class="col-md-5">
+                    <label for="txtVehicleNo" class="form-label">Vehicle No :</label>
+                    <input type="text" class="form-control" id="txtVehicleNo" placeholder="CAB-5986" name="vehicleNum">
+                </div>
+                <div class="col-md-5">
+                    <label for="txtModel" class="form-label">Model</label>
+                    <input type="text" class="form-control" id="txtModel" placeholder="BMW-720" name="model">
+                </div>
+                <div class="col-5">
+                    <label for="txtPassengers" class="form-label">Passengers :</label>
+                    <input type="text" class="form-control" id="txtPassengers" placeholder="Luxury" name="passengers">
+                </div>
+                <div class="col-5">
+                    <label for="txtMonthlyPrice" class="form-label">Monthly Price :</label>
+                    <input type="text" class="form-control" id="txtMonthlyPrice" placeholder="20 000.00" name="monthlyPrice">
+                </div>
+                <div class="col-5">
+                    <label for="txtDailyPrice" class="form-label">Daily Price :</label>
+                    <input type="text" class="form-control" id="txtDailyPrice" placeholder="5 000.00" name="dailyPrice">
+                </div>
+                <div class="col-5">
+                    <label for="txtFreeMileage" class="form-label">Free Mileage :</label>
+                    <input type="text" class="form-control" id="txtFreeMileage" placeholder="200" name="freeMileage">
+                </div>
+                <div class="col-5">
+                    <label for="txtAvailability" class="form-label">Availability :</label>
+                    <input type="text" class="form-control" id="txtAvailability" placeholder="false" name="available">
+                </div>
+                <div class="col-5">
+                    <label for="txtColor" class="form-label">Color :</label>
+                    <input type="text" class="form-control" id="txtColor" placeholder="false" name="color">
+                </div>
+                <div class="col-md-5">
+                    <label for="txtTransmission" class="form-label">Transmission Type :</label>
+                    <select id="txtTransmission" class="form-select" name="transmissionType">
+                        <option selected>Transmission Type</option>
+                        <option value="Auto">Auto</option>
+                        <option value="Manual">Manual</option>
+                    </select>
+                </div>
+                <div class="col-md-5">
+                    <label for="txtVehicleType" class="form-label">Vehicle Type :</label>
+                    <select id="txtVehicleType" class="form-select" name="vehicleType">
+                        <option selected>Vehicle Type</option>
+                        <option value="General">General</option>
+                        <option value="Luxury">Luxury</option>
+                        <option value="Premium">Premium</option>
+                    </select>
+                </div>
+                <div class="col-md-5">
+                    <label for="txtFuelType" class="form-label">Fuel Type :</label>
+                    <select id="txtFuelType" class="form-select" name="fuelType">
+                        <option selected>Fuel Type</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Petrol">Petrol</option>
+                    </select>
+                </div>
+
+                <div class="col-5">
+                    <label for="exampleFormControlFile1" class="form-label">Color :</label>
+                    <input type="file" class="form-control" id="exampleFormControlFile1" placeholder="false" name="img">
+                </div>
+
+
+                <!--<div id="saveButtonArea" class="col-md-5">
+                    <button id="btnCarSave" type="button" class="btn btn-primary  col-md-5" >Save</button>
+                </div>-->
+                <div id="saveButtonArea" class="col-12">
+                    <button id="btnCarSave" type="button" class="btn btn-primary col-10">Save</button>
+                </div>
+
 
 
         </form>
@@ -234,7 +306,7 @@
     let baseUrl = "http://localhost:8080/Spring_CW_Easy_Car_Rental_war/"
 
     let tableClick = false;
-    checkTableClick();
+    //checkTableClick();
     loadCarsTable();
     blindRowClickEventsCar();
 
@@ -243,16 +315,18 @@
         if (tableClick == false) {
             $('#saveButtonArea').empty();
             $('#saveButtonArea').append(
-                "<button id=\"btnCarSave\" type=\"button\" class=\"position-absolute top-110 start-40 btn btn-primary mb-2 col-7\">Save</button>"
+                "<button id=\"btnCarSave\" type=\"button\" class=\"btn btn-primary col-10\">Save</button>"
             )
         } else if (tableClick==true) {
             $('#saveButtonArea').empty();
             $('#saveButtonArea').append(
-                "<button id=\"btnCarUpdate\" type=\"button\" class=\"position-absolute top-110 start-40 btn btn-danger mb-2 col-7\">Update</button>" +
-                "<button id=\"btnCarDelete\" type=\"button\" class=\"position-absolute top-110 start-40 btn btn-danger mb-2 col-7\">Update</button>"
 
+
+                "<button id=\"btnCarUpdate\" type=\"button\" class=\"btn btn-primary col-5\">Update</button>" +
+               "<button id=\"btnCarDelete\" type=\"button\" class=\"btn btn-danger col-5\">Delete</button>"
             )
             updateCar();
+            deleteCars();
         }
     }
 
@@ -261,7 +335,7 @@
 
     $('#btnAddPhoto').click(function () {
         if (carsAddingCount < 4) {
-            alert("Hiii");
+
             console.log("sdfsdfsd");
             let i = "src/main/java/lk/easycar/assets/driver_management.jpg";
             $('#carImageImages').append("<img src='../java/lk/easycar/assets/car_management.jpg' class='img-thumbnail mb-3' alt='car'/>")
@@ -272,17 +346,17 @@
 
     $('#btnCarSave').click(function () {
         if (tableClick==false){
-            alert("saved car");
-            let carData = new FormData($("#carsAddingForm")[0]);
-            // let carData =$('#carsAddingForm').serialize();
+
+            //let carData = new FormData($("#carsAddingForm")[0]);
+            let carData =$('#carsAddingForm').serialize();
             $.ajax({
                 url: baseUrl + "car",
                 method: "post",
                 async:false,
                 data: carData,
                 dataType: "json",
-                contentType: false,
-                processData:false,
+                //contentType: false,
+                //processData:false,
                 success: function (res) {
                     alert(res.message)
                     loadCarsTable();
@@ -333,7 +407,6 @@
     function blindRowClickEventsCar() {
         $('#carTableBody>tr').click(function () {
         /*$("#carTableBody").on("click","tr",function(){*/
-            alert("hi");
             tableClick = true;
             checkTableClick();
             let vehicleNum = $(this).children(":eq(9)").text();
@@ -411,6 +484,24 @@
             });
         });
     };
+
+    function deleteCars(){
+        $('#btnCarDelete').click(function (){
+            alert("dd");
+            let vehicleNum = $("#txtVehicleNo").val();
+            $.ajax({
+                url:baseUrl+"car?vehicleNum="+vehicleNum+"",
+                method:"delete",
+                dataType:"json",
+                success:function (res) {
+                    alert("deleted");
+                    loadCarsTable();
+                    clearTextFields();
+                }
+            })
+        })
+    }
+
 
     function clearTextFields(){
         $('#txtVehicleNo').val("");

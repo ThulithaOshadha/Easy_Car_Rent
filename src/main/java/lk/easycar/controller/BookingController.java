@@ -28,9 +28,9 @@ public class BookingController {
         service.updateBooking(dto);
         return new ResponseUtil("ok","updated booking",null);
     }
-    @DeleteMapping
-    public ResponseUtil deleteBooking(@RequestParam String id){
-        service.deleteBooking(id);
+    @DeleteMapping(params = {"bookingID"})
+    public ResponseUtil deleteBooking(@RequestParam String bookingID){
+        service.deleteBooking(bookingID);
         return new ResponseUtil("ok","successfully deleted booking",null);
     }
 
